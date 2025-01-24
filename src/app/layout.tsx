@@ -3,6 +3,7 @@ import React from "react";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import type { Metadata } from "next";
 import "./globals.css";
+import Head from "next/head";
 
 // Add metadata if needed
 const metadata: Metadata = {
@@ -17,14 +18,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
+    <>
+      <Head>
         {/* Metadata */}
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
+        <title>{String(metadata.title)}</title>
+        <meta
+          name="description"
+          content={
+            metadata.description ||
+            "David Vidović's personal website, you can find more about me here."
+          }
+        />
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-      </head>
+      </Head>
       <body>
         {/* Google Analytics */}
         <GoogleAnalytics gaMeasurementId="G-YYN5M08HWE" trackPageViews />
@@ -32,6 +40,6 @@ export default function RootLayout({
         {/* Main content */}
         {children}
       </body>
-    </html>
+    </>
   );
 }
