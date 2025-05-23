@@ -20,7 +20,10 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
   backgroundColor = "#1a1a1a",
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const pillars = useRef<{ [key: string]: THREE.Mesh }>({}); // Add this line
+  // Update the type definition for the pillars ref
+  const pillars = useRef<{ 
+    [key: string]: THREE.Mesh | THREE.LineSegments<THREE.EdgesGeometry, THREE.LineBasicMaterial> 
+  }>({});
   const raycaster = useRef<THREE.Raycaster>(new THREE.Raycaster());
   const mouse = useRef<THREE.Vector2>(new THREE.Vector2());
   const isGridFilled = useRef<boolean>(false); // Add this ref at the top of the component with other refs
