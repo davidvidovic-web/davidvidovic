@@ -394,7 +394,7 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
                 });
 
                 // Animate outline
-                if (outline) {
+                if (outline instanceof THREE.LineSegments) {
                   gsap.to(outline.scale, {
                     y: 1 + heightFactor * HOVER_PARAMS.MAX_HEIGHT,
                     duration: 0.3,
