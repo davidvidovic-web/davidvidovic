@@ -18,11 +18,16 @@ body {
 
 body {
   color: var(--foreground);
-  background: url("../../public/images/bg.webp") no-repeat center center;
+  /* background: url("../../public/images/bg.webp") no-repeat center center; */
+  background-color: #0a0a0a;
   background-size: cover;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
 }
 
 * {
@@ -49,4 +54,58 @@ a {
   font-weight: bold;
   font-style: normal;
   font-display: swap; /* Optional: Control how the font is displayed while loading */
+}
+
+.grid-pattern {
+  background-color: #0a0a0a;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  position: relative;
+}
+
+/* Modified intersection highlights with crosses instead of circles */
+.grid-pattern::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    /* Horizontal line of the cross */ linear-gradient(
+      to right,
+      transparent calc(50% - 3px),
+      rgba(255, 255, 255, 0.4) calc(50% - 3px),
+      rgba(255, 255, 255, 0.4) calc(50% + 3px),
+      transparent calc(50% + 3px)
+    ),
+    /* Vertical line of the cross */
+      linear-gradient(
+        to bottom,
+        transparent calc(50% - 3px),
+        rgba(255, 255, 255, 0.4) calc(50% - 3px),
+        rgba(255, 255, 255, 0.4) calc(50% + 3px),
+        transparent calc(50% + 3px)
+      );
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.grid-intersections {
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+#title {
+  position: relative;
+  z-index: 999;
+}
+
+.background-grid {
+  position: fixed;
 }
