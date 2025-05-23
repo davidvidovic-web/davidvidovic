@@ -375,7 +375,7 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
               const pillar = pillars.current[pillarKey];
               const outline = pillars.current[pillarKey + "_outline"];
               
-              if (pillar) {
+              if (pillar instanceof THREE.Mesh && pillar.geometry instanceof THREE.BoxGeometry) {
                 const distance = Math.sqrt(dx * dx + dz * dz);
                 const heightFactor = Math.max(0, 1 - (distance * HOVER_PARAMS.FALLOFF));
                 const targetHeight = pillar.geometry.parameters.height * (1 + heightFactor);
