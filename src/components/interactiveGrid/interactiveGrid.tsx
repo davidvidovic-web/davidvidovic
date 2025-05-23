@@ -23,9 +23,6 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
   const pillars = useRef<{ [key: string]: THREE.Mesh }>({}); // Add this line
   const raycaster = useRef<THREE.Raycaster>(new THREE.Raycaster());
   const mouse = useRef<THREE.Vector2>(new THREE.Vector2());
-  const animationQueue = useRef<
-    Array<{ x: number; z: number; height: number }>
-  >([]);
   const isGridFilled = useRef<boolean>(false); // Add this ref at the top of the component with other refs
 
   // Add these parameters for hover effect

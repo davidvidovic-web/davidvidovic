@@ -1,6 +1,6 @@
 "use client";
 import styles from "./page.module.css";
-import AnimatedHeader from "@/components/fluid-heading/heading";
+import AnimatedHeader from "@/components/fluidHeading/heading";
 import Footer from "@/components/footer/footer";
 
 export default function Home() {
