@@ -240,63 +240,6 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
       return easeInOutCubic(x) * (1 - Math.sin(x * Math.PI * 2) * 0.03);
     };
 
-    // Update the animation parameters
-    const ANIMATION_PARAMS = {
-      DURATION: 2.0, // Longer duration
-      BATCH_SIZE: 12, // Larger batch size
-      BATCH_DELAY: 200, // Longer delay between batches
-      OVERLAP: 0.3, // Overlap between batch animations
-    };
-
-
-    // Replace the animateNextPillar function with this batch version
-    const animateNextBatch = () => {
-      if (animationQueue.current.length === 0) {
-        return;
-      }
-
-      // Get next batch of pillars
-      const currentBatch = animationQueue.current
-        .splice(0, ANIMATION_PARAMS.BATCH_SIZE)
-        .map(({ x, z, height }) => createPillar(x, z, height));
-
-      const startTime = Date.now();
-
-      const animateBatch = () => {
-        const elapsed = (Date.now() - startTime) / 1000;
-        const progress = Math.min(elapsed / (animationDuration * 2), 1);
-
-        // Apply elastic easing to the progress
-        const easedProgress = smoothRise(progress);
-
-        // Animate all pillars in the batch
-        currentBatch.forEach((pillar, index) => {
-          const height = pillar.geometry.parameters.height;
-          pillar.scale.y = easedProgress;
-          pillar.position.y = (height * easedProgress) / 2;
-
-          // Update shader uniforms for animation
-          if (pillar.material instanceof THREE.ShaderMaterial) {
-            pillar.material.uniforms.time.value = elapsed + index * 0.2;
-          }
-        });
-
-        if (progress < 1) {
-          requestAnimationFrame(animateBatch);
-        } else {
-          // Start next batch before this one finishes
-          if (
-            animationQueue.current.length > 0 &&
-            progress > 1 - ANIMATION_PARAMS.OVERLAP
-          ) {
-            setTimeout(animateNextBatch, ANIMATION_PARAMS.BATCH_DELAY);
-          }
-        }
-      };
-
-      animateBatch();
-    };
-
     // Add this wave generation function
     const initializeProceduralPillars = () => {
       const pillarsArray = [];
