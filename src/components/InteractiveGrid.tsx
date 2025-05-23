@@ -1,13 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { extend } from "@react-three/fiber";
 import gsap from "gsap";
 
 interface InteractiveGridProps {
   gridSize?: number;
   cellSize?: number;
   gridColor?: string;
-  hoverColor?: string;
   pillarHeight?: number;
   animationDuration?: number;
   backgroundColor?: string;
@@ -17,7 +15,6 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
   gridSize = 40,
   cellSize = 2,
   gridColor = "#444444",
-  hoverColor = "#8ab4f8",
   pillarHeight = 2,
   animationDuration = 0.3,
   backgroundColor = "#1a1a1a",
@@ -340,7 +337,6 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
     // Replace the animateNextPillar function with this batch version
     const animateNextBatch = () => {
       if (animationQueue.current.length === 0) {
-        isAnimating.current = false;
         return;
       }
 
@@ -590,7 +586,6 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
     gridSize,
     cellSize,
     gridColor,
-    hoverColor,
     pillarHeight,
     animationDuration,
     backgroundColor,
