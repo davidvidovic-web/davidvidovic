@@ -23,7 +23,6 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
   const pillars = useRef<{ [key: string]: THREE.Mesh }>({}); // Add this line
   const raycaster = useRef<THREE.Raycaster>(new THREE.Raycaster());
   const mouse = useRef<THREE.Vector2>(new THREE.Vector2());
-  const isAnimating = useRef<boolean>(false);
   const animationQueue = useRef<
     Array<{ x: number; z: number; height: number }>
   >([]);
@@ -36,27 +35,9 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
     FALLOFF: 0.5,      // How quickly the height decreases with distance
   };
 
-  // Add this helper function at the top of the component, before useEffect
-  const calculateDistance = (
-    x1: number,
-    z1: number,
-    x2: number,
-    z2: number
-  ) => {
-    return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(z2 - z1, 2));
-  };
-
   // Add this helper function for random number generation
   const random = (min: number, max: number) => {
     return Math.random() * (max - min) + min;
-  };
-
-  // Add this function after the calculateDistance function
-  const generateRandomPillar = () => {
-    const x = Math.floor(random(0, gridSize));
-    const z = Math.floor(random(0, gridSize));
-    const height = random(pillarHeight * 0.3, pillarHeight);
-    return { x, z, height };
   };
 
   // Update the WAVE_PARAMS with more extreme height variations
@@ -146,27 +127,6 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
     directionalLight.position.set(1, 2, 3);
     scene.add(directionalLight);
-
-    // Initialize random pillars queue
-    const initializeRandomPillars = () => {
-      const pillarsArray = [];
-      // Create array of all grid positions
-      for (let x = 0; x < gridSize; x++) {
-        for (let z = 0; z < gridSize; z++) {
-          pillarsArray.push({
-            x,
-            z,
-            height: random(pillarHeight * 0.3, pillarHeight),
-          });
-        }
-      }
-      // Shuffle array for random animation order
-      for (let i = pillarsArray.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [pillarsArray[i], pillarsArray[j]] = [pillarsArray[j], pillarsArray[i]];
-      }
-      animationQueue.current = pillarsArray;
-    };
 
     // Create and animate a single pillar
     const createPillar = (x: number, z: number, height: number) => {
@@ -270,15 +230,6 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
       return colors[Math.floor(Math.random() * colors.length)];
     };
 
-    // Replace the easeOutElastic with these smoother easing functions
-    const easeOutCubic = (x: number): number => {
-      return 1 - Math.pow(1 - x, 3);
-    };
-
-    const easeOutQuint = (x: number): number => {
-      return 1 - Math.pow(1 - x, 5);
-    };
-
     // Add this improved easing function
     const easeInOutCubic = (x: number): number => {
       return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
@@ -297,42 +248,6 @@ const InteractiveGrid: React.FC<InteractiveGridProps> = ({
       OVERLAP: 0.3, // Overlap between batch animations
     };
 
-    // Update the animateBatch function
-    const animateBatch = () => {
-      const elapsed = (Date.now() - startTime) / 1000;
-      const progress = Math.min(elapsed / ANIMATION_PARAMS.DURATION, 1);
-
-      // Apply smooth easing to the progress
-      const easedProgress = smoothRise(progress);
-
-      // Animate all pillars in the batch
-      currentBatch.forEach((pillar, index) => {
-        const height = pillar.geometry.parameters.height;
-
-        // Add slight delay to each pillar in the batch
-        const delayedProgress = Math.max(0, easedProgress - index * 0.15);
-
-        pillar.scale.y = delayedProgress;
-        pillar.position.y = (height * delayedProgress) / 2;
-
-        // Update shader uniforms for smoother color animation
-        if (pillar.material instanceof THREE.ShaderMaterial) {
-          pillar.material.uniforms.time.value = elapsed * 0.5 + index * 0.1;
-        }
-      });
-
-      if (progress < 1) {
-        requestAnimationFrame(animateBatch);
-      } else {
-        if (animationQueue.current.length > 0) {
-          setTimeout(animateNextBatch, ANIMATION_PARAMS.BATCH_DELAY);
-        }
-      }
-    };
-
-    // Update the batch parameters
-    const BATCH_SIZE = 12; // Reduced for smoother performance
-    const BATCH_DELAY = 0; // Increased for more procedural feel
 
     // Replace the animateNextPillar function with this batch version
     const animateNextBatch = () => {
