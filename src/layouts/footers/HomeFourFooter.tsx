@@ -11,7 +11,7 @@ const HomeFourFooter = () => {
                         <div className="des-footer-top d-flex align-items-center justify-content-between">
                             <span>Creative Design Agency</span>
                             <div className="des-footer-logo">
-                                <Link href="/"><Image width={140} height={32} src="/assets/img/logo/logo-2.png" alt="logo" /></Link>
+                                <Link href="/"><Image width={140} height={32} src="/assets/img/logo/logo-dark.png" alt="logo" /></Link>
                             </div>
                             <span>Based in London</span>
                         </div>

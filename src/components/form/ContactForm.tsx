@@ -34,7 +34,7 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form onSubmit={handleSubmit(onSubmit)} noValidate suppressHydrationWarning>
       <div className="tp-contact-form">
         <div className="row">
           {/* Name */}

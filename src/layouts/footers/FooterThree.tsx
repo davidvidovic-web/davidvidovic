@@ -28,7 +28,14 @@ const FooterThree = () => {
                   </span>
                   <span>
                     <Link href="https://www.upwork.com/freelancers/~0163d597d928e1e526">
-                      <Briefcase size={24} />
+                      {/* <Briefcase size={24} /> */}
+                      <Image
+                        className="upwork-icon"
+                        width={24}
+                        height={24}
+                        src="/assets/img/footer/upwork.svg"
+                        alt="upwork"
+                      />
                     </Link>
                   </span>
                   <span>

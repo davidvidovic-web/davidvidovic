@@ -25,8 +25,8 @@ const OffCanvasPanelTwo: React.FC<IProps> = (
                     <div className="tp-offcanvas-2-left-wrap d-flex justify-content-between align-items-center">
                         <div className="tp-offcanvas-2-logo">
                             <Link href="/">
-                                <Image className="logo-1" width={150} height={35} src="/assets/img/logo/logo-2.png" alt="logo" />
-                                <Image className="logo-2" width={150} height={35} src="/assets/img/logo/logo.png" alt="logo" />
+                                <Image className="logo-1" width={150} height={35} src="/assets/img/logo/logo-dark.png" alt="logo" />
+                                <Image className="logo-2" width={150} height={35} src="/assets/img/logo/logo-light.webp" alt="logo" />
                             </Link>
                         </div>
                         <div className="tp-offcanvas-2-close d-md-none text-end">

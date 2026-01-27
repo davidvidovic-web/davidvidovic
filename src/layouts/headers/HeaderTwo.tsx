@@ -27,10 +27,10 @@ const HeaderTwo = () => {
                             <div className="col-6">
                                 <div className="tp-header-logo">
                                     <Link className="logo-dark d-none" href="/">
-                                        <Image width={138} height={32} src="/assets/img/logo/logo-2.png" alt="Logo Dark" />
+                                        <Image width={138} height={32} src="/assets/img/logo/logo-dark.png" alt="Logo Dark" />
                                     </Link>
                                     <Link className="logo-white" href="/">
-                                        <Image width={138} height={32} src="/assets/img/logo/logo.png" alt="Logo White" />
+                                        <Image width={138} height={32} src="/assets/img/logo/logo-light.webp" alt="Logo White" />
                                     </Link>
 
                                 </div>

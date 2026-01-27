@@ -19,7 +19,7 @@ const HeaderFour = () => {
                         <div className="row align-items-center">
                             <div className="col-6">
                                 <div className="tp-header-logo">
-                                    <Link href="/"><Image width={138} height={32} src="/assets/img/logo/logo-2.png" alt="" /></Link>
+                                    <Link href="/"><Image width={138} height={32} src="/assets/img/logo/logo-dark.png" alt="" /></Link>
                                 </div>
                             </div>
                             <div className="col-6">

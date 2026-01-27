@@ -157,7 +157,15 @@ const projectData: projectDt[] = [
     backgroundColor: "#ffffff",
     textColor: "#8b44fb",
     title: "Geeks on Site",
-    year: "/2025",
+    year: "2025",
+    // Project details page fields
+    client: "Geeks on Site LLC",
+    role: "Full Stack Developer & UI/UX Designer",
+    services: ["Web Development", "WordPress", "UI/UX Design", "SEO Optimization"],
+    mainDescription: "Comprehensive on-site tech support platform",
+    overview: "Geeks on Site is a leading technology support company providing on-site computer repair, IT support, and tech solutions. The project involved creating a modern, user-friendly website that showcases their services and enables easy booking for customers.",
+    websiteUrl: "https://geeksonsite.com",
+    detailsImage: "/assets/img/brand/gos-screenshot.jpg", // Optional: full screenshot
   },
   {
     id: 22,
@@ -166,7 +174,14 @@ const projectData: projectDt[] = [
     backgroundColor: "#e685b1",
     textColor: "#fbfaf4",
     title: "Kozmeticki Salon Cats",
-    year: "/2025",
+    year: "2025",
+    // Project details page fields example
+    client: "Kozmeticki Salon Cats",
+    role: "Web Developer",
+    services: ["Web Development", "WordPress", "Booking System"],
+    mainDescription: "Modern beauty salon booking platform",
+    overview: "A beautiful and functional website for a professional beauty salon, featuring online booking, service showcase, and client testimonials.",
+    websiteUrl: "https://example.com", // Replace with actual URL
   },
   {
     id: 23,
@@ -175,7 +190,7 @@ const projectData: projectDt[] = [
     backgroundColor: "#bdb4a0",
     textColor: "#ffffff",
     title: "Ambientivo",
-    year: "/2024",
+    year: "2024",
   },
   {
     id: 24,
@@ -184,7 +199,7 @@ const projectData: projectDt[] = [
     backgroundColor: "#fcb3c8",
     textColor: "#ffffff",
     title: "Desserts with Anna",
-    year: "/2023",
+    year: "2023",
   },
   //home four portfolio data end
   {

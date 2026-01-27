@@ -50,7 +50,6 @@ const HomeFiveFaqArea = () => {
                         WordPress is my main focus, but I also work with React
                         and Next.js depending on project needs.
                       </p>
-                      ‰
                     </div>
                   </div>
                 </div>

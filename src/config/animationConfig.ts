@@ -6,8 +6,8 @@
 import { heroVideoAnimation, homeAwardAnimation, homeFourPortfolioAnim, homeFourPortfolioAnimTwo, homeSixInstagramAnim, homeSixPortfolioAnim, homeSixScrollMarqueeAnim, homeSixTitleScrollAnim, movingText, portfolioAnimation, projectAnimation, revealTextAnim, serviceTitleMarqueAnim } from "@/hooks/useGsapAnimation";
 
 export const animationConfig: Record<string, (() => void)[]> = {
-    //home animation
-    "/": [revealTextAnim, homeAwardAnimation],
+    //home animation (home-four is now the main page)
+    "/": [homeFourPortfolioAnim, homeFourPortfolioAnimTwo, homeAwardAnimation, revealTextAnim],
     //home two animation
     "/home-two": [projectAnimation],
     //home two animation

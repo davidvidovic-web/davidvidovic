@@ -38,35 +38,30 @@ const CommonHeader: React.FC<headerProps> = ({
         >
           <div className="container">
             <div className="row align-items-center">
-              <div className="col-xl-2 col-lg-3 col-md-4 col-6">
-                <div className="tp-header-logo">
-                  <Link className="logo-dark d-none" href="/">
-                    <Image
-                      width={40}
-                      height={36}
-                      src="/assets/img/logo/logo.png"
-                      alt="Logo Dark"
-                    />
-                  </Link>
-                  <Link className="logo-white" href="/">
-                    <Image
-                      width={40}
-                      height={36}
-                      src="/assets/img/logo/logo.png"
-                      alt="Logo White"
-                    />
-                  </Link>
-                </div>
+              <div className="tp-header-logo">
+                <Link className="logo-dark d-none" href="/">
+                  <Image
+                    width={40}
+                    height={36}
+                    src="/assets/img/logo/logo-dark.png"
+                    alt="Logo Dark"
+                  />
+                </Link>
+                <Link className="logo-white" href="/">
+                  <Image
+                    width={40}
+                    height={36}
+                    src="/assets/img/logo/logo-light.webp"
+                    alt="Logo White"
+                  />
+                </Link>
               </div>
-              <div className="col-lg-6 d-none d-xl-block">
-                <div className={`tp-main-menu ${customCls} text-end mr-85`}>
-                  <nav className="tp-mobile-menu-active">
-                    <NavMenus />
-                  </nav>
-                </div>
+              <div className={`tp-main-menu ${customCls} d-none d-xl-block`}>
+                <nav className="tp-mobile-menu-active">
+                  <NavMenus />
+                </nav>
               </div>
-              <div className="col-xl-4 col-lg-9 col-md-8 col-6">
-                <div className="d-flex justify-content-end">
+              <div className="tp-header-right-wrapper">
                   {/* <button onClick={toggleSearch} className="tp-header-search tp-search-click">
                                         <SearchIcon />
                                     </button> */}
@@ -82,7 +77,7 @@ const CommonHeader: React.FC<headerProps> = ({
                     </div>
                     <Link
                       href="/contact"
-                      className="tp-btn d-none d-md-inline-flex align-items-center ml-30"
+                      className="tp-btn d-none d-md-inline-flex align-items-center ml-15"
                     >
                       <span>
                         <span className="text-1">{`Let's`} Talk</span>
@@ -98,7 +93,6 @@ const CommonHeader: React.FC<headerProps> = ({
                       <span></span>
                     </button>
                   </div>
-                </div>
               </div>
             </div>
           </div>

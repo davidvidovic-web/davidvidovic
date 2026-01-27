@@ -31,10 +31,10 @@ const OffCanvasPanel: React.FC<IProps> = (
             <div className="tp-offcanvas-area">
                 <div className={`tp-offcanvas ${openOffcanvas ? "opened" : ""}`}>
                     <div className="tp-offcanvas-top d-flex align-items-center justify-content-between">
-                        <div className="tp-header-logo">
+                        {/* <div className="tp-header-logo">
                             <Link className="logo-dark d-none" href="/"><Image width={138} height={32} src="/assets/img/logo/logo-2.png" alt="logo dark" /></Link>
                             <Link className="logo-white" href="/"><Image width={138} height={32} src="/assets/img/logo/logo.png" alt="logo white" /></Link>
-                        </div>
+                        </div> */}
                         <div className="tp-offcanvas-close-btn">
                             <button onClick={() => setOpenOffcanvas(false)} className="close-btn">
                                 <CloseIcon />

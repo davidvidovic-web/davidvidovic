@@ -26,6 +26,11 @@ export const metadata: Metadata = {
   keywords: ["web developer", "full stack developer", "JavaScript developer", "React developer", "Next.js", "TypeScript", "Node.js", "frontend development", "backend development", "web design", "UI/UX", "responsive design", "software engineer", "web applications", "portfolio"],
   authors: [{ name: "David Vidovic" }],
   creator: "David Vidovic",
+  icons: {
+    icon: "/assets/img/logo/favicon.png",
+    shortcut: "/assets/img/logo/favicon.png",
+    apple: "/assets/img/logo/favicon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -61,6 +66,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <body className="tp-magic-cursor">
+        <Script
+          id="mobile-detect"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+                if (isMobile) {
+                  document.body.classList.add('is-mobile');
+                }
+              })();
+            `,
+          }}
+        />
         {GA_MEASUREMENT_ID && (
           <>
             <Script

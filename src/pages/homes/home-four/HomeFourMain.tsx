@@ -8,16 +8,14 @@ import BackToTop from "@/components/shared/BackToTop/BackToTop";
 import HomeFourFooter from "@/layouts/footers/HomeFourFooter";
 import HomeFourAbout from "@/components/about/HomeFourAbout";
 import HomeFourAward from "@/components/award/HomeFourAward";
-// import HomeFourBrand from "@/components/brand/HomeFourBrand";
-// import HomeFourBlog from "@/components/blog/HomeFourBlog";
-import CommonHeader from "@/layouts/headers/CommonHeader";
+import HeaderThree from "@/layouts/headers/HeaderThree";
 import FooterThree from "@/layouts/footers/FooterThree";
 import HomeTestimonial from "@/components/testimonial/HomeTestimonial";
 import HomeFiveFaqArea from "@/components/faq/HomeFiveFaqArea";
 import ContactArea from "@/components/contact/ContactArea";
 import HomeTextSlider from "@/components/text-slider/HomeTextSlider";
 import HomeSixService from "@/components/service/HomeSixService";
-// import HeroFour from "@/components/hero/HeroFour";
+import HeroThree from "@/components/hero/HeroThree";
 
 const HomeFourMain = () => {
   return (
@@ -29,17 +27,14 @@ const HomeFourMain = () => {
           </div>
           {/* Global Components */}
           <BackToTop />
-          <CommonHeader
-            spacingCls="mt-20"
-            customCls="tp-main-menu-2"
-            wrapCustomCls="bf-header-3-style"
-          />
+          <HeaderThree />
           <div id="smooth-wrapper">
             <div id="smooth-content">
               <main>
                 {/* <HeroFour /> */}
-                <HomeFourAbout />
+                {/* <HomeFourAbout /> */}
                 {/* <HomeFourBrand /> */}
+                <HeroThree />
                 <HomeFourPortfolio />
                 <HomeFourService />
                 <HomeFourTextSlider />

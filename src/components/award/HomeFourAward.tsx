@@ -28,12 +28,12 @@ const HomeFourAward: React.FC<awardBgPropsDt> = ({ backgroundColor = "#f3f3f3" }
                                             <h4>{award.title}</h4>
                                             <span>{award.subtitle}</span>
                                         </div>
-                                        <div
+                                        {/* <div
                                             className="design-award-reveal-img"
                                             style={{
                                                 backgroundImage: `url(${award.image})`,
                                             }}
-                                        ></div>
+                                        ></div> */}
                                     </div>
                                 );
 

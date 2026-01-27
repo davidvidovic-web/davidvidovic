@@ -13,4 +13,12 @@ export interface projectDt {
     description?: string;
     rightSide?:boolean;
     isActive?:boolean;
+    // Details page fields
+    client?: string;
+    role?: string;
+    services?: string[];
+    overview?: string;
+    mainDescription?: string;
+    websiteUrl?: string;
+    detailsImage?: string;
 }

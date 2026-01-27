@@ -26,11 +26,11 @@ const SearchArea = () => {
                                         {
                                             theme === "dark" ?
                                                 <>
-                                                    <Link className="logo-dark d-none" href="/"><Image width={138} height={32} src="/assets/img/logo/logo-2.png" alt="logo" /></Link>
+                                                    <Link className="logo-dark d-none" href="/"><Image width={138} height={32} src="/assets/img/logo/logo-dark.png" alt="logo" /></Link>
                                                 </>
                                                 :
                                                 <>
-                                                    <Link className="logo-white" href="/"><Image width={138} height={32} src="/assets/img/logo/logo.png" alt="logo" /></Link>
+                                                    <Link className="logo-white" href="/"><Image width={138} height={32} src="/assets/img/logo/logo-light.webp" alt="logo" /></Link>
                                                 </>
                                         }
                                     </div>
