@@ -1,0 +1,29 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.7 feature css start
+/*----------------------------------------*/
+
+.#{$theme-prifix}-feature{
+    &-icon{
+        border-radius: 10px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--tp-grey-3);
+    }
+    &-tittle{
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: -0.02em;
+        color: var(--tp-common-black);
+    }
+    &-border{
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-top: 40px;
+        padding-bottom: 10px;
+    }
+}

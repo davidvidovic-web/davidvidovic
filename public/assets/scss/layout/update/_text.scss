@@ -1,0 +1,57 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.1 text css start
+/*----------------------------------------*/
+
+.bf-text{
+    &-slider-style{
+        & .tp-text-content span {
+            font-family: var(--tp-ff-thundermed);
+            font-size: 180px;
+            text-transform: uppercase;
+            line-height: 1;
+            @media #{$sm,$xs}{
+                font-size: 80px;
+            }
+        }
+        & .tp-text-slide-bottom .tp-text-content span {
+            color: var(--tp-common-red);
+        }
+    }
+}
+.bf-text{
+    &-moving{
+        &-item{
+            & span{
+                font-weight: 400;
+                font-size: 120px;
+                letter-spacing: -0.02em;
+                color: #000;
+                text-transform: uppercase;
+                white-space: nowrap;
+                line-height: 1;
+                flex: 0 0 auto;
+                @media #{$md,$sm,$xs}{
+                    font-size: 80px;
+                }
+                & img{
+                    margin-right: 25px;
+                    transform: translateY(-10px);
+                    @media #{$md,$sm,$xs}{
+                        width: 55px;
+                        transform: translateY(-5px);
+                    }
+                }
+            }
+        }
+        &-bottom{
+            background: var(--tp-common-red);
+            & .bf-text-moving-item{
+                & span{
+                    color: var(--tp-common-white);
+                }
+            }
+        }
+    }
+}

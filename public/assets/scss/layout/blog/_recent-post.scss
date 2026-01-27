@@ -1,0 +1,46 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  5.3 Recent Post css
+/*----------------------------------------*/
+
+.rc-post{
+    &-title{
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 122%;
+        letter-spacing: -0.01em;
+    }
+    &-cetagory{
+        & span{
+            font-size: 13px;
+            letter-spacing: 0.02em;
+            color: var(--tp-common-black);
+            font-weight: 400;
+            color: var(--tp-grey-1);
+            & a{
+                font-weight: 500;
+                color: var(--tp-common-black);
+                position: relative;
+                padding-right: 10px;
+                margin-right: 5px;
+                &::before{
+                    position: absolute;
+                    content: "";
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 20px;
+                    background: var(--tp-grey-1);
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 0;
+                }
+            }
+        }
+    }
+    &-thumb{
+        & img{
+            border-radius: 10px;
+        }
+    }
+}

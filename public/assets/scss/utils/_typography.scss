@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'Thunder';
+    src: url('../../fonts/Thunder-BoldLC.woff2') format('woff2'),
+    url('../../fonts/Thunder-BoldLC.woff') format('woff'),
+    url('../../fonts/Thunder-BoldLC.ttf') format('truetype');
+    font-style: normal;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'ThunderMed';
+    src: url('../../fonts/Thunder-MediumLC.woff2') format('woff2'),
+    url('../../fonts/Thunder-MediumLC.woff') format('woff'),
+    url('../../fonts/Thunder-MediumLC.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+@font-face {
+    font-family: 'Morganite-Bold';
+    src: url('../../fonts/Morganite-ExtraBold.woff2') format('woff2'),
+    url('../../fonts/Morganite-ExtraBold.woff') format('woff'),
+    url('../../fonts/Morganite-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-display: swap;
+    font-style: normal;
+}
+// font family
+$font-family: (
+    'ff': (
+        'body': "'Poppins', sans-serif",
+        'thunder': "'Thunder', sans-serif",
+        'thundermed': "'ThunderMed', sans-serif",
+        'morganite-bold': "'Morganite-Bold', sans-serif",
+        'fontawesome': '"Font Awesome 6 Pro"',
+    )
+);
+
+// font size
+$font-size: (
+    'fz': (
+        'body': 14px,
+        'p': 16px,
+    )
+);

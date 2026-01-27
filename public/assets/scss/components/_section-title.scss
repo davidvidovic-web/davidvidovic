@@ -1,0 +1,31 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.11 Section Title
+/*----------------------------------------*/
+.#{$theme-prifix}-section{
+    &-tittle{
+        font-weight: 500;
+        font-size: 55px;
+        line-height: 118%;
+        letter-spacing: -0.03em;
+        @media #{$lg,$md}{
+            font-size: 46px;
+        }
+        @media #{$sm,$xs}{
+            font-size: 36px;
+        }
+    }
+    &-border{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+}
+
+.reveal-text .char {
+    color: var(--tp-grey-2);
+    transition: color 0.6s ease;
+}
+
+.reveal-text .char.revealed {
+    color: var(--tp-common-black);
+}

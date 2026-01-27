@@ -1,0 +1,38 @@
+@use '../utils' as *;
+/*----------------------------------------*/
+/*  2.8 Pagination
+/*----------------------------------------*/
+
+.#{$theme-prifix}-pagination{
+    &-wrap{
+        display: inline-block;
+        text-align: center;
+        & ul{
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 100px;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            & li{
+                list-style: none;
+                & a{
+                    border-radius: 100%;
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: #595959;
+                    &:hover{
+                        background: #f8f8f9;
+                        color: var(--tp-common-black);
+                    }
+                    &.active{
+                        background: #f8f8f9;
+                        color: var(--tp-common-black);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,234 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.1 portfolio css start
+/*----------------------------------------*/
+
+.bf-portfolio{
+    &-title{
+        font-family: var(--tp-ff-thundermed);
+        font-weight: 500;
+        font-size: 280px;
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+        line-height: 1;
+        @media #{$lg}{
+            font-size: 220px;
+        }
+        @media #{$md}{
+            font-size: 160px;
+        }
+        @media #{$sm}{
+            font-size: 130px;
+        }
+        @media #{$xs}{
+            font-size: 77px;
+        }
+    }
+    &-item{
+        & img{
+            border-radius: 20px;
+        }
+    }
+    &-wrapper{
+        & .grid-item{
+            @media #{$lg,$md,$sm,$xs}{
+                margin-bottom: 30px;
+            }
+        }
+    }
+    &-content{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        position: absolute;
+        bottom: 50px;
+        left: 0;
+        padding: 0 70px;
+        @media #{$sm,$xs}{
+            padding: 0 20px;
+        }
+        & span{
+            font-weight: 500;
+            font-size: 30px;
+            letter-spacing: -0.02em;
+            color: var(--tp-common-white);
+            @media #{$xs}{
+                font-size: 22px;
+            }
+        }
+    }
+    &-post{
+        &-thumbnail{
+            & img{
+                border-radius: 20px;
+            }
+        }
+    }
+    &-vp{
+        &-item{
+            @media #{$lg,$md,$sm,$xs}{
+                margin-bottom: 30px;
+            }
+        }
+        &-lg-spacing{
+            @media #{$lg,$md,$sm,$xs}{
+                padding-bottom: 100px;
+            }
+        }
+        &-inner{
+            border-radius: 20px;
+            flex-flow: column;
+            width: 100%;
+            height: 530px;
+            padding: 40px 40px 45px 60px;
+            text-decoration: none;
+            display: flex;
+            overflow: hidden;
+            justify-content: space-between;
+            align-items: flex-end;
+            transition: all .4s ease;
+            @media #{$xs}{
+                height: 400px;
+                padding: 30px;
+            }
+            &:hover{
+                transform: scale(.97);
+            }
+        }
+        &-thumb{
+            padding: 10px;
+            & img{
+                width: 100%;
+                border-radius: 15px;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        &-content{
+            text-align: left;
+            width: 100%;
+        }
+        &-icon{
+            border-radius: 100px;
+            width: 80px;
+            height: 80px;
+            background: var(--tp-common-white);
+            text-align: center;
+            line-height: 80px;
+            display: inline-block;
+        }
+        &-tag{
+            & span{
+                font-weight: 500;
+                font-size: 14px;
+                letter-spacing: -0.02em;
+                color: var(--tp-common-white);
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                border-radius: 100px;
+                padding: 4px 12px;
+                display: inline-block;
+                line-height: 1;
+            }
+        }
+        &-title{
+            font-weight: 500;
+            font-size: 44px;
+            letter-spacing: -0.02em;
+            color: var(--tp-common-white);
+        }
+        &-maintitle{
+            font-weight: 600;
+            font-size: 240px;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            line-height: 1;
+            @media #{$sm}{
+                font-size: 140px;
+            }
+            @media #{$xs}{
+                font-size: 100px;
+            }
+        }
+    }
+}
+.bf-portfolio{
+    &-3{
+        &-sectitle{
+            font-weight: 500;
+            font-size: 200px;
+            line-height: 80%;
+            letter-spacing: -0.06em;
+            text-transform: uppercase;
+            @media #{$lg,$md,$sm,$xs}{
+                font-size: 150px;
+            }
+            @media #{$xs}{
+                font-size: 88px;
+            }
+        }
+        &-title{
+            font-weight: 500;
+            font-size: 80px;
+            line-height: 1;
+            text-transform: uppercase;
+            @media #{$sm,$xs}{
+                font-size: 60px;
+            }
+            &-box{
+                & p{
+                    font-weight: 500;
+                    font-size: 24px;
+                    line-height: 125%;
+                    letter-spacing: -0.02em;
+                    color: var(--tp-common-black);
+                    @media #{$xs}{
+                        & br{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        &-btn{
+            @media #{$sm,$xs}{
+                padding-top: 20px;
+            }
+        }
+        &-content{
+            @media #{$xl,$lg,$md,$sm,$xs}{
+                &.pl-200 {
+                    padding-left: 0;
+                }
+            }
+            @media #{$lg,$md,$sm,$xs}{
+                margin-top: 30px;
+            }
+            & span{
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 150%;
+                letter-spacing: -0.02em;
+                color: var(--tp-common-black);
+                display: block;
+            }
+        }
+        &-thumb{
+            & img{
+                border-radius: 30px;
+            }
+        }
+    }
+    &-4{
+        &-title{
+            font-size: 50px;
+            font-weight: 500;
+            line-height: 60px;
+            letter-spacing: -1.5px;
+            @media #{$sm,$xs}{
+                font-size: 40px;
+                line-height: 50px;
+            }
+        }
+    }
+}

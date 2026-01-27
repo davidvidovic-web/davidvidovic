@@ -1,0 +1,105 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.1 Header Style
+/*----------------------------------------*/
+
+.#{$theme-prifix}-header{
+    &-menu{
+        &-btn{
+            border-radius: 100%;
+            background: #f8f8f9;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            flex: 0 0 auto;
+            @media #{$sm}{
+                margin-left: 30px;
+            }
+            @media #{$xs}{
+                margin-left: 15px;
+            }
+            &:hover{
+                & span{
+                    background: var(--tp-grey-1);
+                }
+            }
+            & span{
+                background: var(--tp-common-black);
+                width: 13px;
+                margin: 2px 0;
+                border-radius: 10px;
+                height: 2px;
+                @include transition-mul(all .4s ease);
+                &:nth-child(2){
+                    width: 22px;
+                }
+            }
+        }
+    }
+    &-switch{
+        color: var(--tp-common-black);
+    }
+    &-search{
+        color: var(--tp-common-black);
+    }
+    &-spacing{
+        @media #{$lg,$md,$sm,$xs}{
+            padding-top: 15px;
+            padding-bottom: 15px;
+            overflow: hidden;
+            margin-top: 0;
+        }
+    }
+    &-3{
+        &-wrap{
+            & .tp-header-menu-btn {
+                background: var(--tp-common-black);
+                & span{
+                    background: var(--tp-common-white);
+                }
+            }
+        }
+    }
+}
+
+.header-sticky {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	opacity: 1;
+	width: 100%;
+	z-index: 10;
+	visibility: visible;
+	animation: 0.95s ease 0s normal forwards 1 running headerSlideDown;
+	-webkit-animation: 0.95s ease 0s normal forwards 1 running headerSlideDown;
+    & .tp-main-menu nav > ul > li > a {
+        padding: 20px 0px;
+    }
+     & .tp-main-menu-2{
+        padding: 10px 0;
+     }
+    & .tp-main-menu-2 nav > ul > li > a {
+        padding: 12px 0px;
+    }
+    & .tp-white-switch{
+        color: var(--tp-common-black) !important;
+    }
+}
+.tp-dark-switch-wrap {
+    @media #{$xs}{
+        margin-left: 15px;
+    }
+}
+
+.bf-header{
+    &-service {
+        &-style{
+            
+        }
+    }
+}

@@ -1,0 +1,120 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.1 common css start
+/*----------------------------------------*/
+.gx-5{
+	--bs-gutter-x: 5px;
+}
+.bf-btn{
+    &-red{
+        background: var(--tp-common-red);
+    }
+    &-white{
+        background: var(--tp-common-white);
+        color: var(--tp-common-black);
+        &:hover{
+            color: var(--tp-common-black);
+        }
+        &-border{
+            background: transparent;
+            border: 1px solid var(--tp-common-white);
+            color: var(--tp-common-white);
+            &:hover{
+                color: var(--tp-common-white);
+            }
+        }
+    }
+    &-rounded{
+        width: 120px;
+        height: 120px;
+        font-weight: 500;
+        font-size: 16px;
+        color: var(--tp-common-black);
+        border: 1px solid #dfdfdf;
+        border-radius: 50%;
+        display: inline-block;
+        text-align: center;
+        line-height: 137%;
+        padding-top: 40px;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+         &:hover{
+            color: var(--tp-common-white);
+            & .bf-btn-circle-dot{
+                width: 420px;
+                height: 420px;
+            }
+        }
+    }
+    &-circle{
+        &-dot{
+            position: absolute;
+            bottom: 0;
+            left: 32px;
+            width: 0px;
+            height: 0px;
+            -webkit-transition: all 0.6s ease-out;
+            -moz-transition: all 0.6s ease-out;
+            -ms-transition: all 0.6s ease-out;
+            -o-transition: all 0.6s ease-out;
+            transition: all 0.6s ease-out;
+            line-height: 20px;
+            border-radius: 50%;
+            background: #e11010;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            border: 1px solid transparent;
+            z-index: -1;
+        }
+    }
+}
+.bf-section{
+    &-title{
+        font-weight: 500;
+        font-size: 80px;
+        font-family: var(--tp-ff-thundermed);
+        text-transform: uppercase;
+        line-height: 1;
+        @media #{$lg,$md,$sm,$xs}{
+            font-size: 60px;
+            & br{
+                display: none;
+            }
+        }
+        &.fs-75{
+            font-size: 75px;
+        }
+        &-2{
+            font-size: 60px;
+            font-family: var(--tp-ff-body);
+            letter-spacing: -0.03em;
+            @media #{$lg,$md,$sm}{
+                font-size: 50px;
+            }
+            @media #{$xs}{
+                font-size: 40px;
+            }
+        }
+        &-3{
+            font-weight: 500;
+            font-size: 80px;
+            line-height: 105%;
+            letter-spacing: -0.02em;
+            @media #{$lg,$md,$sm}{
+                font-size: 60px;
+            }
+            @media #{$xs}{
+                font-size: 40px;
+            }
+        }   
+    }
+}
+
+.z-index-1 {
+    z-index: 1;
+}

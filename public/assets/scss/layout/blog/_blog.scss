@@ -1,0 +1,172 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  5.1 blog css
+/*----------------------------------------*/
+
+.#{$theme-prifix}-blog{
+    &-thumb{
+        border-radius: 20px;
+        & img{
+            border-radius: 20px;
+            @include transition-mul(all .6s ease);
+        }
+    }
+    &-tag{
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: -0.02em;
+        color: var(--tp-common-black);
+        background: rgba(0, 0, 0, 0.08);
+        display: inline-block;
+        border-radius: 50px;
+        padding: 4px 15px;
+        line-height: 1;
+    }
+    &-date{
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: -0.02em;
+        color: var(--tp-common-black);
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        & svg{
+            margin-right: 10px;
+        }
+    }
+    &-tittle{
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 138%;
+        letter-spacing: -0.02em;
+    }
+    &-item{
+        &:hover{
+            & .tp-blog-thumb{
+                & img{
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+    &-sidebar{
+        &-search{
+            &-input{
+                position: relative;
+                & input{
+                    width: 100%;
+                    height: 54px;
+                    padding: 0 25px;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 60px;
+                    border-radius: 30px;
+                    padding-right: 50px;
+                    background: rgba(0, 0, 0, 0.03);
+                    border: 1px solid rgba(0, 0, 0, 0.08);;
+                    color: var(--tp-common-black);
+                    @include placeholder{
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 1;
+                        color: var(--tp-grey-1);
+                    }
+                    &:focus{
+                        background-color: transparent;
+                        border: 1px solid var(--tp-common-black);
+                    }
+                }
+                & button{
+                    position: absolute;
+                    top: 0;
+                    right: 25px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    line-height: 60px;
+                    color: var(--tp-common-black);
+                    &:hover{
+                        color: var(--tp-grey-1);
+                    }
+                }
+            }
+        }
+        &-tittle{
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 100%;
+            letter-spacing: -0.02em;
+        }
+        &-cetagory{
+            & ul{
+                & li{
+                    list-style: none;
+                    &:not(:last-child){
+                        margin-bottom: 7px;
+                    }
+                    & a{
+                        font-weight: 400;
+                        font-size: 16px;
+                        color: var(--tp-grey-1);
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        &:hover{
+                            color: var(--tp-common-black);
+                        }
+                    }
+                }
+            }
+        }
+        &-tagcloud{
+            @media #{$xs}{
+                flex-wrap: wrap;
+            }
+            & span{
+                display: inline-block;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 1;
+                margin-right: 15px;
+                color: var(--tp-common-white);
+                @media #{$xs}{
+                    margin-bottom: 10px;
+                }
+            }
+            & .tagcloud{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                & a{
+                    font-weight: 500;
+                    font-size: 15px;
+                    color: var(--tp-common-black);
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    border-radius: 35px;
+                    padding: 9px 16px;
+                    display: inline-block;
+                    line-height: 1;
+                    @media #{$lg}{
+                        padding: 9px 10px;
+                    }
+                    &:hover{
+                        background: var(--tp-common-black);
+                        color: var(--tp-common-white);
+                    }
+                }
+            }
+        }
+    }
+    &-details{
+        &-without{
+            &-ptb{
+                padding-top: 150px;
+            }
+        }
+        &-banner{
+            border-radius: 20px;
+            & img{
+                border-radius: 20px;
+            }
+        }
+    }
+}
