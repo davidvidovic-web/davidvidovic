@@ -17,8 +17,39 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Bfolio - Personal Portfolio NextJs Template",
-  description: "A modern and responsive Next.js portfolio template",
+  title: {
+    default: "David Vidovic - Web Developer | Full Stack Developer",
+    template: "%s | David Vidovic"
+  },
+  description: "Professional web developer and full-stack engineer specializing in modern web technologies, JavaScript frameworks, and scalable web applications. Based in [Your Location], delivering innovative digital solutions.",
+  keywords: ["web developer", "full stack developer", "JavaScript developer", "React developer", "Next.js", "TypeScript", "Node.js", "frontend development", "backend development", "web design", "UI/UX", "responsive design", "software engineer", "web applications", "portfolio"],
+  authors: [{ name: "David Vidovic" }],
+  creator: "David Vidovic",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://davidvidovic.com",
+    siteName: "David Vidovic - Web Developer",
+    title: "David Vidovic - Web Developer Portfolio",
+    description: "Professional web developer specializing in full-stack development and modern web technologies.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "David Vidovic - Web Developer",
+    description: "Professional web developer portfolio",
+    creator: "@davidvidovic",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
