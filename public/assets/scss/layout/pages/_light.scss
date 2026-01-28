@@ -6,51 +6,51 @@
 
 .david-light {
   & p {
-    color: var(--tp-grey-3);
+    color: var(--tp-grey-1) !important;
   }
 
   & .tp-hero-3-form p {
-    color: var(--tp-grey-3);
+    color: var(--tp-grey-1) !important;
   }
 
   & .tp-testimonial-para {
-    color: var(--tp-grey-3);
+    color: var(--tp-grey-1) !important;
   }
 
   & .tp-testimonial-author-info h5 {
-    color: var(--tp-common-black);
+    color: var(--tp-common-black) !important;
   }
 
   & .tp-testimonial-author-info span {
-    color: var(--tp-grey-3);
+    color: var(--tp-grey-1) !important;
   }
 
   & .tp-faq-details-para p {
-    color: var(--tp-grey-3);
+    color: var(--tp-grey-1) !important;
   }
 
   & .tp-faq-btn {
-    color: var(--tp-common-black);
+    color: var(--tp-common-black) !important;
   }
 
   & .markdown-content {
     & h1, & h2, & h3, & h4, & h5, & h6 {
-      color: var(--tp-common-black);
+      color: var(--tp-common-black) !important;
     }
     
     & p {
-      color: var(--tp-grey-3);
+      color: var(--tp-grey-1) !important;
     }
     
     & a {
-      color: var(--tp-common-black);
+      color: var(--tp-common-black) !important;
     }
     
     & li {
-      color: var(--tp-grey-3);
+      color: var(--tp-grey-1) !important;
       
       &:before {
-        color: var(--tp-common-black);
+        color: var(--tp-common-black) !important;
       }
     }
   }
