@@ -24,7 +24,7 @@ const AboutTwoArea = () => {
                                 </div>
                             </div>
                             <div className="bf-about-us-gif text-center pt-40">
-                                <Image className="w-100 h-auto"  width={730} height={395} src="https://html.aqlova.com/videos/bfolio/about.gif" alt="about gif image" />
+                                <Image className="w-100 h-auto"  width={730} height={395} src="https://html.aqlova.com/videos/david/about.gif" alt="about gif image" />
                             </div>
                         </div>
                     </div>

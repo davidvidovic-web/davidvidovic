@@ -46,10 +46,10 @@ const ContactTopArea = () => {
                             <span>Email Me:</span>
                             <h4>
                                 <Link
-                                    href="mailto:hello@bfolio.com"
+                                    href="mailto:hello@david.com"
                                     className="common-underline"
                                 >
-                                    hello@bfolio.com
+                                    hello@david.com
                                 </Link>
                             </h4>
                         </div>

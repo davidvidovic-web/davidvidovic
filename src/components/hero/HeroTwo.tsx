@@ -35,7 +35,7 @@ const HeroTwo = () => {
                     <div className="col-lg-4">
                         <div className="tp-hero-video tp-hero-2-video text-lg-end mb-30">
                             <video loop muted autoPlay>
-                                <source src="https://html.aqlova.com/videos/bfolio/video.mp4" type="video/mp4" />
+                                <source src="https://html.aqlova.com/videos/david/video.mp4" type="video/mp4" />
                             </video>
                         </div>
                     </div>

@@ -35,7 +35,7 @@ const CommonFooter = ({ bgColor = "", wrapClass = "tp-footer-2-wrap", footerSpac
                                         <Link className="tp-footer-link" href="tel:+999236542654">+999 23654 2654</Link>
                                     </div>
                                     <div>
-                                        <Link className="tp-footer-link" href="mailto:bfolio@help.com">bfolio@help.com</Link>
+                                        <Link className="tp-footer-link" href="mailto:david@help.com">david@help.com</Link>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@ const CommonFooter = ({ bgColor = "", wrapClass = "tp-footer-2-wrap", footerSpac
                                     </span> lio <span className="shape">@</span></h2>
                                 </div>
                                 <div className="tp-footer-copyright pb-15 text-center">
-                                    <p>© {getCurrentYear()} <Link href="#">Bfolio.</Link> All rights reserved.</p>
+                                    <p>© {getCurrentYear()} <Link href="#">david.</Link> All rights reserved.</p>
                                 </div>
                             </div>
                         </div>

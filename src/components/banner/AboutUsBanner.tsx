@@ -15,7 +15,7 @@ const AboutUsBanner = () => {
                             <span className="d-inline-block mb-40">
                              <BannerArrowIcon/>
                             </span>
-                            <h4 className="bf-banner-title mb-45">“Working with Bfolio was different. They
+                            <h4 className="bf-banner-title mb-45">“Working with david was different. They
                                 didn’t just give us a new logo or a clean
                                 website, they gave us a brand we
                                 can grow with.</h4>

@@ -9,7 +9,7 @@ const HomeSixContactArea = () => {
                 <div className="row">
                     <div className="col-lg-5">
                         <div className="bf-contact-form mb-30">
-                            <span className="bf-contact-subtitle">Bfolio@</span>
+                            <span className="bf-contact-subtitle">david@</span>
                             <h3 className="bf-contact-title mb-25">Leave a reply</h3>
                             {/* Contact form  */}
                             <HomeSixContactForm />
@@ -44,7 +44,7 @@ const HomeSixContactArea = () => {
                                 </div>
                                 <div className="bf-contact-author-info">
                                     <h6>Team lead</h6>
-                                    <span className="d-block mb-15">at Bfolio@</span>
+                                    <span className="d-block mb-15">at david@</span>
                                     <h4 className="mb-15">Belal Mahmud</h4>
                                     <Link href="/contact" className="tp-btn d-inline-flex align-items-center justify-content-center">
                                         <span>

@@ -109,8 +109,8 @@ export default function RootLayout({
           defaultTheme="light"
           enableSystem={false}
           value={{
-            light: "bfolio-light",
-            dark: "bfolio-dark",
+            light: "david-light",
+            dark: "david-dark",
           }}
         >
           <BodyThemeSync />

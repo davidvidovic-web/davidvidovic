@@ -39,10 +39,10 @@ export interface blogDt {
 
 //define interface for PageParams props
 export interface PageParamsProps {
-  params: Promise<{ id: number }>;
+  params: Promise<{ id: number; slug?: string }>;
 }
 
 // Fetch the data based on the provided 'id' prop
 export interface IdProps {
-  id: number;
+  id: number | string;
 };

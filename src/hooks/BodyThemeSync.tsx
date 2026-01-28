@@ -7,8 +7,8 @@ export function BodyThemeSync() {
 
   useEffect(() => {
     if (!theme) return;
-    document.body.classList.remove("bfolio-light", "bfolio-dark");
-    document.body.classList.add(theme === "dark" ? "bfolio-dark" : "bfolio-light");
+    document.body.classList.remove("david-light", "david-dark");
+    document.body.classList.add(theme === "dark" ? "david-dark" : "david-light");
   }, [theme]);
 
   return null;

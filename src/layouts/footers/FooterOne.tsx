@@ -39,7 +39,7 @@ const FooterOne = ({ customCls = "", wrapClass = "" }) => {
                                         <Link className="tp-footer-link" href="tel:+999236542654">+999 23654 2654</Link>
                                     </div>
                                     <div>
-                                        <Link className="tp-footer-link" href="mailto:bfolio@help.com">bfolio@help.com</Link>
+                                        <Link className="tp-footer-link" href="mailto:david@help.com">david@help.com</Link>
                                     </div>
                                 </div>
                             </div>

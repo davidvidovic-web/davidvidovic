@@ -15,7 +15,7 @@ const ServiceHero = () => {
                     </div>
                     <div className="col-lg-4">
                         <div className="bf-service-hero-gif pt-145">
-                            <Image width={422} height={228} src="https://html.aqlova.com/videos/bfolio/service.gif" alt="" />
+                            <Image width={422} height={228} src="https://html.aqlova.com/videos/david/service.gif" alt="" />
                         </div>
                     </div>
                 </div>

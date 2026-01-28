@@ -15,7 +15,7 @@ const HeroFive = () => {
                                 VIEDO{" "}
                                 <img
                                     className="gif-1 d-none d-md-inline-block"
-                                    src="https://html.aqlova.com/videos/bfolio/main-gif-2.gif"
+                                    src="https://html.aqlova.com/videos/david/main-gif-2.gif"
                                     alt=""
                                 />{" "}
                                 PRODUCTION
@@ -55,7 +55,7 @@ const HeroFive = () => {
                                     width={160}
                                     height={90}
                                     className="gif-2 d-none d-md-inline-block"
-                                    src="https://html.aqlova.com/videos/bfolio/main-gif.gif"
+                                    src="https://html.aqlova.com/videos/david/main-gif.gif"
                                     alt=""
                                 />{" "}
                                 SCAL YOUR MULTIMEDIA
@@ -64,7 +64,7 @@ const HeroFive = () => {
                                     width={160}
                                     height={111}
                                     className="gif-3 d-none d-md-inline-block"
-                                    src="https://html.aqlova.com/videos/bfolio/main-gif-3.gif"
+                                    src="https://html.aqlova.com/videos/david/main-gif-3.gif"
                                     alt=""
                                     unoptimized
                                 />{" "}
@@ -78,7 +78,7 @@ const HeroFive = () => {
             <div className="bf-hero-2-video">
                 <video loop muted autoPlay playsInline>
                     <source
-                        src="https://html.aqlova.com/videos/bfolio/video-2.mp4"
+                        src="https://html.aqlova.com/videos/david/video-2.mp4"
                         type="video/mp4"
                     />
                 </video>

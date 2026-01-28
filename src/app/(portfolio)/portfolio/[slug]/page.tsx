@@ -6,7 +6,7 @@ import { getProjectContent } from '@/utils/getProjectContent';
 export async function generateMetadata(props: PageParamsProps) {
     const resolvedParams = await props.params;
     const { slug } = resolvedParams;
-    const property = projectData.find((item) => item.slug === slug || item.id == Number(slug));
+    const property = slug ? projectData.find((item) => item.slug === slug || item.id == Number(slug)) : undefined;
     return {
         title: property?.title ? `${property.title} | Portfolio` : "Portfolio Details",
         description: property?.overview || `View ${property?.title} project details`,
@@ -18,10 +18,10 @@ export default async function PortfolioDetails(props: PageParamsProps) {
     const { slug } = resolvedParams;
     
     // Get project content from markdown file
-    const projectContent = getProjectContent(slug);
+    const projectContent = slug ? getProjectContent(slug) : null;
 
     return (
-        <PortfolioDetailsMain id={slug} projectContent={projectContent} />
+        <PortfolioDetailsMain id={slug || ''} projectContent={projectContent} />
     );
 }
 

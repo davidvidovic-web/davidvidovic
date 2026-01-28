@@ -12,7 +12,7 @@ const HeroSix = () => {
                                 <span className="bf-item-anime-md marque d-inline-block">Craft</span>{" "}
                                 <div className="bf-hero-3-title-video d-none d-xl-inline-block">
                                     <video loop muted autoPlay playsInline>
-                                        <source src="https://html.aqlova.com/videos/bfolio/video-4.mp4" type="video/mp4" />
+                                        <source src="https://html.aqlova.com/videos/david/video-4.mp4" type="video/mp4" />
                                     </video>
                                 </div>{" "}
                                 <span className="bf-item-anime marque d-inline-block">CREATIVE</span>
@@ -43,7 +43,7 @@ const HeroSix = () => {
                     </div>
                     <div className="col-lg-6 col-md-9">
                         <div className="bf-hero-3-dec mb-30">
-                            <p>Bfolio is a strategic design partner to bold<br />
+                            <p>david is a strategic design partner to bold<br />
                                 digital brands. We join your team, co-build<br />
                                 your thing, and help bring it to the world.</p>
                         </div>
@@ -53,7 +53,7 @@ const HeroSix = () => {
             <div className="container-fluid container-1860">
                 <div className="bf-hero-3-video-wrap pt-125">
                     <video loop muted autoPlay playsInline>
-                        <source src="https://html.aqlova.com/videos/bfolio/video-3.mp4" type="video/mp4" />
+                        <source src="https://html.aqlova.com/videos/david/video-3.mp4" type="video/mp4" />
                     </video>
                 </div>
             </div>

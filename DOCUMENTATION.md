@@ -376,7 +376,7 @@ RootLayout
 ### 5.3 BodyThemeSync
 - **File**: `/src/hooks/BodyThemeSync.tsx`
 - **Purpose**: Syncs theme to body classes
-- **Classes**: `bfolio-light` or `bfolio-dark`
+- **Classes**: `david-light` or `david-dark`
 
 ---
 

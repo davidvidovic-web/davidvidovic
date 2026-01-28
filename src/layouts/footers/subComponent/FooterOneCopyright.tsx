@@ -8,7 +8,7 @@ const FooterOneCopyright = () => {
                 <div className="row align-items-center">
                     <div className="col-lg-6 col-md-6 col-sm-8">
                         <div className="tp-footer-copyright">
-                            <p>© {getCurrentYear()} <Link href="#">Bfolio.</Link> All rights reserved.</p>
+                            <p>© {getCurrentYear()} <Link href="#">david.</Link> All rights reserved.</p>
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-4">
