@@ -115,8 +115,8 @@ export default function RootLayout({
         <StructuredData />
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
-          enableSystem={false}
+          defaultTheme="system"
+          enableSystem={true}
           value={{
             light: "david-light",
             dark: "david-dark",
