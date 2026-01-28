@@ -170,7 +170,7 @@ RootLayout
   3. **Ambientivo** - Portfolio project
      - Logo: `/assets/img/brand/ambientivo-logo.png`
      - Background: `#bdb4a0`, Text: `#ffffff`
-  4. **Desserts with Anna** - Bakery website
+  4. **Desserts with ana** - Bakery website
      - Logo: `/assets/img/brand/dessertswithana-logo.png`
      - Background: `#fcb3c8`, Text: `#ffffff`
 - **Animation**: `homeFourPortfolioAnim` (GSAP scroll-triggered)
@@ -699,7 +699,7 @@ RootLayout
   - `gos-logo.webp` - Geeks on Site
   - `cats-logo.avif` - Kozmeticki Salon Cats
   - `ambientivo-logo.png` - Ambientivo
-  - `dessertswithana-logo.png` - Desserts with Anna
+  - `dessertswithana-logo.png` - Desserts with ana
   - `logo.png`, `logo-2.png`, `logo-3.png`, `logo-4.png` - Other logos
 
 #### Hero Section Images

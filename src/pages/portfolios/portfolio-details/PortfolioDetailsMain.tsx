@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import ProjectDetailsInfo from "@/components/project/subComponent/ProjectDetailsInfo";
 import ProjectDetailsCounter from "@/components/counter/ProjectDetailsCounter";
 import ProjectDetailsProject from "@/components/project/ProjectDetailsProject";
@@ -15,25 +15,37 @@ import HeaderThree from "@/layouts/headers/HeaderThree";
 import FooterThree from "@/layouts/footers/FooterThree";
 import { useRouter } from "next/navigation";
 import { ProjectContent } from "@/utils/getProjectContent";
+import MarkdownContent from "@/components/shared/MarkdownContent";
 
 interface PortfolioDetailsMainProps extends IdProps {
   projectContent?: ProjectContent | null;
 }
 
-const PortfolioDetailsMain = ({ id, projectContent }: PortfolioDetailsMainProps) => {
+const PortfolioDetailsMain = ({
+  id,
+  projectContent,
+}: PortfolioDetailsMainProps) => {
   const router = useRouter();
   // Find the portfolio that matches the given slug or ID
-  const portfolio = projectData.find((project) => project.slug === id || project.id == id);
-  
-  console.log('Portfolio:', portfolio);
-  console.log('Portfolio counters:', portfolio?.counters);
-  console.log('ProjectContent counters:', projectContent?.counters);
-  
+  const portfolio = projectData.find(
+    (project) => project.slug === id || project.id == id,
+  );
+
+  console.log("Portfolio:", portfolio);
+  console.log("Portfolio counters:", portfolio?.counters);
+  console.log("ProjectContent counters:", projectContent?.counters);
+
   // Find current portfolio index and get prev/next (only among projects with slugs)
-  const portfolioProjects = projectData.filter(project => project.slug);
-  const currentIndex = portfolioProjects.findIndex((project) => project.slug === id || project.id == id);
-  const prevProject = currentIndex > 0 ? portfolioProjects[currentIndex - 1] : null;
-  const nextProject = currentIndex < portfolioProjects.length - 1 ? portfolioProjects[currentIndex + 1] : null;
+  const portfolioProjects = projectData.filter((project) => project.slug);
+  const currentIndex = portfolioProjects.findIndex(
+    (project) => project.slug === id || project.id == id,
+  );
+  const prevProject =
+    currentIndex > 0 ? portfolioProjects[currentIndex - 1] : null;
+  const nextProject =
+    currentIndex < portfolioProjects.length - 1
+      ? portfolioProjects[currentIndex + 1]
+      : null;
 
   // If portfolio not found, show error message
   if (!portfolio) {
@@ -62,37 +74,39 @@ const PortfolioDetailsMain = ({ id, projectContent }: PortfolioDetailsMainProps)
               <div className="tp-project-area tp-project-details-spacing pt-160 pb-130">
                 <div className="container">
                   <div className="row mb-40">
-                    <div className="col-12">
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          router.push(`/#project-${portfolio?.slug || id}`);
-                        }}
-                        className="tp-btn-back d-inline-flex align-items-center"
-                        style={{
-                          background: "transparent",
-                          border: "none",
-                          cursor: "pointer",
-                          fontSize: "16px",
-                          fontWeight: 500,
-                          gap: "8px",
-                          padding: "8px 0",
-                          transition: "all 0.3s ease",
-                          textDecoration: "none",
-                        }}
-                      >
-                        <ArrowLeft size={20} />
-                        <span>Back</span>
-                      </button>
-                    </div>
+                    <div className="col-12"></div>
                   </div>
                   <div className="row">
                     <div className="col-lg-4">
+                      <div className="mb-15">
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            router.push(`/#project-${portfolio?.slug || id}`);
+                          }}
+                          className="tp-btn-back d-inline-flex align-items-center"
+                          style={{
+                            background: "transparent",
+                            border: "none",
+                            cursor: "pointer",
+                            fontSize: "16px",
+                            fontWeight: 500,
+                            gap: "8px",
+                            padding: "8px 0",
+                            transition: "all 0.3s ease",
+                            textDecoration: "none",
+                          }}
+                        >
+                          <ArrowLeft size={20} />
+                          <span>Back</span>
+                        </button>
+                      </div>
+
                       {/* project details left info */}
                       <ProjectDetailsInfo portfolio={portfolio} />
                     </div>
                     <div className="col-lg-8">
-                      <div className="pt-20 pb-50">
+                      <div className="pb-50">
                         <div className="tp-project-details-thumb fix">
                           {portfolio.logo ? (
                             <div
@@ -134,69 +148,128 @@ const PortfolioDetailsMain = ({ id, projectContent }: PortfolioDetailsMainProps)
                           )}
                         </div>
                       </div>
-                      {(projectContent?.objective || portfolio.objective) && (
+                      {projectContent?.content ? (
                         <div className="tp-project-details-right-info mb-30">
-                          <h2 className="tp-project-details-tittle mb-25">
-                            Objective
-                          </h2>
-                          <p className="tp-project-details-para mb-40" style={{ whiteSpace: 'pre-line' }}>
-                            {projectContent?.objective || portfolio.objective}
-                          </p>
+                          <MarkdownContent content={projectContent.content} />
+                          {portfolio.counters &&
+                            portfolio.counters.length > 0 && (
+                              <div className="mt-50">
+                                <ProjectDetailsCounter
+                                  counters={portfolio.counters}
+                                />
+                              </div>
+                            )}
                         </div>
-                      )}
-                      {(projectContent?.process || portfolio.process) && (
-                        <div className="tp-project-details-right-info mb-30">
-                          <h2 className="tp-project-details-tittle mb-25">
-                            Process
-                          </h2>
-                          <p className="tp-project-details-para mb-40" style={{ whiteSpace: 'pre-line' }}>
-                            {projectContent?.process || portfolio.process}
-                          </p>
-                        </div>
-                      )}
-                      {(projectContent?.results || portfolio.results) && (
-                        <div className="tp-project-details-right-info mb-30">
-                          <h2 className="tp-project-details-tittle mb-25">
-                            Results
-                          </h2>
-                          <p className="tp-project-details-para mb-40" style={{ whiteSpace: 'pre-line' }}>
-                            {projectContent?.results || portfolio.results}
-                          </p>
-                          <ProjectDetailsCounter counters={portfolio.counters} />
-                        </div>
+                      ) : (
+                        <>
+                          {portfolio.objective && (
+                            <div className="tp-project-details-right-info mb-30">
+                              <h2 className="tp-project-details-tittle mb-25">
+                                Objective
+                              </h2>
+                              <p
+                                className="tp-project-details-para mb-40"
+                                style={{ whiteSpace: "pre-line" }}
+                              >
+                                {portfolio.objective}
+                              </p>
+                            </div>
+                          )}
+                          {portfolio.process && (
+                            <div className="tp-project-details-right-info mb-30">
+                              <h2 className="tp-project-details-tittle mb-25">
+                                Process
+                              </h2>
+                              <p
+                                className="tp-project-details-para mb-40"
+                                style={{ whiteSpace: "pre-line" }}
+                              >
+                                {portfolio.process}
+                              </p>
+                            </div>
+                          )}
+                          {portfolio.results && (
+                            <div className="tp-project-details-right-info mb-30">
+                              <h2 className="tp-project-details-tittle mb-25">
+                                Results
+                              </h2>
+                              <p
+                                className="tp-project-details-para mb-40"
+                                style={{ whiteSpace: "pre-line" }}
+                              >
+                                {portfolio.results}
+                              </p>
+                              {portfolio.counters && (
+                                <ProjectDetailsCounter
+                                  counters={portfolio.counters}
+                                />
+                              )}
+                            </div>
+                          )}
+                        </>
                       )}
                     </div>
                   </div>
-                  
+
                   {/* Project Navigation */}
                   <div className="row pt-70 pb-70">
                     <div className="col-12">
-                      <div className="tp-project-navigation d-flex justify-content-between align-items-center" style={{ borderTop: '1px solid rgba(0,0,0,0.1)', paddingTop: '40px' }}>
+                      <div
+                        className="tp-project-navigation d-flex justify-content-between align-items-center"
+                        style={{
+                          borderTop: "1px solid rgba(0,0,0,0.1)",
+                          paddingTop: "40px",
+                        }}
+                      >
                         {prevProject ? (
                           <Link
                             href={`/portfolio/${prevProject.slug || prevProject.id}`}
                             className="tp-project-nav-item d-flex align-items-center"
-                            style={{ textDecoration: 'none', gap: '12px' }}
+                            style={{ textDecoration: "none", gap: "12px" }}
                           >
                             <ChevronLeft size={24} />
                             <div>
-                              <span style={{ fontSize: '14px', opacity: 0.6, display: 'block' }}>Previous Project</span>
-                              <span style={{ fontSize: '18px', fontWeight: 600 }}>{prevProject.title}</span>
+                              <span
+                                style={{
+                                  fontSize: "14px",
+                                  opacity: 0.6,
+                                  display: "block",
+                                }}
+                              >
+                                Previous Project
+                              </span>
+                              <span
+                                style={{ fontSize: "18px", fontWeight: 600 }}
+                              >
+                                {prevProject.title}
+                              </span>
                             </div>
                           </Link>
                         ) : (
                           <div></div>
                         )}
-                        
+
                         {nextProject ? (
                           <Link
                             href={`/portfolio/${nextProject.slug || nextProject.id}`}
                             className="tp-project-nav-item d-flex align-items-center text-end"
-                            style={{ textDecoration: 'none', gap: '12px' }}
+                            style={{ textDecoration: "none", gap: "12px" }}
                           >
                             <div>
-                              <span style={{ fontSize: '14px', opacity: 0.6, display: 'block' }}>Next Project</span>
-                              <span style={{ fontSize: '18px', fontWeight: 600 }}>{nextProject.title}</span>
+                              <span
+                                style={{
+                                  fontSize: "14px",
+                                  opacity: 0.6,
+                                  display: "block",
+                                }}
+                              >
+                                Next Project
+                              </span>
+                              <span
+                                style={{ fontSize: "18px", fontWeight: 600 }}
+                              >
+                                {nextProject.title}
+                              </span>
                             </div>
                             <ChevronRight size={24} />
                           </Link>

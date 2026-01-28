@@ -161,14 +161,44 @@ const projectData: projectDt[] = [
     year: "2025",
     client: "Geeks on Site LLC",
     role: "Full Stack Developer & UI/UX Designer",
-    services: ["Web Development", "WordPress", "UI/UX Design", "SEO Optimization"],
-    technologies: ["WordPress", "PHP", "JavaScript", "MySQL", "HTML/CSS", "WooCommerce"],
+    services: [
+      "Web Development",
+      "WordPress",
+      "UI/UX Design",
+      "SEO Optimization",
+    ],
+    technologies: [
+      "WordPress",
+      "PHP",
+      "JavaScript",
+      "MySQL",
+      "HTML/CSS",
+      "WooCommerce",
+    ],
     websiteUrl: "https://geeksonsite.com",
     detailsImage: "/assets/img/brand/gos-screenshot.jpg",
     counters: [
-      { value: 42, prefix: "+", suffix: "%", label: "increase in completed bookings following the launch of the online booking system" },
-      { value: 23, prefix: "–", suffix: "%", label: "reduction in checkout abandonment due to the redesigned mini-cart, cart, and checkout flow" },
-      { value: 16.5, prefix: "+", suffix: "%", label: "increase in mobile conversions driven by a cleaner, more responsive layout" }
+      {
+        value: 27,
+        prefix: "+",
+        suffix: "%",
+        label:
+          "increase in completed bookings following the launch of the online booking system",
+      },
+      {
+        value: 13,
+        prefix: "–",
+        suffix: "%",
+        label:
+          "reduction in checkout abandonment due to the redesigned mini-cart, cart, and checkout flow",
+      },
+      {
+        value: 16.5,
+        prefix: "+",
+        suffix: "%",
+        label:
+          "increase in mobile conversions driven by a cleaner, more responsive layout",
+      },
     ],
   },
   {
@@ -182,9 +212,37 @@ const projectData: projectDt[] = [
     year: "2025",
     client: "Kozmeticki Salon Cats",
     role: "Web Developer",
-    services: ["Web Development", "WordPress", "Booking System"],
-    technologies: ["WordPress", "PHP", "JavaScript", "Booking Plugin", "Responsive Design"],
+    services: [
+      "Web Development",
+      "WordPress",
+      "SEO Optimization",
+      "E-commerce",
+    ],
+    technologies: ["WordPress", "PHP", "JavaScript", "Figma"],
     websiteUrl: "https://kozmetickisaloncats.com",
+    counters: [
+      {
+        value: 22,
+        prefix: "+",
+        suffix: "%",
+        label:
+          "increase in Instagram-driven visits after introducing the optimized link-style front page",
+      },
+      {
+        value: 14,
+        prefix: "+",
+        suffix: "%",
+        label:
+          "growth in product sales following the launch of the new online shop",
+      },
+      {
+        value: 31,
+        prefix: "–",
+        suffix: "%",
+        label:
+          "reduction in customer inquiries via DMs thanks to clearer navigation and easier access to essential information",
+      },
+    ],
   },
   {
     id: 23,
@@ -195,18 +253,85 @@ const projectData: projectDt[] = [
     textColor: "#ffffff",
     title: "Ambientivo",
     year: "2024",
+    client: "Ambientivo",
+    role: "Web Developer",
+    services: ["Web Development", "WordPress", "SEO Optimization"],
+    technologies: ["WordPress", "PHP", "JavaScript", "React", "Figma"],
     websiteUrl: "https://ambientivo.com",
+    counters: [
+      {
+        value: 27,
+        prefix: "",
+        suffix: "%",
+        label:
+          "of total traffic now comes from organic search, helping establish Ambientivo’s presence in the architectural space",
+      },
+      {
+        value: 34,
+        prefix: "",
+        suffix: "%",
+        label:
+          "of visitors reach the portfolio section, showing strong interest in Ambientivo’s work after the site's launch",
+      },
+      {
+        value: 18,
+        prefix: "",
+        suffix: "%",
+        label:
+          "rise in brand-related searches following the introduction of a clear, modern online presence",
+      },
+    ],
   },
   {
     id: 24,
-    slug: "desserts-with-anna",
+    slug: "desserts-with-ana",
     image: "/assets/img/brand/dessertswithana-logo.png",
     logo: "/assets/img/brand/dessertswithana-logo.png",
     backgroundColor: "#fcb3c8",
     textColor: "#ffffff",
-    title: "Desserts with Anna",
+    title: "Desserts with ana",
     year: "2023",
-    websiteUrl: "https://dessertswithanna.com",
+    client: "Desserts with Ana",
+    role: "Web Developer",
+    services: [
+      "Web Development",
+      "WordPress",
+      "E-commerce",
+      "UI/UX Design",
+      "SEO Optimization",
+    ],
+    technologies: [
+      "WordPress",
+      "PHP",
+      "JavaScript",
+      "WooCommerce",
+      "Stripe POS",
+      "Figma",
+    ],
+    websiteUrl: "https://dessertswithana.com",
+    counters: [
+      {
+        value: 15,
+        prefix: "",
+        suffix: "%",
+        label:
+          "of website visitors now discover Desserts with Ana via organic search thanks to the recipe section and SEO optimization",
+      },
+      {
+        value: 28,
+        prefix: "",
+        suffix: "%",
+        label:
+          "of visitors explore both the shop and recipes, showing engagement across multiple sections",
+      },
+      {
+        value: 12,
+        prefix: "",
+        suffix: "%",
+        label:
+          "of total orders are now processed using the Stripe POS integration, improving offline sales workflow",
+      },
+    ],
   },
   //home four portfolio data end
   {
