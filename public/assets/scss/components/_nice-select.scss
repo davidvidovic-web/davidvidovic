@@ -43,26 +43,19 @@
         border-color: #999;
     }
 
-    &::after{
+    & .nice-select-icon {
         position: absolute;
-		content: '\f107';
         top: 50%;
         right: 20px;
-		font-family: var(--tp-ff-fontawesome);
-		color: var(--tp-common-black);
-		font-weight: 500;
+        color: var(--tp-common-black);
         pointer-events: none;
-        -webkit-transition: all 0.15s ease-in-out;
         transition: all 0.15s ease-in-out;
-		margin-top: 0;
-		transform-origin: center;
-		@include transform(translateY(-50%));
-		
+        transform: translateY(-50%);
     }
 
     &.open{
-        &::after{
-            @include transform(translateY(-50%) rotate(-180deg));
+        & .nice-select-icon {
+            transform: translateY(-50%) rotate(-180deg);
         }
 
         & .list{

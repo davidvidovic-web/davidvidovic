@@ -8,6 +8,52 @@
   & p {
     color: var(--tp-grey-3);
   }
+
+  & .tp-hero-3-form p {
+    color: var(--tp-grey-3);
+  }
+
+  & .tp-testimonial-para {
+    color: var(--tp-grey-3);
+  }
+
+  & .tp-testimonial-author-info h5 {
+    color: var(--tp-common-black);
+  }
+
+  & .tp-testimonial-author-info span {
+    color: var(--tp-grey-3);
+  }
+
+  & .tp-faq-details-para p {
+    color: var(--tp-grey-3);
+  }
+
+  & .tp-faq-btn {
+    color: var(--tp-common-black);
+  }
+
+  & .markdown-content {
+    & h1, & h2, & h3, & h4, & h5, & h6 {
+      color: var(--tp-common-black);
+    }
+    
+    & p {
+      color: var(--tp-grey-3);
+    }
+    
+    & a {
+      color: var(--tp-common-black);
+    }
+    
+    & li {
+      color: var(--tp-grey-3);
+      
+      &:before {
+        color: var(--tp-common-black);
+      }
+    }
+  }
   
   & .postbox-details-tag span {
     color: rgba(0, 0, 0, 0.6);

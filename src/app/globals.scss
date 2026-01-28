@@ -155,6 +155,8 @@
 .logo-white img,
 .logo-dark img {
   width: fit-content;
+  width: 32px;
+  height: 32px;
 }
 
 // Sticky header styles
@@ -189,7 +191,12 @@
 
   // Markdown content dark mode
   .markdown-content {
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: var(--tp-common-white);
     }
 
@@ -214,7 +221,12 @@
 .david-light {
   // Markdown content light mode
   .markdown-content {
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: var(--tp-common-black);
     }
 
@@ -269,7 +281,12 @@
 
 // Markdown content styling
 .markdown-content {
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: 600;
     margin-bottom: 20px;
     color: inherit;

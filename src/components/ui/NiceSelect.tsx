@@ -1,6 +1,7 @@
 "use client"
 import { useState, useCallback, useRef } from "react";
 import { useClickAway } from "react-use";
+import { ChevronDown } from "lucide-react";
 
 type Option = {
   value: string;
@@ -47,6 +48,7 @@ const NiceSelect = ({
       ref={ref}
     >
       <span className="current">{current?.label || placeholder}</span>
+      <ChevronDown className="nice-select-icon" size={18} />
       <ul
         className="list"
         role="menubar"
