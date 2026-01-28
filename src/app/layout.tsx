@@ -39,12 +39,21 @@ export const metadata: Metadata = {
     siteName: "David Vidovic - Web Developer",
     title: "David Vidovic - Web Developer Portfolio",
     description: "Professional web developer specializing in full-stack development and modern web technologies.",
+    images: [
+      {
+        url: "/assets/img/logo/logo-dark.png",
+        width: 1200,
+        height: 630,
+        alt: "David Vidovic - Web Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "David Vidovic - Web Developer",
     description: "Professional web developer portfolio",
     creator: "@davidvidovic",
+    images: ["/assets/img/logo/logo-dark.png"],
   },
   robots: {
     index: true,
