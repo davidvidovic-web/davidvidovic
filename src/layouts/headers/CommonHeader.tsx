@@ -28,7 +28,7 @@ const CommonHeader: React.FC<headerProps> = ({
 }) => {
   const [openOffCanvas, setOpenOffCanvas] = useState(false);
   const { toggleSearch } = useGlobalContext();
-  const isSticky = useStickyHeader(20);
+  const { isSticky, isHiding } = useStickyHeader(20);
   const { theme, setTheme } = useTheme();
   const router = useRouter();
   const pathname = usePathname();
@@ -65,7 +65,7 @@ const CommonHeader: React.FC<headerProps> = ({
         <div
           id="header-sticky"
           className={`tp-header-area tp-transparent ${wrapCustomCls} ${spacingCls} 
-                tp-header-spacing ${isSticky ? "header-sticky" : ""}`}
+                tp-header-spacing ${isSticky ? "header-sticky" : ""} ${isHiding ? "header-hiding" : ""}`}
         >
           <div className="container">
             <div className="row align-items-center">

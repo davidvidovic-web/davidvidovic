@@ -19,7 +19,7 @@ const HeaderThree = () => {
   const { theme, setTheme } = useTheme();
   const router = useRouter();
   const pathname = usePathname();
-  const isSticky = useStickyHeader(20);
+  const { isSticky, isHiding } = useStickyHeader(20);
   const handleToggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
@@ -53,7 +53,7 @@ const HeaderThree = () => {
           id="header-sticky"
           className={`tp-header-area fix tp-header-3-wrap bf-header-style-2 mt-20 tp-transparent tp-header-spacing ${
             isSticky ? "header-sticky" : ""
-          }`}
+          } ${isHiding ? "header-hiding" : ""}`}
         >
           <div className="container-fluid container-1750">
             <div className="row align-items-center">

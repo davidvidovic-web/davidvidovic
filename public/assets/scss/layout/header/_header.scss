@@ -90,6 +90,11 @@
         color: var(--tp-common-black) !important;
     }
 }
+
+.header-hiding {
+	animation: 0.5s ease 0s normal forwards 1 running headerSlideUp;
+	-webkit-animation: 0.5s ease 0s normal forwards 1 running headerSlideUp;
+}
 .tp-dark-switch-wrap {
     @media #{$xs}{
         margin-left: 15px;

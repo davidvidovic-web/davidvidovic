@@ -38,6 +38,15 @@
     }
 }
 
+@keyframes headerSlideUp {
+    0% {
+     margin-top:15px
+    }
+    100% {
+     margin-top:-150px
+    }
+}
+
 
 @include keyframes(tp-video-waves){
 	0% {

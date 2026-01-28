@@ -22,7 +22,7 @@ const ServiceHeader = () => {
     const { theme, setTheme } = useTheme();
     const router = useRouter();
     const pathname = usePathname();
-    const isSticky = useStickyHeader(20);
+    const { isSticky, isHiding } = useStickyHeader(20);
 
     const handleToggleTheme = () => {
         setTheme(theme === "dark" ? "light" : "dark");
@@ -53,7 +53,7 @@ const ServiceHeader = () => {
     return (
         <>
             <header>
-                <div id="header-sticky" className={`tp-header-area bf-header-3-style bf-header-service-style bf-header-white tp-header-2-spacing mt-20 tp-transparent tp-header-spacing ${isSticky ? 'header-sticky' : ''}`}>
+                <div id="header-sticky" className={`tp-header-area bf-header-3-style bf-header-service-style bf-header-white tp-header-2-spacing mt-20 tp-transparent tp-header-spacing ${isSticky ? 'header-sticky' : ''} ${isHiding ? 'header-hiding' : ''}`}>
                     <div className="container">
                         <div className="row align-items-center">
                             <div className="col-xl-2 col-lg-3 col-md-4 col-6">

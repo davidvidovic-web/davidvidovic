@@ -160,8 +160,29 @@
 }
 
 // Sticky header styles
-.tp-header-area.header-sticky {
-  margin-top: 15px;
+.tp-header-area {
+  transition: transform 0.3s ease-in-out;
+  
+  &:not(.header-sticky) {
+    transform: translateY(0);
+  }
+  
+  &.header-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    transform: translateY(0);
+    margin-top: 15px;
+  }
+}
+
+// Hide header when not sticky and scrolled past offset
+.tp-header-area:not(.header-sticky) {
+  &.tp-header-spacing {
+    // Header remains visible at top, no transform needed
+  }
 }
 
 // Dark mode support
