@@ -311,17 +311,6 @@ export const homeFourPortfolioAnimTwo = () => {
         ".bf-portfolio-post-thumbnail img"
       );
 
-      // Mobile reset
-      if (window.innerWidth < 1024) {
-        inner.style.transform = "none";
-        inner.style.transition = "none";
-        if (img) {
-          img.style.transform = "none";
-          img.style.transition = "none";
-        }
-        return;
-      }
-
       // Animation calculation
       const rect = project.getBoundingClientRect();
       let percent =
