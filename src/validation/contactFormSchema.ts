@@ -11,6 +11,7 @@ export const contactFormSchema: yup.ObjectSchema<IFormInput> = yup.object({
     budget: yup.string().required("Please select your budget."),
     website: yup.string().url("Please enter a valid website URL.").nullable(),
     message: yup.string().required("Please tell us how we can help."),
+    honeypot: yup.string().optional(),
 });
 
 // Yup Validation Schema
