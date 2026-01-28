@@ -900,15 +900,16 @@
   position: relative;
   z-index: 3;
   margin-top: 13px;
-  & i {
+  & .moon,
+  & .sun {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 0;
     z-index: 4;
-    &.sun {
-      display: none;
-    }
+  }
+  & .sun {
+    display: none;
   }
 }
 .tp-white-switch {

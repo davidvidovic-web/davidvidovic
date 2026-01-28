@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Instagram } from 'lucide-react';
 
 const instagramInnerImages = [
   "/assets/img/update/instagram/insta-inner-1.jpg",
@@ -27,7 +28,7 @@ const HomeSixInstagram = ({ customCls = "" }) => {
         {/* Instagram Icon */}
         <div className="bf-instagram-thumb-inner-8 d-none d-xl-block">
           <Link href="#">
-            <i className="fa-brands fa-instagram"></i>
+            <Instagram size={24} />
           </Link>
         </div>
 

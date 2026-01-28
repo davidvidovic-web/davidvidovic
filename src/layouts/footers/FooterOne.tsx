@@ -1,5 +1,6 @@
 import FooterOneCopyright from './subComponent/FooterOneCopyright';
 import FooterSearchForm from './subComponent/FooterSearchForm';
+import { Instagram, Dribbble, Youtube } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -17,10 +18,9 @@ const FooterOne = ({ customCls = "", wrapClass = "" }) => {
                         </div>
                         <div className="col-lg-5 col-md-4">
                             <div className="tp-footer-social mb-70 d-flex justify-content-md-end">
-                                <span><Link href="#"><i className="fa-brands fa-instagram"></i></Link></span>
-                                <span><Link href="#"><i className="fa-brands fa-dribbble"></i></Link></span>
-                                <span><Link href="#"><i className="fa-brands fa-behance"></i></Link></span>
-                                <span><Link href="#"><i className="fa-brands fa-youtube"></i></Link></span>
+                                <span><Link href="#"><Instagram size={20} /></Link></span>
+                                <span><Link href="#"><Dribbble size={20} /></Link></span>
+                                <span><Link href="#"><Youtube size={20} /></Link></span>
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ import useStickyHeader from "@/hooks/useStickyHeader";
 import NavMenus from "../subComponents/NavMenus";
 import useGlobalContext from "@/hooks/useContext";
 import { useTheme } from "next-themes";
+import { Moon, Sun } from 'lucide-react';
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
@@ -83,8 +84,8 @@ const HeaderThree = () => {
                       onClick={handleToggleTheme}
                       className="tp-dark-switch p-relative"
                     >
-                      <i className="moon fa-light fa-moon"></i>
-                      <i className="sun fa-light fa-sun-bright"></i>
+                      <Moon className="moon" size={20} />
+                      <Sun className="sun" size={20} />
                     </button>
                   </div>
                   <Link

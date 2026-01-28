@@ -2,6 +2,7 @@
 import { getCurrentYear } from '@/utils/getCurrentYear';
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { Instagram, Dribbble, Youtube } from 'lucide-react';
 import Link from 'next/link';
 
 const CommonFooter = ({ bgColor = "", wrapClass = "tp-footer-2-wrap", footerSpacingCls = "" }) => {
@@ -43,10 +44,9 @@ const CommonFooter = ({ bgColor = "", wrapClass = "tp-footer-2-wrap", footerSpac
                                 <div className="tp-footer-widget ml-80 p-relative mb-40">
                                     <h5 className="tp-footer-tittle mb-30">Social media</h5>
                                     <div className="tp-footer-social mb-70 d-flex">
-                                        <span><Link href="#"><i className="fa-brands fa-instagram"></i></Link></span>
-                                        <span><Link href="#"><i className="fa-brands fa-dribbble"></i></Link></span>
-                                        <span><Link href="#"><i className="fa-brands fa-behance"></i></Link></span>
-                                        <span><Link href="#"><i className="fa-brands fa-youtube"></i></Link></span>
+                                        <span><Link href="#"><Instagram size={20} /></Link></span>
+                                        <span><Link href="#"><Dribbble size={20} /></Link></span>
+                                        <span><Link href="#"><Youtube size={20} /></Link></span>
                                     </div>
                                 </div>
                             </div>

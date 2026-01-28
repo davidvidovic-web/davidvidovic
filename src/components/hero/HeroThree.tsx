@@ -13,6 +13,7 @@ const HeroThree = () => {
           src="/assets/img/hero/hero-3/line-bg.png"
           alt="Line Background"
           priority
+          fetchPriority="high"
           quality={75}
         />
         <div className="row">

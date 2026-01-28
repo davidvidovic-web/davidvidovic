@@ -5,6 +5,7 @@
     url('../../fonts/Thunder-BoldLC.ttf') format('truetype');
     font-style: normal;
     font-weight: bold;
+    font-display: swap;
     text-rendering: optimizeLegibility;
 }
 
@@ -15,6 +16,7 @@
     url('../../fonts/Thunder-MediumLC.ttf') format('truetype');
     font-style: normal;
     font-weight: normal;
+    font-display: swap;
     text-rendering: optimizeLegibility;
 }
 @font-face {
@@ -33,7 +35,6 @@ $font-family: (
         'thunder': "'Thunder', sans-serif",
         'thundermed': "'ThunderMed', sans-serif",
         'morganite-bold': "'Morganite-Bold', sans-serif",
-        'fontawesome': '"Font Awesome 6 Pro"',
     )
 );
 

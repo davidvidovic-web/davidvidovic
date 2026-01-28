@@ -9,6 +9,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { Moon, Sun } from 'lucide-react';
 // import { SearchIcon } from '@/svg';
 import Image from "next/image";
 import Link from "next/link";
@@ -101,8 +102,8 @@ const CommonHeader: React.FC<headerProps> = ({
                         onClick={handleToggleTheme}
                         className="tp-dark-switch p-relative"
                       >
-                        <i className="moon fa-light fa-moon"></i>
-                        <i className="sun fa-light fa-sun-bright"></i>
+                        <Moon className="moon" size={20} />
+                        <Sun className="sun" size={20} />
                       </button>
                     </div>
                     <Link

@@ -9,6 +9,7 @@ import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { SearchIcon } from "@/svg";
+import { Moon, Sun } from 'lucide-react';
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -79,8 +80,8 @@ const ServiceHeader = () => {
                                     </button>
                                     <div className="tp-dark-switch-wrap ml-30">
                                         <button onClick={handleToggleTheme} className="tp-dark-switch tp-white-switch p-relative">
-                                            <i className="moon fa-light fa-moon"></i>
-                                            <i className="sun fa-light fa-sun-bright"></i>
+                                            <Moon className="moon" size={20} />
+                                            <Sun className="sun" size={20} />
                                         </button>
                                     </div>
                                     <Link href="/#contact" onClick={handleContactClick} className="tp-btn bf-btn-white d-none d-md-inline-flex align-items-center ml-30">

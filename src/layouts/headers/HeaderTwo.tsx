@@ -5,6 +5,7 @@ import NavMenus from '../subComponents/NavMenus';
 import { useState } from 'react';
 import { useTheme } from 'next-themes';
 import { SearchIcon } from '@/svg';
+import { Moon, Sun } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -42,8 +43,8 @@ const HeaderTwo = () => {
                                     </button>
                                     <div className="tp-dark-switch-wrap ml-30">
                                         <button onClick={handleToggleTheme} className="tp-dark-switch p-relative">
-                                            <i className="moon fa-light fa-moon"></i>
-                                            <i className="sun fa-light fa-sun-bright"></i>
+                                            <Moon className="moon" size={20} />
+                                            <Sun className="sun" size={20} />
                                         </button>
                                     </div>
                                     <button onClick={() => setOpenOffCanvas(true)} className="tp-header-menu-btn tp-offcanvas-open-btn ml-30">
