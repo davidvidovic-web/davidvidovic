@@ -15,6 +15,8 @@ const FooterThree = () => {
             height={880}
             src="/assets/img/hero/hero-3/line-bg.png"
             alt="ling bg"
+            loading="lazy"
+            quality={75}
           />
           <div className="row">
             <div className="col-12">

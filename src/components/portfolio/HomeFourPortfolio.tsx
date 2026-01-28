@@ -13,7 +13,7 @@ const HomeFourPortfolio = () => {
           <div className="col-lg-12">
             <div className="bf-portfolio-wrap text-center">
               <h2 className="bf-portfolio-title bf-portfolio-text-sticky mb-0">
-                My work
+                Featured
               </h2>
 
               <div className="bf-portfolio-wrapper">

@@ -144,12 +144,12 @@ const HomeFiveFaqArea = () => {
                   >
                     <div className="accordion-body tp-faq-details-para">
                       <p>
-                        Yes. I share regular updates and previews as the project
-                        moves forward, so you always know what’s happening.
-                        You’ll see the key stages as they’re completed, and you
-                        can give feedback along the way. My goal is to keep the
-                        process transparent and make sure the final result
-                        matches what you need.
+                        Yes, you will. I share regular updates and previews as
+                        the project moves forward, so you always know what’s
+                        happening. You’ll see the key stages as they’re
+                        completed, and you can give feedback along the way. My
+                        goal is to keep the process transparent and make sure
+                        the final result matches what you need.
                       </p>
                     </div>
                   </div>
@@ -276,7 +276,7 @@ const HomeFiveFaqArea = () => {
                   >
                     <div className="accordion-body tp-faq-details-para">
                       <p>
-                        Yes. Whether it’s payment systems, external APIs,
+                        Yes, I can. Whether it’s payment systems, external APIs,
                         headless CMS setups, or custom functionality, I can
                         integrate it smoothly into your website.
                       </p>
@@ -372,7 +372,7 @@ const HomeFiveFaqArea = () => {
                   >
                     <div className="accordion-body tp-faq-details-para">
                       <p>
-                        Yes. I can set up reliable hosting, optimize
+                        Yes, I do. I can set up reliable hosting, optimize
                         performance, improve Core Web Vitals, configure
                         caching/CDN, and secure the site against common issues.
                       </p>

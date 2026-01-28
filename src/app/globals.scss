@@ -175,6 +175,10 @@
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
+  .video-container {
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
+
   .upwork-icon {
     filter: grayscale(1) brightness(100) invert(1);
     transition: filter 0.3s ease;
@@ -188,6 +192,10 @@
 .project-item-inner.not-hide-cursor {
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 30px;
+}
+
+.video-container {
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 // Project details visit website link

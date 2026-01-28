@@ -7,6 +7,15 @@ interface ProjectDetailsInfoProps {
 }
 
 const ProjectDetailsInfo = ({ portfolio }: ProjectDetailsInfoProps) => {
+    // Ensure URL has protocol
+    const formatUrl = (url: string) => {
+        if (!url) return '';
+        if (url.startsWith('http://') || url.startsWith('https://')) {
+            return url;
+        }
+        return `https://${url}`;
+    };
+
     return (
         <div className="tp-project-details-left-info mb-30">
             {portfolio.client && (
@@ -18,7 +27,7 @@ const ProjectDetailsInfo = ({ portfolio }: ProjectDetailsInfoProps) => {
             {portfolio.websiteUrl && (
                 <div className="tp-project-details-left-content mb-35">
                     <Link
-                        href={portfolio.websiteUrl}
+                        href={formatUrl(portfolio.websiteUrl)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="tp-project-visit-link d-inline-flex align-items-center"

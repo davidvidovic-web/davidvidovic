@@ -12,6 +12,8 @@ const HeroThree = () => {
           height={880}
           src="/assets/img/hero/hero-3/line-bg.png"
           alt="Line Background"
+          priority
+          quality={75}
         />
         <div className="row">
           <div className="col-lg-10">
@@ -23,8 +25,8 @@ const HeroThree = () => {
             </div>
           </div>
           <div className="col-lg-2 text-lg-end order-lg-1 order-3 d-flex justify-content-center">
-            <div className="tp-hero-3-text-rotate mb-20 p-relative d-inline-block">
-              <span className="tp-live-anim-spin d-inline-block">
+            <div className="tp-hero-3-text-rotate mb-20 mt-40 p-relative d-inline-block">
+              <span className="tp-live-anim-spin d-inline-block ">
                 <TextCircleIcon />
               </span>
               {/* <Image

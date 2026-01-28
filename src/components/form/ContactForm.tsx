@@ -10,27 +10,58 @@ import toast from "react-hot-toast";
 const ContactForm = () => {
   const { register, handleSubmit, control, reset, formState: { errors, isSubmitting } } = useForm<IFormInput>({
     resolver: yupResolver(contactFormSchema),
+    defaultValues: {
+      interested: PortfolioTypeOptions[0].label,
+      budget: budgetOptions[0].label,
+    },
   });
 
 
-  const onSubmit: SubmitHandler<IFormInput> = async () => {
-    //  You can access all form data here
-    // Show a success toast
-    toast.success("Message sent successfully!", {
-      style: {
-        borderRadius: "10px",
-        background: "#333",
-        color: "#fff",
-        padding: "12px 16px",
-        fontSize: "15px",
-        fontWeight: 500,
-      },
-      iconTheme: {
-        primary: "#4ade80",
-        secondary: "#fff",
-      },
-    });
-    reset();
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      toast.success("Message sent successfully!", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+          padding: "12px 16px",
+          fontSize: "15px",
+          fontWeight: 500,
+        },
+        iconTheme: {
+          primary: "#4ade80",
+          secondary: "#fff",
+        },
+      });
+      reset();
+    } catch (error) {
+      toast.error("Failed to send message. Please try again.", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+          padding: "12px 16px",
+          fontSize: "15px",
+          fontWeight: 500,
+        },
+        iconTheme: {
+          primary: "#ef4444",
+          secondary: "#fff",
+        },
+      });
+    }
   };
 
   return (

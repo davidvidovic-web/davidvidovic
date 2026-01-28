@@ -27,7 +27,7 @@ const menuData: MenuItem[] = [
         static: false,
     },
     {
-        title: "Projects",
+        title: "Featured",
         href: "/#portfolio",
         static: false,
     },

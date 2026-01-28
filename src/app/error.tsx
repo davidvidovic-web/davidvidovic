@@ -1,6 +1,7 @@
 'use client'
-import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
+import { getCurrentDay } from "@/utils/getCurrentDay";
 
 export default function Error({
     error,
@@ -13,21 +14,17 @@ export default function Error({
         console.error(error);
     }, [error]);
     return (
-        <div className="page-not-found">
-            <Image className="image" width={650} height={400} src="/assets/img/error/fixing-bugs.png" alt="error image" />
-            <h1 className="title">Something went wrong</h1>
-            <p className="text">
-                {error?.message}
+        <div className="page-not-found" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', textAlign: 'center', padding: '20px' }}>
+            <h1 style={{ fontSize: 'clamp(100px, 15vw, 160px)', fontWeight: '700', margin: '0', lineHeight: '1' }}>Oops!</h1>
+            <p style={{ fontSize: 'clamp(18px, 3vw, 24px)', margin: '30px 0 40px', maxWidth: '600px' }}>
+                Something broke. Even developers make mistakes... especially on {getCurrentDay()}s.
             </p>
-            <div className="tp-blog-btn text-sm-end mb-45">
-                {/* Reset button */}
-                <button onClick={() => reset()} className="tp-btn d-inline-flex align-items-center">
-                    <span>
-                        <span className="text-1">Try again</span>
-                        <span className="text-2">Try again</span>
-                    </span>
-                </button>
-            </div>
+            <Link href="/" className="tp-btn d-inline-flex align-items-center">
+                <span>
+                    <span className="text-1">Take Me Home</span>
+                    <span className="text-2">Take Me Home</span>
+                </span>
+            </Link>
         </div>
     )
 }

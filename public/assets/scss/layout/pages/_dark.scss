@@ -5,6 +5,11 @@
 /*----------------------------------------*/
 .david-dark {
   background: var(--tp-common-black);
+  
+  & p {
+    color: var(--tp-grey-3);
+  }
+  
   & .tp-dark-switch {
     & .sun {
       display: block;
