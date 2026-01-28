@@ -76,7 +76,7 @@ const CommonHeader: React.FC<headerProps> = ({
                       </button>
                     </div>
                     <Link
-                      href="/contact"
+                      href="/#contact"
                       className="tp-btn d-none d-md-inline-flex align-items-center ml-15"
                     >
                       <span>

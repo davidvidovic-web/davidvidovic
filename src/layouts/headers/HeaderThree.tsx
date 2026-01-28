@@ -58,7 +58,7 @@ const HeaderThree = () => {
                     </button>
                   </div>
                   <Link
-                    href="/contact"
+                    href="/#contact"
                     className="tp-btn d-none d-md-inline-flex align-items-center ml-30"
                   >
                     <span>

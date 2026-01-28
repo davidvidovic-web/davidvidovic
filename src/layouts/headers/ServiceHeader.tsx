@@ -53,7 +53,7 @@ const ServiceHeader = () => {
                                             <i className="sun fa-light fa-sun-bright"></i>
                                         </button>
                                     </div>
-                                    <Link href="/contact" className="tp-btn bf-btn-white d-none d-md-inline-flex align-items-center ml-30">
+                                    <Link href="/#contact" className="tp-btn bf-btn-white d-none d-md-inline-flex align-items-center ml-30">
                                         <span>
                                             <span className="text-1">Let’s Talk</span>
                                             <span className="text-2">Let’s Talk</span>
