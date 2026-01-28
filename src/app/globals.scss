@@ -186,6 +186,29 @@
   .upwork-icon:hover {
     filter: none;
   }
+
+  // Markdown content dark mode
+  .markdown-content {
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--tp-common-white);
+    }
+
+    p {
+      color: var(--tp-grey-5);
+    }
+
+    a {
+      color: var(--tp-common-white);
+    }
+
+    li {
+      color: var(--tp-grey-5);
+
+      &:before {
+        color: var(--tp-common-white);
+      }
+    }
+  }
 }
 
 .project-item-inner.not-hide-cursor {
