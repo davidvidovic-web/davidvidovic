@@ -6,6 +6,7 @@ export interface IFormInput {
   budget: string;
   website?: string | null;
   message: string;
+  honeypot?: string; // Spam protection
 }
 //contact us form type define
 export interface contactUsIFormInput {

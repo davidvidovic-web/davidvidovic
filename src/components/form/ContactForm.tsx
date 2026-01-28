@@ -6,8 +6,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IFormInput } from "@/types/form-dt";
 import NiceSelect from "../ui/NiceSelect";
 import toast from "react-hot-toast";
+import { useRef } from "react";
 
 const ContactForm = () => {
+  const formStartTime = useRef<number>(Date.now());
   const { register, handleSubmit, control, reset, formState: { errors, isSubmitting } } = useForm<IFormInput>({
     resolver: yupResolver(contactFormSchema),
     defaultValues: {
@@ -19,6 +21,20 @@ const ContactForm = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
+      // Honeypot check
+      if (data.honeypot) {
+        // Silent fail for bots
+        reset();
+        return;
+      }
+
+      // Time-based check (minimum 3 seconds to fill form)
+      const timeTaken = Date.now() - formStartTime.current;
+      if (timeTaken < 3000) {
+        toast.error("Please take your time filling out the form.");
+        return;
+      }
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -176,6 +192,18 @@ const ContactForm = () => {
                 {...register("message")}
               />
               {errors.message && <p className="text-danger mt-1">{errors.message.message}</p>}
+            </div>
+
+            {/* Honeypot field - hidden from users */}
+            <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+              <label htmlFor="honeypot">Leave this field empty</label>
+              <input
+                id="honeypot"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                {...register("honeypot")}
+              />
             </div>
 
             {/* Submit */}
