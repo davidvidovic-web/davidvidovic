@@ -31,10 +31,6 @@ const PortfolioDetailsMain = ({
     (project) => project.slug === id || project.id == id,
   );
 
-  console.log("Portfolio:", portfolio);
-  console.log("Portfolio counters:", portfolio?.counters);
-  console.log("ProjectContent counters:", projectContent?.counters);
-
   // Find current portfolio index and get prev/next (only among projects with slugs)
   const portfolioProjects = projectData.filter((project) => project.slug);
   const currentIndex = portfolioProjects.findIndex(
