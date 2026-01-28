@@ -160,12 +160,12 @@ const projectData: projectDt[] = [
     title: "Geeks on Site",
     year: "2025",
     client: "Geeks on Site LLC",
-    role: "Full Stack Developer & UI/UX Designer",
+    role: "Full Stack Developer",
     services: [
       "Web Development",
       "WordPress",
       "UI/UX Design",
-      "SEO Optimization",
+      "Custom Plugin Development",
     ],
     technologies: [
       "WordPress",
@@ -174,6 +174,7 @@ const projectData: projectDt[] = [
       "MySQL",
       "HTML/CSS",
       "WooCommerce",
+      "Figma",
     ],
     websiteUrl: "https://geeksonsite.com",
     detailsImage: "/assets/img/brand/gos-screenshot.jpg",
