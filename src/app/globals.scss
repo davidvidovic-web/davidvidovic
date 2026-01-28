@@ -211,6 +211,31 @@
   }
 }
 
+.david-light {
+  // Markdown content light mode
+  .markdown-content {
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--tp-common-black);
+    }
+
+    p {
+      color: var(--tp-grey-3);
+    }
+
+    a {
+      color: var(--tp-common-black);
+    }
+
+    li {
+      color: var(--tp-grey-3);
+
+      &:before {
+        color: var(--tp-common-black);
+      }
+    }
+  }
+}
+
 .project-item-inner.not-hide-cursor {
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 30px;
