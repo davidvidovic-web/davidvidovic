@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
-import projectData from '@/data/projectData';
+import fs from 'fs';
+import path from 'path';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://davidvidovic.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.davidvidovic.com';
   const currentDate = new Date();
 
   // Homepage
@@ -13,9 +14,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1.0,
   };
 
-  // Dynamic portfolio project detail pages
-  const portfolioPages = projectData.map((project) => ({
-    url: `${baseUrl}/portfolio-details/${project.id}`,
+  // Get actual portfolio projects from content/projects directory
+  const contentDir = path.join(process.cwd(), 'content', 'projects');
+  const projectSlugs = fs.existsSync(contentDir) 
+    ? fs.readdirSync(contentDir)
+        .filter(file => file.endsWith('.md'))
+        .map(file => file.replace('.md', ''))
+    : [];
+
+  // Generate portfolio pages only for projects with markdown files
+  const portfolioPages = projectSlugs.map((slug) => ({
+    url: `${baseUrl}/portfolio/${slug}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
