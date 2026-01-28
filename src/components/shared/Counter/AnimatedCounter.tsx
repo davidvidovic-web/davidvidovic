@@ -5,10 +5,11 @@ interface CounterProps {
   min: number;
   max: number;
   cls?: string;
+  prefix?: string;
   suffix?: string;
 }
 
-export default function AnimatedCounter({ min, max, cls = 'purecounter', suffix }: CounterProps) {
+export default function AnimatedCounter({ min, max, cls = 'purecounter', prefix, suffix }: CounterProps) {
   const [counted, setCounted] = useState<number>(min);
   const targetElement = useRef<HTMLSpanElement>(null);
 
@@ -59,6 +60,7 @@ export default function AnimatedCounter({ min, max, cls = 'purecounter', suffix 
   }, []);
 
   return <span ref={targetElement} className={cls}>
+    {prefix && prefix}
     {counted}
     {suffix && suffix}
   </span>;

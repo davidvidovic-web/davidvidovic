@@ -440,6 +440,30 @@
   & .tp-project-details-left-content span {
     color: var(--tp-grey-5);
   }
+  & .tp-project-visit-link {
+    color: var(--tp-common-white);
+    
+    svg {
+      color: var(--tp-common-white);
+    }
+  }
+  & .tp-btn-back {
+    color: var(--tp-common-white);
+    
+    svg {
+      color: var(--tp-common-white);
+    }
+  }
+  & .tp-project-nav-item {
+    color: var(--tp-common-white);
+    
+    svg {
+      color: var(--tp-common-white);
+    }
+  }
+  & .tp-project-navigation {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
   & .tp-project-details-para {
     color: var(--tp-grey-5);
   }

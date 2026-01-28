@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const HomeFiveFaqArea = () => {
   return (
-    <div className="bf-faq-area pb-130">
+    <div id="faq" className="bf-faq-area pb-130">
       <div className="container">
         <div className="row">
           <div className="col-lg-4">

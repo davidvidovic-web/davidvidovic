@@ -1,36 +1,37 @@
 import AnimatedCounter from '../shared/Counter/AnimatedCounter';
+import { CounterMetric } from '@/types/project-dt';
 
-const counterData = [
+interface ProjectDetailsCounterProps {
+    counters?: CounterMetric[];
+}
+
+const defaultCounterData: CounterMetric[] = [
     {
-        id: 1,
-        end: 120,
-        duration: 0.7,
+        value: 120,
         suffix: '%',
         label: 'Months Project Duration',
     },
     {
-        id: 2,
-        end: 45,
-        duration: 0.7,
+        value: 45,
         suffix: '%',
         label: 'Average daily signups',
     },
     {
-        id: 3,
-        end: 300,
-        duration: 0.7,
+        value: 300,
         suffix: '%',
         label: 'Active users worldwide',
     },
 ];
 
-const ProjectDetailsCounter = () => {
+const ProjectDetailsCounter = ({ counters }: ProjectDetailsCounterProps) => {
+    const counterData = counters && counters.length > 0 ? counters : defaultCounterData;
+    
     return (
         <div className="tp-project-details-result-right">
-            {counterData.map(({ id, end, suffix, label }) => (
-                <div key={id} className="tp-project-details-result">
-                    <AnimatedCounter min={0} max={end} cls='child-1' suffix={suffix} />
-                    <span className="child-2">{label}</span>
+            {counterData.map((counter, index) => (
+                <div key={index} className="tp-project-details-result">
+                    <AnimatedCounter min={0} max={counter.value} cls='child-1' prefix={counter.prefix || ''} suffix={counter.suffix || ''} />
+                    <span className="child-2">{counter.label}</span>
                 </div>
             ))}
         </div>

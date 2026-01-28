@@ -176,7 +176,7 @@
   }
 
   .upwork-icon {
-    filter: brightness(0) invert(1);
+    filter: grayscale(1) brightness(100) invert(1);
     transition: filter 0.3s ease;
   }
 
@@ -188,4 +188,26 @@
 .project-item-inner.not-hide-cursor {
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 30px;
+}
+
+// Project details visit website link
+.tp-project-visit-link {
+  gap: 6px;
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+  color: inherit;
+
+  svg {
+    color: inherit;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.tp-offcanvas-2-logo {
+  img {
+    width: fit-content;
+  }
 }

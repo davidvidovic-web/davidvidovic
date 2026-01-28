@@ -56,7 +56,7 @@ const HomeTestimonial = () => {
             </div> */}
 
             {/* Content Slider */}
-            <div className="tp-testimonial-main pt-60 pb-100">
+            <div id="testimonials" className="tp-testimonial-main pt-60 pb-100">
                 <div className="container p-relative" style={{ minHeight: '400px' }}>
                     <div className="row justify-content-center">
                         <div className="col-lg-8">

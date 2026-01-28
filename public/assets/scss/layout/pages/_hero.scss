@@ -8,6 +8,9 @@
     &-spacing{
         padding-top: 185px;
         padding-bottom: 58px;
+        @media #{$xs}{
+            padding-top: 125px;
+        }
     }
     &-tittle{
         font-weight: 500;

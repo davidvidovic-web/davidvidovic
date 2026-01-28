@@ -1,6 +1,7 @@
 export interface projectDt {
     id: number,
     title: string,
+    slug?: string,
     image: string,
     logo?: string,
     backgroundColor?: string,
@@ -17,8 +18,20 @@ export interface projectDt {
     client?: string;
     role?: string;
     services?: string[];
+    technologies?: string[];
+    objective?: string;
+    process?: string;
+    results?: string;
+    counters?: CounterMetric[];
     overview?: string;
     mainDescription?: string;
     websiteUrl?: string;
     detailsImage?: string;
+}
+
+export interface CounterMetric {
+    value: number;
+    prefix?: string;
+    suffix?: string;
+    label: string;
 }

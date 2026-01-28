@@ -2,8 +2,45 @@
 
 import Link from "next/link";
 import menuData from "@/data/menuData";
+import { useRouter, usePathname } from "next/navigation";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const NavMenus = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Check if it's a hash link
+    if (href.startsWith('/#')) {
+      e.preventDefault();
+      const hash = href.substring(2); // Remove '/#'
+      
+      // If we're on homepage, just scroll
+      if (pathname === '/') {
+        const element = document.getElementById(hash);
+        if (element) {
+          const smoother = ScrollSmoother.get();
+          if (smoother) {
+            smoother.scrollTo(element, true, "top 100px");
+          } else {
+            gsap.to(window, {
+              duration: 1,
+              scrollTo: { y: element, offsetY: 100 },
+              ease: "power2.inOut"
+            });
+          }
+        }
+      } else {
+        // Navigate to homepage with hash
+        router.push(href);
+      }
+    }
+  };
+
   return (
     <ul>
       {menuData.map((item, index) => (
@@ -13,7 +50,7 @@ const NavMenus = () => {
             }`}
         >
           {/* Main Menu */}
-          <Link href={item.href}>
+          <Link href={item.href} onClick={(e) => handleClick(e, item.href)}>
             <span className="explore-text" data-text={item.title}>
               {item.title}
             </span>

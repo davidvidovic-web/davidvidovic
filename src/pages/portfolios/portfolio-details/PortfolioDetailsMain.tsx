@@ -1,4 +1,4 @@
-import ProjectDetailsOverview from "@/components/project/subComponent/ProjectDetailsOverview";
+'use client';
 import ProjectDetailsInfo from "@/components/project/subComponent/ProjectDetailsInfo";
 import ProjectDetailsCounter from "@/components/counter/ProjectDetailsCounter";
 import ProjectDetailsProject from "@/components/project/ProjectDetailsProject";
@@ -13,15 +13,27 @@ import Link from "next/link";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import HeaderThree from "@/layouts/headers/HeaderThree";
 import FooterThree from "@/layouts/footers/FooterThree";
+import { useRouter } from "next/navigation";
+import { ProjectContent } from "@/utils/getProjectContent";
 
-const PortfolioDetailsMain = ({ id }: IdProps) => {
-  // Find the portfolio that matches the given ID
-  const portfolio = projectData.find((project) => project.id == id);
+interface PortfolioDetailsMainProps extends IdProps {
+  projectContent?: ProjectContent | null;
+}
+
+const PortfolioDetailsMain = ({ id, projectContent }: PortfolioDetailsMainProps) => {
+  const router = useRouter();
+  // Find the portfolio that matches the given slug or ID
+  const portfolio = projectData.find((project) => project.slug === id || project.id == id);
   
-  // Find current portfolio index and get prev/next
-  const currentIndex = projectData.findIndex((project) => project.id == id);
-  const prevProject = currentIndex > 0 ? projectData[currentIndex - 1] : null;
-  const nextProject = currentIndex < projectData.length - 1 ? projectData[currentIndex + 1] : null;
+  console.log('Portfolio:', portfolio);
+  console.log('Portfolio counters:', portfolio?.counters);
+  console.log('ProjectContent counters:', projectContent?.counters);
+  
+  // Find current portfolio index and get prev/next (only among projects with slugs)
+  const portfolioProjects = projectData.filter(project => project.slug);
+  const currentIndex = portfolioProjects.findIndex((project) => project.slug === id || project.id == id);
+  const prevProject = currentIndex > 0 ? portfolioProjects[currentIndex - 1] : null;
+  const nextProject = currentIndex < portfolioProjects.length - 1 ? portfolioProjects[currentIndex + 1] : null;
 
   // If portfolio not found, show error message
   if (!portfolio) {
@@ -51,8 +63,11 @@ const PortfolioDetailsMain = ({ id }: IdProps) => {
                 <div className="container">
                   <div className="row mb-40">
                     <div className="col-12">
-                      <Link
-                        href="/#portfolio"
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          router.push(`/#project-${portfolio?.slug || id}`);
+                        }}
                         className="tp-btn-back d-inline-flex align-items-center"
                         style={{
                           background: "transparent",
@@ -67,8 +82,8 @@ const PortfolioDetailsMain = ({ id }: IdProps) => {
                         }}
                       >
                         <ArrowLeft size={20} />
-                        <span>Back to Projects</span>
-                      </Link>
+                        <span>Back</span>
+                      </button>
                     </div>
                   </div>
                   <div className="row">
@@ -77,24 +92,7 @@ const PortfolioDetailsMain = ({ id }: IdProps) => {
                       <ProjectDetailsInfo portfolio={portfolio} />
                     </div>
                     <div className="col-lg-8">
-                      <div className="tp-project-details-right-info mb-30">
-                        <span className="tp-project-details-subtittle d-block mb-10">
-                          {portfolio.title}
-                        </span>
-                        <h2 className="tp-project-details-tittle mb-25">
-                          {portfolio.mainDescription ||
-                            portfolio.description ||
-                            "Project Details"}
-                        </h2>
-                        {portfolio.overview && (
-                          <p className="tp-project-details-para mb-40">
-                            {portfolio.overview}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                    <div className="col-12">
-                      <div className="pt-70 pb-95">
+                      <div className="pt-20 pb-50">
                         <div className="tp-project-details-thumb fix">
                           {portfolio.logo ? (
                             <div
@@ -107,7 +105,7 @@ const PortfolioDetailsMain = ({ id }: IdProps) => {
                                 justifyContent: "center",
                                 padding: "60px",
                                 borderRadius: "30px",
-                                maxHeight: "500px",
+                                maxHeight: "200px",
                                 overflow: "hidden",
                               }}
                             >
@@ -116,7 +114,7 @@ const PortfolioDetailsMain = ({ id }: IdProps) => {
                                 height={500}
                                 className="img-fluid"
                                 style={{
-                                  maxHeight: "380px",
+                                  maxHeight: "180px",
                                   width: "auto",
                                   objectFit: "contain",
                                 }}
@@ -136,23 +134,37 @@ const PortfolioDetailsMain = ({ id }: IdProps) => {
                           )}
                         </div>
                       </div>
-                    </div>
-                    <div className="col-12">
-                      <ProjectDetailsOverview />
-                      <div className="tp-project-details-overview-box">
-                        <div className="row">
-                          <div className="col-lg-4">
-                            <div className="tp-project-details-overview-left">
-                              <h2 className="tp-project-details-overview-title">
-                                Results
-                              </h2>
-                            </div>
-                          </div>
-                          <div className="col-lg-8">
-                            <ProjectDetailsCounter />
-                          </div>
+                      {(projectContent?.objective || portfolio.objective) && (
+                        <div className="tp-project-details-right-info mb-30">
+                          <h2 className="tp-project-details-tittle mb-25">
+                            Objective
+                          </h2>
+                          <p className="tp-project-details-para mb-40" style={{ whiteSpace: 'pre-line' }}>
+                            {projectContent?.objective || portfolio.objective}
+                          </p>
                         </div>
-                      </div>
+                      )}
+                      {(projectContent?.process || portfolio.process) && (
+                        <div className="tp-project-details-right-info mb-30">
+                          <h2 className="tp-project-details-tittle mb-25">
+                            Process
+                          </h2>
+                          <p className="tp-project-details-para mb-40" style={{ whiteSpace: 'pre-line' }}>
+                            {projectContent?.process || portfolio.process}
+                          </p>
+                        </div>
+                      )}
+                      {(projectContent?.results || portfolio.results) && (
+                        <div className="tp-project-details-right-info mb-30">
+                          <h2 className="tp-project-details-tittle mb-25">
+                            Results
+                          </h2>
+                          <p className="tp-project-details-para mb-40" style={{ whiteSpace: 'pre-line' }}>
+                            {projectContent?.results || portfolio.results}
+                          </p>
+                          <ProjectDetailsCounter counters={portfolio.counters} />
+                        </div>
+                      )}
                     </div>
                   </div>
                   
@@ -162,7 +174,7 @@ const PortfolioDetailsMain = ({ id }: IdProps) => {
                       <div className="tp-project-navigation d-flex justify-content-between align-items-center" style={{ borderTop: '1px solid rgba(0,0,0,0.1)', paddingTop: '40px' }}>
                         {prevProject ? (
                           <Link
-                            href={`/portfolio-details/${prevProject.id}`}
+                            href={`/portfolio/${prevProject.slug || prevProject.id}`}
                             className="tp-project-nav-item d-flex align-items-center"
                             style={{ textDecoration: 'none', gap: '12px' }}
                           >
@@ -178,7 +190,7 @@ const PortfolioDetailsMain = ({ id }: IdProps) => {
                         
                         {nextProject ? (
                           <Link
-                            href={`/portfolio-details/${nextProject.id}`}
+                            href={`/portfolio/${nextProject.slug || nextProject.id}`}
                             className="tp-project-nav-item d-flex align-items-center text-end"
                             style={{ textDecoration: 'none', gap: '12px' }}
                           >

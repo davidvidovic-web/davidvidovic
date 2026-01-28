@@ -16,6 +16,7 @@ const HomeFourService = () => {
 
   return (
     <div
+      id="services"
       className="bf-service-area pt-155 pb-160"
       style={{ backgroundColor: theme == "dark" ? "#1d1d1f" : "#000" }}
     >

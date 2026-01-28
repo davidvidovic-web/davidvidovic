@@ -7,7 +7,7 @@ interface IContactArea {
 
 const ContactArea: React.FC<IContactArea> = ({ spacingClass = "pb-135" }) => {
     return (
-        <div className={`tp-contact-area ${spacingClass}`}>
+        <div id="contact" className={`tp-contact-area ${spacingClass}`}>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">

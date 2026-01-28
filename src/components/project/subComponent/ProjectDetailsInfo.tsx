@@ -1,5 +1,5 @@
 import { projectDt } from "@/types/project-dt";
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 interface ProjectDetailsInfoProps {
@@ -9,24 +9,23 @@ interface ProjectDetailsInfoProps {
 const ProjectDetailsInfo = ({ portfolio }: ProjectDetailsInfoProps) => {
     return (
         <div className="tp-project-details-left-info mb-30">
+            {portfolio.client && (
+                <div className="tp-project-details-left-content mb-35">
+                    <h5 className="tp-project-details-left-title">Client</h5>
+                    <span>{portfolio.client}</span>
+                </div>
+            )}
             {portfolio.websiteUrl && (
                 <div className="tp-project-details-left-content mb-35">
                     <Link
                         href={portfolio.websiteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="tp-btn tp-btn-border d-inline-flex align-items-center justify-content-center w-100"
-                        style={{ gap: '8px' }}
+                        className="tp-project-visit-link d-inline-flex align-items-center"
                     >
                         <span>Visit Website</span>
-                        <ExternalLink size={18} />
+                        <ArrowUpRight size={20} />
                     </Link>
-                </div>
-            )}
-            {portfolio.client && (
-                <div className="tp-project-details-left-content mb-35">
-                    <h5 className="tp-project-details-left-title">Client</h5>
-                    <span>{portfolio.client}</span>
                 </div>
             )}
             {portfolio.role && (
@@ -40,6 +39,14 @@ const ProjectDetailsInfo = ({ portfolio }: ProjectDetailsInfoProps) => {
                     <h5 className="tp-project-details-left-title">Services</h5>
                     {portfolio.services.map((service, index) => (
                         <span key={index}>{service}</span>
+                    ))}
+                </div>
+            )}
+            {portfolio.technologies && portfolio.technologies.length > 0 && (
+                <div className="tp-project-details-left-content mb-35">
+                    <h5 className="tp-project-details-left-title">Technologies</h5>
+                    {portfolio.technologies.map((tech, index) => (
+                        <span key={index}>{tech}</span>
                     ))}
                 </div>
             )}

@@ -152,54 +152,61 @@ const projectData: projectDt[] = [
   //home four portfolio data start
   {
     id: 21,
+    slug: "geeks-on-site",
     image: "/assets/img/brand/gos-logo.webp",
     logo: "/assets/img/brand/gos-logo.webp",
     backgroundColor: "#ffffff",
     textColor: "#8b44fb",
     title: "Geeks on Site",
     year: "2025",
-    // Project details page fields
     client: "Geeks on Site LLC",
     role: "Full Stack Developer & UI/UX Designer",
     services: ["Web Development", "WordPress", "UI/UX Design", "SEO Optimization"],
-    mainDescription: "Comprehensive on-site tech support platform",
-    overview: "Geeks on Site is a leading technology support company providing on-site computer repair, IT support, and tech solutions. The project involved creating a modern, user-friendly website that showcases their services and enables easy booking for customers.",
+    technologies: ["WordPress", "PHP", "JavaScript", "MySQL", "HTML/CSS", "WooCommerce"],
     websiteUrl: "https://geeksonsite.com",
-    detailsImage: "/assets/img/brand/gos-screenshot.jpg", // Optional: full screenshot
+    detailsImage: "/assets/img/brand/gos-screenshot.jpg",
+    counters: [
+      { value: 42, prefix: "+", suffix: "%", label: "increase in completed bookings following the launch of the online booking system" },
+      { value: 23, prefix: "–", suffix: "%", label: "reduction in checkout abandonment due to the redesigned mini-cart, cart, and checkout flow" },
+      { value: 16.5, prefix: "+", suffix: "%", label: "increase in mobile conversions driven by a cleaner, more responsive layout" }
+    ],
   },
   {
     id: 22,
+    slug: "kozmeticki-salon-cats",
     image: "/assets/img/brand/cats-logo.avif",
     logo: "/assets/img/brand/cats-logo.avif",
     backgroundColor: "#e685b1",
     textColor: "#fbfaf4",
     title: "Kozmeticki Salon Cats",
     year: "2025",
-    // Project details page fields example
     client: "Kozmeticki Salon Cats",
     role: "Web Developer",
     services: ["Web Development", "WordPress", "Booking System"],
-    mainDescription: "Modern beauty salon booking platform",
-    overview: "A beautiful and functional website for a professional beauty salon, featuring online booking, service showcase, and client testimonials.",
-    websiteUrl: "https://example.com", // Replace with actual URL
+    technologies: ["WordPress", "PHP", "JavaScript", "Booking Plugin", "Responsive Design"],
+    websiteUrl: "https://kozmetickisaloncats.com",
   },
   {
     id: 23,
+    slug: "ambientivo",
     image: "/assets/img/brand/ambientivo-logo.png",
     logo: "/assets/img/brand/ambientivo-logo.png",
     backgroundColor: "#bdb4a0",
     textColor: "#ffffff",
     title: "Ambientivo",
     year: "2024",
+    websiteUrl: "https://ambientivo.com",
   },
   {
     id: 24,
+    slug: "desserts-with-anna",
     image: "/assets/img/brand/dessertswithana-logo.png",
     logo: "/assets/img/brand/dessertswithana-logo.png",
     backgroundColor: "#fcb3c8",
     textColor: "#ffffff",
     title: "Desserts with Anna",
     year: "2023",
+    websiteUrl: "https://dessertswithanna.com",
   },
   //home four portfolio data end
   {

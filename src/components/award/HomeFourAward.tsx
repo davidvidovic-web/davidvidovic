@@ -17,7 +17,7 @@ const HomeFourAward: React.FC<awardBgPropsDt> = ({ backgroundColor = "#f3f3f3" }
 
     return (
         <ImageHoverRevealProvider>
-            <div className="design-award-area pt-190 title-box pb-160 grey-bg" style={{ background: theme == "dark" ? 'var(--tp-common-black)' : 'var(--tp-common-white)' }}>
+            <div id="awards" className="design-award-area pt-190 title-box pb-160 grey-bg" style={{ background: theme == "dark" ? 'var(--tp-common-black)' : 'var(--tp-common-white)' }}>
                 <div className="container">
                     <div className="design-award-wrap">
                         <div className="row row-cols-1">

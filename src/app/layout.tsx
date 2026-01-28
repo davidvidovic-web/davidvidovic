@@ -5,6 +5,7 @@ import { Poppins } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "react-hot-toast";
 import Wrapper from "@/layouts/wrapper";
+import StructuredData from "@/components/shared/StructuredData";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "swiper/css/bundle";
@@ -102,6 +103,7 @@ export default function RootLayout({
             />
           </>
         )}
+        <StructuredData />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

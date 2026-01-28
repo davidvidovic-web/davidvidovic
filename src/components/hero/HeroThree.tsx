@@ -22,7 +22,7 @@ const HeroThree = () => {
               <h2 className="tp-hero-3-tittle">David Vidović</h2>
             </div>
           </div>
-          <div className="col-lg-2 text-lg-end">
+          <div className="col-lg-2 text-lg-end order-lg-1 order-3 d-flex justify-content-center">
             <div className="tp-hero-3-text-rotate mb-20 p-relative d-inline-block">
               <span className="tp-live-anim-spin d-inline-block">
                 <TextCircleIcon />
@@ -36,7 +36,7 @@ const HeroThree = () => {
               /> */}
             </div>
           </div>
-          <div className="col-lg-7">
+          <div className="col-lg-7 order-lg-2 order-2">
             <div className="tp-hero-3-form mb-20">
               <p>
                 Web developer with 8 years of experience. I transform complex
@@ -47,7 +47,7 @@ const HeroThree = () => {
               </p>
             </div>
           </div>
-          <div className="col-lg-5">
+          <div className="col-lg-5 order-lg-3 order-4">
             <div className="tp-hero-3-para-2 mt-10 mb-30"></div>
           </div>
         </div>

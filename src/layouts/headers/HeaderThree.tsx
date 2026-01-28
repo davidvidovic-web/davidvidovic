@@ -2,13 +2,13 @@
 import OffCanvasPanelTwo from "@/components/offcanvus/OffCanvasPanelTwo";
 import useStickyHeader from "@/hooks/useStickyHeader";
 import NavMenus from "../subComponents/NavMenus";
+import useGlobalContext from "@/hooks/useContext";
 import { useTheme } from "next-themes";
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const HeaderThree = () => {
-  const [openOffCanvas, setOpenOffCanvas] = useState(false);
+  const { openOffcanvas, setOpenOffcanvas } = useGlobalContext();
   const { theme, setTheme } = useTheme();
   const isSticky = useStickyHeader(20);
   const handleToggleTheme = () => {
@@ -67,8 +67,14 @@ const HeaderThree = () => {
                     </span>
                   </Link>
                   <button
-                    onClick={() => setOpenOffCanvas(true)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setOpenOffcanvas(true);
+                    }}
                     className="tp-header-menu-btn tp-offcanvas-open-btn ml-20"
+                    type="button"
+                    aria-label="Open menu"
                   >
                     <span></span>
                     <span></span>
@@ -86,8 +92,8 @@ const HeaderThree = () => {
 
       {/* off canvas */}
       <OffCanvasPanelTwo
-        openOffcanvas={openOffCanvas}
-        setOpenOffcanvas={setOpenOffCanvas}
+        openOffcanvas={openOffcanvas}
+        setOpenOffcanvas={setOpenOffcanvas}
       />
       {/* off canvas */}
     </>

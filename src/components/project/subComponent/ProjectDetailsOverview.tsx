@@ -5,7 +5,7 @@ const ProjectDetailsOverview = () => {
             <div className="row">
                 <div className="col-lg-4">
                     <div className="tp-project-details-overview-left mb-30">
-                        <h2 className="tp-project-details-overview-title">Overview</h2>
+                        <h2 className="tp-project-details-overview-title">Process</h2>
                     </div>
                 </div>
                 <div className="col-lg-8">
