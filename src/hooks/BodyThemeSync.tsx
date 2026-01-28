@@ -3,13 +3,13 @@ import { useEffect } from "react";
 import { useTheme } from "next-themes";
 
 export function BodyThemeSync() {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
-    if (!theme) return;
+    if (!resolvedTheme) return;
     document.body.classList.remove("david-light", "david-dark");
-    document.body.classList.add(theme === "dark" ? "david-dark" : "david-light");
-  }, [theme]);
+    document.body.classList.add(resolvedTheme === "dark" ? "david-dark" : "david-light");
+  }, [resolvedTheme]);
 
   return null;
 }
