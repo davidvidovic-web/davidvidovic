@@ -4,19 +4,49 @@ import useGlobalContext from "@/hooks/useContext";
 import useStickyHeader from "@/hooks/useStickyHeader";
 import NavMenus from "../subComponents/NavMenus";
 import { useTheme } from "next-themes";
+import { useRouter, usePathname } from "next/navigation";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { SearchIcon } from "@/svg";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+gsap.registerPlugin(ScrollToPlugin);
+
 const ServiceHeader = () => {
     const [openOffCanvas, setOpenOffCanvas] = useState(false);
     const { toggleSearch } = useGlobalContext();
     const { theme, setTheme } = useTheme();
+    const router = useRouter();
+    const pathname = usePathname();
     const isSticky = useStickyHeader(20);
 
     const handleToggleTheme = () => {
         setTheme(theme === "dark" ? "light" : "dark");
+    };
+
+    const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        
+        if (pathname === '/') {
+            const element = document.getElementById('contact');
+            if (element) {
+                const smoother = ScrollSmoother.get();
+                if (smoother) {
+                    smoother.scrollTo(element, true, "top 100px");
+                } else {
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: { y: element, offsetY: 100 },
+                        ease: "power2.inOut"
+                    });
+                }
+            }
+        } else {
+            router.push('/#contact');
+        }
     };
 
     return (
@@ -53,7 +83,7 @@ const ServiceHeader = () => {
                                             <i className="sun fa-light fa-sun-bright"></i>
                                         </button>
                                     </div>
-                                    <Link href="/#contact" className="tp-btn bf-btn-white d-none d-md-inline-flex align-items-center ml-30">
+                                    <Link href="/#contact" onClick={handleContactClick} className="tp-btn bf-btn-white d-none d-md-inline-flex align-items-center ml-30">
                                         <span>
                                             <span className="text-1">Let’s Talk</span>
                                             <span className="text-2">Let’s Talk</span>

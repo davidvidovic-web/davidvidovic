@@ -5,9 +5,15 @@ import useGlobalContext from "@/hooks/useContext";
 import NavMenus from "../subComponents/NavMenus";
 import React, { useState } from "react";
 import { useTheme } from "next-themes";
+import { useRouter, usePathname } from "next/navigation";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 // import { SearchIcon } from '@/svg';
 import Image from "next/image";
 import Link from "next/link";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 interface headerProps {
   spacingCls?: string;
@@ -23,9 +29,33 @@ const CommonHeader: React.FC<headerProps> = ({
   const { toggleSearch } = useGlobalContext();
   const isSticky = useStickyHeader(20);
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const handleToggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    
+    if (pathname === '/') {
+      const element = document.getElementById('contact');
+      if (element) {
+        const smoother = ScrollSmoother.get();
+        if (smoother) {
+          smoother.scrollTo(element, true, "top 100px");
+        } else {
+          gsap.to(window, {
+            duration: 1,
+            scrollTo: { y: element, offsetY: 100 },
+            ease: "power2.inOut"
+          });
+        }
+      }
+    } else {
+      router.push('/#contact');
+    }
   };
 
   return (
@@ -77,6 +107,7 @@ const CommonHeader: React.FC<headerProps> = ({
                     </div>
                     <Link
                       href="/#contact"
+                      onClick={handleContactClick}
                       className="tp-btn d-none d-md-inline-flex align-items-center ml-15"
                     >
                       <span>
