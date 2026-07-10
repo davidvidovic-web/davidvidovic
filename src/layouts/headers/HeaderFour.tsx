@@ -8,9 +8,9 @@ import Link from "next/link";
 
 const HeaderFour = () => {
     const [openOffCanvas, setOpenOffCanvas] = useState(false);
-    const { theme, setTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
     const handleToggleTheme = () => {
-        setTheme(theme === "dark" ? "light" : "dark");
+        setTheme(resolvedTheme === "dark" ? "light" : "dark");
     };
     return (
         <>

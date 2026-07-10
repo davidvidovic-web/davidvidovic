@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   authors: [{ name: "David Vidovic" }],
   creator: "David Vidovic",
   icons: {
-    icon: "/assets/img/logo/favicon.png",
-    shortcut: "/assets/img/logo/favicon.png",
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
     apple: "/assets/img/logo/favicon.png",
   },
   openGraph: {

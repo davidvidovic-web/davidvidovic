@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 const HomeFiveFooter = () => {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -13,7 +13,7 @@ const HomeFiveFooter = () => {
 
   return (
     <CommonFooter
-      bgColor={theme === "dark" ? "#1d1d1f" : "#000"}
+      bgColor={resolvedTheme === "dark" ? "#1d1d1f" : "#000"}
       wrapClass="bf-footer-2-wrap"
     />
   );

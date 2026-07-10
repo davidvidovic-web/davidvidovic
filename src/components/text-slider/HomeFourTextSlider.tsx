@@ -14,7 +14,7 @@ const sliderItems = [
 ];
 
 const HomeFourTextSlider = ({ spacingCls = "pt-150", bgColor = "" }) => {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
@@ -22,7 +22,7 @@ const HomeFourTextSlider = ({ spacingCls = "pt-150", bgColor = "" }) => {
   return (
     <div
       className={`tp-text-slider-area bf-text-slider-style ${spacingCls}`}
-      style={{ backgroundColor: theme === "dark" ? "#151515" : bgColor }}
+      style={{ backgroundColor: resolvedTheme === "dark" ? "#151515" : bgColor }}
     >
       {/* Top Slider */}
       <div className="tp-text-slide-top">

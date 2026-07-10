@@ -13,7 +13,7 @@ interface ThemeCursorProviderProps {
  * based on the current route and active theme.
  */
 const ThemeCursorProvider: React.FC<ThemeCursorProviderProps> = ({ children }) => {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const currentPath = usePathname();
 
   // Background colors for specific routes
@@ -37,7 +37,7 @@ const ThemeCursorProvider: React.FC<ThemeCursorProviderProps> = ({ children }) =
   }
 
   // Make background color dynamic based on theme
-  const cursorBackgroundColor = theme === "light" ? routeBackgroundColor : "";
+  const cursorBackgroundColor = resolvedTheme === "light" ? routeBackgroundColor : "";
 
   return (
     <CustomCursorProvider bgColor={cursorBackgroundColor}>

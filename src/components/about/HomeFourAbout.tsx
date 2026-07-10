@@ -5,7 +5,7 @@ import Image from "next/image";
 import DotGrid from "@/components/ui/DotGrid";
 
 const HomeFourAbout = () => {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
@@ -13,7 +13,7 @@ const HomeFourAbout = () => {
   return (
     <div
       className="bf-about-area p-relative pt-155 pb-120"
-      style={{ backgroundColor: theme === "dark" ? "#000" : "#f8f8f9" }}
+      style={{ backgroundColor: resolvedTheme === "dark" ? "#000" : "#f8f8f9" }}
     >
       <DotGrid
         dotSize={5}
@@ -38,7 +38,7 @@ const HomeFourAbout = () => {
               style={{
                 padding: '15px',
                 borderRadius: '15px',
-                background: theme === "dark" ? 'var(--tp-common-black)' : 'var(--tp-common-white)'
+                background: resolvedTheme === "dark" ? 'var(--tp-common-black)' : 'var(--tp-common-white)'
               }}
             >
               <h2 className="bf-section-title reveal-text mb-15 d-flex flex-column">

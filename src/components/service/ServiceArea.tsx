@@ -117,13 +117,13 @@ const AccordionItem = ({ item, index }: { item: ServiceItem; index: number }) =>
 };
 
 const ServiceArea = () => {
-    const { theme } = useTheme();
+    const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     useEffect(() => setMounted(true), []);
     if (!mounted) return null;
 
     return (
-        <section className="bf-service-area pt-155 pb-160" style={{ backgroundColor: theme === "dark" ? "#1d1d1f" : "#000" }}>
+        <section className="bf-service-area pt-155 pb-160" style={{ backgroundColor: resolvedTheme === "dark" ? "#1d1d1f" : "#000" }}>
             <div className="container">
                 {/* Header Section */}
                 <div className="bf-service-title-wrap mb-45">

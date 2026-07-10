@@ -6,14 +6,14 @@ import { Instagram, Dribbble, Youtube } from 'lucide-react';
 import Link from 'next/link';
 
 const CommonFooter = ({ bgColor = "", wrapClass = "tp-footer-2-wrap", footerSpacingCls = "" }) => {
-    const { theme } = useTheme();
+    const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     useEffect(() => setMounted(true), []);
     if (!mounted) return null;
 
     return (
         <footer className={`${footerSpacingCls}`}>
-            <div className={`tp-footer-area ${wrapClass} grey-bg pt-155`} style={{ backgroundColor: theme === "dark" ? "#151515" : bgColor }}>
+            <div className={`tp-footer-area ${wrapClass} grey-bg pt-155`} style={{ backgroundColor: resolvedTheme === "dark" ? "#151515" : bgColor }}>
                 <div className="container">
                     <div className="tp-footer-middle mb-30">
                         <div className="row">

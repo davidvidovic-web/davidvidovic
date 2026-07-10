@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 const AboutUsTeam = () => {
-    const { theme } = useTheme();
+    const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     useEffect(() => setMounted(true), []);
     if (!mounted) return null;
@@ -18,7 +18,7 @@ const AboutUsTeam = () => {
         { name: "James Smith", image: "/assets/img/update/team/thumb-4.jpg" },
     ];
     return (
-        <section className="bf-team-area pt-160 pb-130" style={{ backgroundColor: theme === "dark" ? "#151515" : "#fff" }}>
+        <section className="bf-team-area pt-160 pb-130" style={{ backgroundColor: resolvedTheme === "dark" ? "#151515" : "#fff" }}>
             <div className="container">
                 <div className="row">
                     {/* Left Content */}

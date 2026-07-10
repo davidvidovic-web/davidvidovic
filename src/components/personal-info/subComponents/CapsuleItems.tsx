@@ -15,7 +15,7 @@ const capsules = [
 ];
 
 const CapsuleItems = () => {
-    const { theme } = useTheme();
+    const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     useEffect(() => setMounted(true), []);
     if (!mounted) return null;
@@ -24,7 +24,7 @@ const CapsuleItems = () => {
         <div className="tp-about-capsule-item-wrapper">
             {capsules.map((cap, index) => (
                 <p key={index}>
-                    <span className={`tp-about-capsule-item ${theme === "dark" ? "tp-about-capsule-item-dark" : ""}`}>
+                    <span className={`tp-about-capsule-item ${resolvedTheme === "dark" ? "tp-about-capsule-item-dark" : ""}`}>
                         {cap.text}
                     </span>
                 </p>

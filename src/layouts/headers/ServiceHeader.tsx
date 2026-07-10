@@ -19,13 +19,13 @@ gsap.registerPlugin(ScrollToPlugin);
 const ServiceHeader = () => {
     const [openOffCanvas, setOpenOffCanvas] = useState(false);
     const { toggleSearch } = useGlobalContext();
-    const { theme, setTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
     const router = useRouter();
     const pathname = usePathname();
     const { isSticky, isHiding } = useStickyHeader(20);
 
     const handleToggleTheme = () => {
-        setTheme(theme === "dark" ? "light" : "dark");
+        setTheme(resolvedTheme === "dark" ? "light" : "dark");
     };
 
     const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {

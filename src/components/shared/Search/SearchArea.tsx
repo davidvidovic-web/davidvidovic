@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const SearchArea = () => {
     const { openSearch, toggleSearch } = useGlobalContext();
-    const { theme } = useTheme();
+    const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     useEffect(() => setMounted(true), []);
     if (!mounted) return null;
@@ -24,7 +24,7 @@ const SearchArea = () => {
                                 <div className="cm-search-logo">
                                     <div className="tp-header-logo">
                                         {
-                                            theme === "dark" ?
+                                            resolvedTheme === "dark" ?
                                                 <>
                                                     <Link className="logo-dark d-none" href="/"><Image width={138} height={32} src="/assets/img/logo/logo-dark.png" alt="logo" /></Link>
                                                 </>
