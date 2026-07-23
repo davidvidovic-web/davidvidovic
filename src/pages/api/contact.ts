@@ -2,17 +2,12 @@ import type { APIRoute } from "astro";
 import { toEmailText, validateContactPayload, type ContactPayload } from "../../lib/contact-validation";
 
 const API_KEY =
-  import.meta.env.NEXT_PRIVATE_MAILGUN_API_KEY ||
-  import.meta.env.MAILGUN_API_KEY ||
+  import.meta.env.RESEND ||
+  import.meta.env.NEXT_PRIVATE_RESEND_API_KEY ||
+  import.meta.env.RESEND_API_KEY ||
   "";
-const DOMAIN = import.meta.env.NEXT_PRIVATE_MAILGUN_DOMAIN || import.meta.env.MAILGUN_DOMAIN || "";
-const REGION = (import.meta.env.NEXT_PRIVATE_MAILGUN_REGION || import.meta.env.MAILGUN_REGION || "us").toLowerCase();
 const TARGET_EMAIL = import.meta.env.CONTACT_TO_EMAIL || "mail@davidvidovic.com";
-
-function mailgunEndpoint(domain: string, region: string): string {
-  const host = region === "eu" ? "https://api.eu.mailgun.net" : "https://api.mailgun.net";
-  return `${host}/v3/${domain}/messages`;
-}
+const FROM_EMAIL = import.meta.env.CONTACT_FROM_EMAIL || "Portfolio Contact <onboarding@resend.dev>";
 
 export const GET: APIRoute = async () => {
   return new Response(JSON.stringify({ error: "Method not allowed." }), {
@@ -39,34 +34,32 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    if (!API_KEY || !DOMAIN) {
+    if (!API_KEY) {
       return new Response(
         JSON.stringify({ error: "Mail delivery is not configured on the server." }),
         { status: 500, headers: { "Content-Type": "application/json" } },
       );
     }
 
-    const formBody = new URLSearchParams();
-    formBody.set("from", `Portfolio Contact <mailgun@${DOMAIN}>`);
-    formBody.set("to", TARGET_EMAIL);
-    formBody.set("subject", `New Contact: ${payload.name} - ${payload.interested}`);
-    formBody.set("text", toEmailText(payload));
-    formBody.set("h:Reply-To", payload.email);
-
-    const authHeader = `Basic ${Buffer.from(`api:${API_KEY}`).toString("base64")}`;
-    const response = await fetch(mailgunEndpoint(DOMAIN, REGION), {
+    const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        Authorization: authHeader,
-        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${API_KEY}`,
+        "Content-Type": "application/json",
       },
-      body: formBody.toString(),
+      body: JSON.stringify({
+        from: FROM_EMAIL,
+        to: [TARGET_EMAIL],
+        subject: `New Contact: ${payload.name} - ${payload.interested}`,
+        text: toEmailText(payload),
+        reply_to: payload.email,
+      }),
     });
 
     if (!response.ok) {
-      const mailgunError = await response.text();
+      const resendError = await response.text();
       return new Response(
-        JSON.stringify({ error: "Failed to send email.", detail: mailgunError }),
+        JSON.stringify({ error: "Failed to send email.", detail: resendError }),
         { status: 502, headers: { "Content-Type": "application/json" } },
       );
     }

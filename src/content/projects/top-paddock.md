@@ -4,7 +4,7 @@ slug: "top-paddock"
 year: "2025"
 client: "Internal Concept Project"
 role: "Design and Development"
-overview: "Digital product concept tailored for clean hierarchy, speed, and high-signal feature communication."
+overview: "Digital product concept tailored for clean hierarchy, speed and high-signal feature communication."
 websiteUrl: "https://www.davidvidovic.com"
 image: "/assets/img/update/mix/thumb-4.jpg"
 logo: "/assets/img/update/mix/thumb-4.jpg"
@@ -28,7 +28,7 @@ Top Paddock was created as a concept-focused portfolio piece to explore a clear 
 
 # Process
 
-The work focused on layout structure, interaction rhythm, and implementation feasibility while keeping performance and maintainability in scope.
+The work focused on layout structure, interaction rhythm and implementation feasibility while keeping performance and maintainability in scope.
 
 # Results
 

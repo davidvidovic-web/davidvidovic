@@ -4,7 +4,7 @@ return Astro.redirect("/#contact", 301);
 
 <BaseLayout
   title="Contact | David Vidovic"
-  description="Start a WordPress, WooCommerce, or custom web project with a clear scope, timeline, and implementation plan."
+  description="Start a WordPress, WooCommerce or custom web project with a clear scope, timeline and implementation plan."
   canonicalPath="/contact"
 >
   <section class="page-hero reveal">
@@ -67,15 +67,49 @@ return Astro.redirect("/#contact", 301);
     const formStart = document.getElementById("form-start");
 
     if (form && status && submitButton && formStart) {
+      let statusTimer;
+      const originalLabel = submitButton.textContent || "Send message";
+      const originalHoverLabel = submitButton.dataset.hover;
+
+      function applyAnimatedLabel(button, label) {
+        button.dataset.hover = label;
+        const hoverText = button.querySelector(".hov");
+
+        if (hoverText) {
+          hoverText.textContent = label;
+        } else {
+          button.innerHTML = `<span class="hov">${label}</span>`;
+        }
+
+        button.style.setProperty("--el-h", `${button.offsetHeight}px`);
+      }
+
+      function showStatus(message, type = "is-success") {
+        if (statusTimer) clearTimeout(statusTimer);
+        status.textContent = message;
+        status.className = `form-note ${type} is-visible`;
+
+        statusTimer = setTimeout(() => {
+          status.classList.remove("is-visible");
+          setTimeout(() => {
+            status.textContent = "";
+            status.className = "form-note";
+          }, 260);
+        }, 4500);
+      }
+
       formStart.value = String(Date.now());
 
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
         status.textContent = "";
-        status.classList.remove("is-error", "is-success");
+        status.classList.remove("is-error", "is-success", "is-visible");
 
         const payload = Object.fromEntries(new FormData(form).entries());
         submitButton.setAttribute("disabled", "true");
+        submitButton.classList.add("is-loading");
+        submitButton.setAttribute("aria-busy", "true");
+        submitButton.removeAttribute("data-hover");
         submitButton.textContent = "Sending...";
 
         try {
@@ -91,16 +125,16 @@ return Astro.redirect("/#contact", 301);
             throw new Error(result.error || "Failed to send message.");
           }
 
-          status.textContent = "Message sent successfully. I will get back to you soon.";
-          status.classList.add("is-success");
+          showStatus("Message sent successfully. I will get back to you soon.", "is-success");
           form.reset();
           formStart.value = String(Date.now());
         } catch (error) {
-          status.textContent = error instanceof Error ? error.message : "Failed to send message.";
-          status.classList.add("is-error");
+          showStatus(error instanceof Error ? error.message : "Failed to send message.", "is-error");
         } finally {
           submitButton.removeAttribute("disabled");
-          submitButton.textContent = "Send message";
+          submitButton.classList.remove("is-loading");
+          submitButton.removeAttribute("aria-busy");
+          applyAnimatedLabel(submitButton, originalHoverLabel || originalLabel);
         }
       });
     }

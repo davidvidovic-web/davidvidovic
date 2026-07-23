@@ -29,7 +29,7 @@ export const testimonials: TestimonialItem[] = [
     name: "Giorgio",
     designation: "Primedrinks AG",
     content:
-      "David is very professional and extremely helpful. He completed the job really well, stayed friendly and patient, listened to feedback, and overdelivered.",
+      "David is very professional and extremely helpful. He completed the job really well, stayed friendly and patient, listened to feedback and overdelivered.",
   },
   {
     id: 4,
@@ -44,7 +44,7 @@ export const testimonials: TestimonialItem[] = [
     name: "Lorenz",
     designation: "Futurecomm AG",
     content:
-      "David quickly resolved our WordPress issues with excellent quality. He also brought proactive ideas, and we plan to continue working with him for future site modifications.",
+      "David quickly resolved our WordPress issues with excellent quality. He also brought proactive ideas and we plan to continue working with him for future site modifications.",
   },
   {
     id: 6,
@@ -52,7 +52,7 @@ export const testimonials: TestimonialItem[] = [
     name: "Samantha",
     designation: "SDiane",
     content:
-      "Easy to work with, great communicator, fair, and fast. I would happily work with him again.",
+      "Easy to work with, great communicator, fair and fast. I would happily work with him again.",
   },
   {
     id: 7,

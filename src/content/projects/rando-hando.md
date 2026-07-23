@@ -28,7 +28,7 @@ Rando Hando was created as a concept-focused portfolio piece to explore a clear 
 
 # Process
 
-The work focused on layout structure, interaction rhythm, and implementation feasibility while keeping performance and maintainability in scope.
+The work focused on layout structure, interaction rhythm and implementation feasibility while keeping performance and maintainability in scope.
 
 # Results
 

@@ -4,7 +4,7 @@ slug: "rebrand"
 year: "2025"
 client: "Internal Concept Project"
 role: "Design and Development"
-overview: "Brand transformation concept combining new visual identity, digital touchpoints, and rollout consistency."
+overview: "Brand transformation concept combining new visual identity, digital touchpoints and rollout consistency."
 websiteUrl: "https://www.davidvidovic.com"
 image: "/assets/img/update/portfolio/port-3/portfolio-3.jpg"
 logo: "/assets/img/update/portfolio/port-3/portfolio-3.jpg"
@@ -28,7 +28,7 @@ Rebrand was created as a concept-focused portfolio piece to explore a clear visu
 
 # Process
 
-The work focused on layout structure, interaction rhythm, and implementation feasibility while keeping performance and maintainability in scope.
+The work focused on layout structure, interaction rhythm and implementation feasibility while keeping performance and maintainability in scope.
 
 # Results
 

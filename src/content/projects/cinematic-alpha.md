@@ -4,7 +4,7 @@ slug: "cinematic-alpha"
 year: "2025"
 client: "Internal Concept Project"
 role: "Design and Development"
-overview: "Cinematic campaign concept focused on product drama, pacing, and premium visual narrative."
+overview: "Cinematic campaign concept focused on product drama, pacing and premium visual narrative."
 websiteUrl: "https://www.davidvidovic.com"
 image: "/assets/img/update/portfolio/vp/portfolio.jpg"
 logo: "/assets/img/update/portfolio/vp/portfolio.jpg"
@@ -28,7 +28,7 @@ Cinematic Alpha was created as a concept-focused portfolio piece to explore a cl
 
 # Process
 
-The work focused on layout structure, interaction rhythm, and implementation feasibility while keeping performance and maintainability in scope.
+The work focused on layout structure, interaction rhythm and implementation feasibility while keeping performance and maintainability in scope.
 
 # Results
 

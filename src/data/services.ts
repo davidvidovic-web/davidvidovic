@@ -14,7 +14,7 @@ export const services: ServiceItem[] = [
     id: 6,
     title: "WordPress and custom websites",
     description:
-      "Fast, modern, and fully tailored websites from design to launch. Every build is responsive, SEO-ready, and aligned with your business goals.",
+      "Fast, modern and fully tailored websites from design to launch. Every build is responsive, SEO-ready and aligned with your business goals.",
     image: "/assets/img/update/service/service-1.jpg",
     icon: "Globe",
     categories: ["Custom development", "Responsive design", "SEO-ready"],
@@ -23,7 +23,7 @@ export const services: ServiceItem[] = [
     id: 7,
     title: "Theme and plugin development",
     description:
-      "Custom themes and plugin architecture designed for maintainability, flexibility, and clean long-term growth.",
+      "Custom themes and plugin architecture designed for maintainability, flexibility and clean long-term growth.",
     image: "/assets/img/update/service/service-2.jpg",
     icon: "Puzzle",
     categories: ["Custom features", "WordPress plugins", "Custom themes"],
@@ -32,7 +32,7 @@ export const services: ServiceItem[] = [
     id: 8,
     title: "Website optimization and fixes",
     description:
-      "Speed improvements, Core Web Vitals upgrades, security hardening, migrations, and bug fixes to keep your site stable under real traffic.",
+      "Speed improvements, Core Web Vitals upgrades, security hardening, migrations and bug fixes to keep your site stable under real traffic.",
     image: "/assets/img/update/service/service-3.jpg",
     icon: "Zap",
     categories: ["Speed optimization", "Performance tuning", "Security fixes"],
@@ -41,7 +41,7 @@ export const services: ServiceItem[] = [
     id: 9,
     title: "Ongoing maintenance and support",
     description:
-      "Flexible retainers or on-demand support for updates, backups, monitoring, and incremental product improvements.",
+      "Flexible retainers or on-demand support for updates, backups, monitoring and incremental product improvements.",
     image: "/assets/img/update/service/service-4.jpg",
     icon: "Settings",
     categories: ["Updates", "Backups", "Monitoring"],
@@ -50,7 +50,7 @@ export const services: ServiceItem[] = [
     id: 1,
     title: "Corporate Video Production",
     description:
-      "Concept-driven video production for product launches, campaigns, and technical storytelling across digital channels.",
+      "Concept-driven video production for product launches, campaigns and technical storytelling across digital channels.",
     image: "/assets/img/update/service/vp/thumb.jpg",
     icon: "Globe",
     categories: ["Creative direction", "Script planning", "Brand storytelling"],
@@ -59,7 +59,7 @@ export const services: ServiceItem[] = [
     id: 2,
     title: "Scriptwriting and Storyboarding",
     description:
-      "Narrative structure and storyboard preparation to align messaging, pacing, and visual hierarchy before production.",
+      "Narrative structure and storyboard preparation to align messaging, pacing and visual hierarchy before production.",
     image: "/assets/img/update/service/vp/thumb-2.jpg",
     icon: "Puzzle",
     categories: ["Narrative design", "Storyboard planning", "Campaign alignment"],
@@ -68,7 +68,7 @@ export const services: ServiceItem[] = [
     id: 3,
     title: "Motion Graphics and Animation",
     description:
-      "Motion systems and animated assets tailored for social campaigns, product explainers, and brand communication.",
+      "Motion systems and animated assets tailored for social campaigns, product explainers and brand communication.",
     image: "/assets/img/update/service/vp/thumb-3.jpg",
     icon: "Zap",
     categories: ["2D motion", "Explainer visuals", "UI animation"],
@@ -77,7 +77,7 @@ export const services: ServiceItem[] = [
     id: 4,
     title: "Social Media Video Content",
     description:
-      "Short-form video pipelines optimized for engagement, retention, and repeatable content publishing schedules.",
+      "Short-form video pipelines optimized for engagement, retention and repeatable content publishing schedules.",
     image: "/assets/img/update/service/vp/thumb-4.jpg",
     icon: "Settings",
     categories: ["Short-form content", "Editing workflows", "Platform optimization"],
@@ -95,7 +95,7 @@ export const services: ServiceItem[] = [
     id: 10,
     title: "UpWork Freelance",
     description:
-      "Ongoing freelance delivery for global clients with focus on implementation quality, communication cadence, and predictable outcomes.",
+      "Ongoing freelance delivery for global clients with focus on implementation quality, communication cadence and predictable outcomes.",
     image: "/assets/img/update/service/service-3/st-service-1.jpg",
     icon: "Settings",
     categories: ["UX Design", "User Testing", "Product Prototype", "Mobile UI", "Web app design"],
@@ -106,7 +106,7 @@ export const services: ServiceItem[] = [
     id: 11,
     title: "Converted UK",
     description:
-      "Product design and delivery collaboration focused on practical UX decisions, testing, and iterative conversion improvements.",
+      "Product design and delivery collaboration focused on practical UX decisions, testing and iterative conversion improvements.",
     image: "/assets/img/update/service/service-3/st-service-2.jpg",
     icon: "Puzzle",
     categories: ["UX Design", "User Testing", "Product Prototype", "Mobile UI", "Web app design"],
@@ -139,7 +139,7 @@ export const services: ServiceItem[] = [
     id: 14,
     title: "UpWork Freelance (Earlier Engagements)",
     description:
-      "Earlier freelance cycles centered on web app design quality, user testing feedback loops, and delivery discipline.",
+      "Earlier freelance cycles centered on web app design quality, user testing feedback loops and delivery discipline.",
     image: "/assets/img/update/service/service-3/st-service-4.jpg",
     icon: "Settings",
     categories: ["UX Design", "User Testing", "Product Prototype", "Mobile UI", "Web app design"],
@@ -150,7 +150,7 @@ export const services: ServiceItem[] = [
     id: 15,
     title: "Ad-kraft",
     description:
-      "Agency-side product and UX support for campaign execution, design prototyping, and multi-device interface quality.",
+      "Agency-side product and UX support for campaign execution, design prototyping and multi-device interface quality.",
     image: "/assets/img/update/service/service-3/st-service-4.jpg",
     icon: "Puzzle",
     categories: ["UX Design", "User Testing", "Product Prototype", "Mobile UI", "Web app design"],

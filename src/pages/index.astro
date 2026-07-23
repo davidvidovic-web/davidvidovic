@@ -87,7 +87,7 @@ const structuredData = [
 			<h1 class="hero-title">The website your business deserves, without the guesswork.</h1>
 			<p class="hero-lead">
 				Strategy, UX and full-stack implementation handled as one workflow.
-				Clear scope, predictable delivery, and results built into every project.
+				Clear scope, predictable delivery and results built into every project.
 			</p>
 			<div class="cta-row">
 				<a class="btn btn-primary" href="#contact">Start building</a>
@@ -119,7 +119,7 @@ const structuredData = [
 		<div class="section-head">
 			<div>
 				<h2>Featured Case Studies</h2>
-				<p>Production work with real constraints, real users, and measurable outcomes.</p>
+				<p>Production work with real constraints, real users and measurable outcomes.</p>
 			</div>
 		</div>
 		<div class="grid grid-2 case-study-grid">
@@ -188,7 +188,7 @@ const structuredData = [
 		<div class="section-head">
 			<div>
 				<h2>Services</h2>
-				<p>WordPress-first delivery with strong frontend, performance, and long-term maintainability.</p>
+				<p>WordPress-first delivery with strong frontend, performance and long-term maintainability.</p>
 			</div>
 		</div>
 		<div class="grid grid-2">
@@ -228,7 +228,7 @@ const structuredData = [
 		<div class="section-head">
 			<div>
 				<h2>How Projects Move</h2>
-				<p>Clear phases, transparent decisions, and small feedback loops.</p>
+				<p>Clear phases, transparent decisions and small feedback loops.</p>
 			</div>
 		</div>
 		<div class="process-list">
@@ -236,7 +236,7 @@ const structuredData = [
 				<span class="process-num">01</span>
 				<div>
 					<h3>Discovery and scope mapping</h3>
-					<p>Goals, constraints, and timeline defined before a line of code.</p>
+					<p>Goals, constraints and timeline defined before a line of code.</p>
 				</div>
 			</article>
 			<article class="process-item">
@@ -445,6 +445,22 @@ const skipBtn = document.getElementById("mf-skip-btn");
 const TOTAL = 5;
 let current = 1;
 let busy = false;
+let toastTimer = null;
+const submitOriginalLabel = submitBtn.textContent || "Send message";
+const submitOriginalHover = submitBtn.dataset.hover;
+
+function applyAnimatedLabel(button, label) {
+button.dataset.hover = label;
+var hoverText = button.querySelector(".hov");
+
+if (hoverText) {
+hoverText.textContent = label;
+} else {
+button.innerHTML = '<span class="hov">' + label + "</span>";
+}
+
+button.style.setProperty("--el-h", button.offsetHeight + "px");
+}
 if (formStartEl) formStartEl.value = String(Date.now());
 
 function getStep(n) { return stage.querySelector('[data-step="' + n + '"]'); }
@@ -561,20 +577,22 @@ if (contactEl) contactEl.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 function showToast(message, type) {
+	if (toastTimer) clearTimeout(toastTimer);
 	statusEl.textContent = message;
 	statusEl.className = "form-note " + type + " is-visible";
-	if (type === "is-success") {
-		setTimeout(function() {
-			statusEl.classList.remove("is-visible");
-			setTimeout(function() { statusEl.textContent = ""; statusEl.className = "form-note"; }, 280);
-		}, 4000);
-	}
+	toastTimer = setTimeout(function() {
+		statusEl.classList.remove("is-visible");
+		setTimeout(function() { statusEl.textContent = ""; statusEl.className = "form-note"; }, 280);
+	}, type === "is-error" ? 5600 : 4200);
 }
 
 form.addEventListener("submit", async function(e) {
 e.preventDefault();
 if (!validate(current)) return;
 submitBtn.disabled = true;
+submitBtn.classList.add("is-loading");
+submitBtn.setAttribute("aria-busy", "true");
+submitBtn.removeAttribute("data-hover");
 submitBtn.textContent = "Sending...";
 statusEl.classList.remove("is-visible");
 try {
@@ -596,7 +614,9 @@ updateUI();
 showToast(err instanceof Error ? err.message : "Failed to send message.", "is-error");
 } finally {
 submitBtn.disabled = false;
-submitBtn.textContent = "Send message";
+submitBtn.classList.remove("is-loading");
+submitBtn.removeAttribute("aria-busy");
+applyAnimatedLabel(submitBtn, submitOriginalHover || submitOriginalLabel);
 }
 });
 

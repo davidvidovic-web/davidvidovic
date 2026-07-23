@@ -8,7 +8,7 @@ excerpt: "A focused look at the trends that are actually improving performance a
 image: "/assets/img/blog/thumb-2.jpg"
 ---
 
-Most design trends are only useful if they improve comprehension and conversion. I prioritize trends that reduce friction, like tighter information hierarchy, cleaner section rhythm, and stronger contrast.
+Most design trends are only useful if they improve comprehension and conversion. I prioritize trends that reduce friction, like tighter information hierarchy, cleaner section rhythm and stronger contrast.
 
 Motion should support orientation, not distract from content. A few purposeful transitions are usually more effective than layered animation systems that increase payload and maintenance cost.
 

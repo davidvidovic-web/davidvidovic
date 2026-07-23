@@ -28,7 +28,7 @@ Cinematic Pulse was created as a concept-focused portfolio piece to explore a cl
 
 # Process
 
-The work focused on layout structure, interaction rhythm, and implementation feasibility while keeping performance and maintainability in scope.
+The work focused on layout structure, interaction rhythm and implementation feasibility while keeping performance and maintainability in scope.
 
 # Results
 

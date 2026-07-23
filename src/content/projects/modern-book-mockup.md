@@ -4,7 +4,7 @@ slug: "modern-book-mockup"
 year: "2025"
 client: "Internal Concept Project"
 role: "Design and Development"
-overview: "Editorial product concept balancing typography, hierarchy, and conversion-oriented product framing."
+overview: "Editorial product concept balancing typography, hierarchy and conversion-oriented product framing."
 websiteUrl: "https://www.davidvidovic.com"
 image: "/assets/img/portfolio/thumb-7.jpg"
 logo: "/assets/img/portfolio/thumb-7.jpg"
@@ -28,7 +28,7 @@ Modern Book Mockup was created as a concept-focused portfolio piece to explore a
 
 # Process
 
-The work focused on layout structure, interaction rhythm, and implementation feasibility while keeping performance and maintainability in scope.
+The work focused on layout structure, interaction rhythm and implementation feasibility while keeping performance and maintainability in scope.
 
 # Results
 
