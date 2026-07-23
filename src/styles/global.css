@@ -668,6 +668,21 @@ p {
   transform: translate(2px, -2px);
 }
 
+.reviews-link-wrap {
+  margin-top: 1.2rem;
+}
+
+.reviews-link-row {
+  width: min(100%, 560px);
+  margin-inline: auto;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.reviews-link-row:first-child {
+  border-top: 0;
+}
+
 .budget-strip {
   display: flex;
   flex-wrap: wrap;
