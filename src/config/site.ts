@@ -1,12 +1,24 @@
+const siteUrl =
+  import.meta.env.NEXT_PUBLIC_SITE_URL ||
+  import.meta.env.PUBLIC_SITE_URL ||
+  "https://www.davidvidovic.com";
+
 export const SITE = {
   name: "David Vidovic",
-  siteUrl: "https://www.davidvidovic.com",
+  siteUrl,
   title: "David Vidovic | WordPress Developer and WooCommerce Specialist",
   description:
     "WordPress developer specializing in custom themes, plugins, WooCommerce, and booking flows. I also build React and Next.js applications for teams that need custom web products.",
   defaultOgImage: "/assets/img/portfolio/thumb.jpg",
   locale: "en_US",
   twitterHandle: "@davidvidovic",
+};
+
+export const ANALYTICS = {
+  gaMeasurementId:
+    import.meta.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||
+    import.meta.env.PUBLIC_GA_MEASUREMENT_ID ||
+    "G-YYN5M08HWE",
 };
 
 export const NAV_ITEMS = [

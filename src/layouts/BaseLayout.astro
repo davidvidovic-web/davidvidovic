@@ -1,5 +1,5 @@
 ---
-import { NAV_ITEMS, SITE } from "../config/site";
+import { ANALYTICS, NAV_ITEMS, SITE } from "../config/site";
 import "../styles/global.css";
 
 interface Props {
@@ -24,6 +24,7 @@ const {
 
 const canonicalUrl = new URL(canonicalPath ?? Astro.url.pathname, SITE.siteUrl).toString();
 const robotsValue = noindex ? "noindex, nofollow" : "index, follow";
+const gaMeasurementId = ANALYTICS.gaMeasurementId;
 const schemaBlocks = structuredData
   ? Array.isArray(structuredData)
     ? structuredData
@@ -66,6 +67,21 @@ const schemaBlocks = structuredData
     <meta name="twitter:creator" content={SITE.twitterHandle} />
 
     <title>{title}</title>
+
+    {
+      gaMeasurementId && (
+        <>
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+          ></script>
+          <script
+            is:inline
+            set:html={`window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', '${gaMeasurementId}');`}
+          ></script>
+        </>
+      )
+    }
 
     {
       schemaBlocks.map((block) => (
@@ -199,9 +215,9 @@ const schemaBlocks = structuredData
       });
 
       // Hover text roll on link-buttons and nav links
-      document.querySelectorAll(".btn, .nav-list a").forEach(function(el) {
+      document.querySelectorAll<HTMLElement>(".btn, .nav-list a").forEach(function(el) {
         if (el.querySelector("svg, img")) return;
-        var text = el.textContent.trim();
+        var text = el.textContent?.trim();
         if (!text) return;
         el.dataset.hover = text;
         el.style.setProperty("--el-h", el.offsetHeight + "px");
