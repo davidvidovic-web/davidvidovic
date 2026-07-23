@@ -1963,14 +1963,6 @@ textarea.mf-input { resize: none; min-height: 104px; }
     text-align: center;
   }
 
-  .form-result-state {
-    color: #86a6d4;
-    font-family: "JetBrains Mono", "Cascadia Mono", monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
   .form-result-title {
     color: #eef5ff;
     font-family: "Sora", "Space Grotesk", sans-serif;
@@ -1991,13 +1983,6 @@ textarea.mf-input { resize: none; min-height: 104px; }
     overflow: visible;
   }
 
-  .form-result-spinner {
-    opacity: 0;
-    transform-origin: 50% 50%;
-    transform-box: fill-box;
-  }
-
-  .form-result-ring,
   .form-result-check,
   .form-result-cross-a,
   .form-result-cross-b {
@@ -2005,11 +1990,6 @@ textarea.mf-input { resize: none; min-height: 104px; }
     stroke: currentColor;
     stroke-linecap: round;
     stroke-linejoin: round;
-  }
-
-  .form-result-ring {
-    stroke-width: 2;
-    opacity: 0.34;
   }
 
   .form-result-check,
@@ -2021,41 +2001,10 @@ textarea.mf-input { resize: none; min-height: 104px; }
     opacity: 0;
   }
 
-  .form-result-spinner-track,
-  .form-result-spinner-head {
-    fill: none;
-    stroke: currentColor;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .form-result-spinner-track {
-    stroke-width: 2;
-    opacity: 0.24;
-  }
-
-  .form-result-spinner-head {
-    stroke-width: 3;
-    stroke-dasharray: 28;
-    stroke-dashoffset: 28;
-  }
-
   .form.is-loading .form-result,
   .mf-form.is-loading .form-result {
     border-color: rgb(96 169 255 / 42%);
     color: #cbe0ff;
-  }
-
-  .form.is-loading .form-result-spinner,
-  .mf-form.is-loading .form-result-spinner {
-    opacity: 1;
-    animation: form-result-spin 1.1s linear infinite;
-  }
-
-  .form.is-loading .form-result-spinner-head,
-  .mf-form.is-loading .form-result-spinner-head {
-    opacity: 1;
-    animation: form-result-draw 1.2s ease-in-out infinite alternate;
   }
 
   .form.is-loading .form-result-check,
@@ -2066,16 +2015,6 @@ textarea.mf-input { resize: none; min-height: 104px; }
   .mf-form.is-loading .form-result-cross-b {
     opacity: 0;
     animation: none;
-  }
-
-  @keyframes form-result-spin {
-    from {
-      transform: rotate(0deg);
-    }
-
-    to {
-      transform: rotate(360deg);
-    }
   }
 
   .form.is-success .form-result,

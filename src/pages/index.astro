@@ -440,15 +440,11 @@ const structuredData = [
 
 				<div id="form-status" class="form-result" aria-live="polite" hidden>
 					<svg class="form-result-icon" viewBox="0 0 48 48" aria-hidden="true">
-						<circle class="form-result-spinner form-result-spinner-track" cx="24" cy="24" r="18"></circle>
-						<path class="form-result-spinner form-result-spinner-head" d="M42 24a18 18 0 0 0-18-18"></path>
-						<circle class="form-result-ring" cx="24" cy="24" r="18"></circle>
 						<path class="form-result-check" d="M15.5 24.5 21.5 30.5 33 18.5"></path>
 						<path class="form-result-cross-a" d="M16 16L32 32"></path>
 						<path class="form-result-cross-b" d="M32 16L16 32"></path>
 					</svg>
 					<div class="form-result-copy">
-						<span class="form-result-state"></span>
 						<strong class="form-result-title"></strong>
 						<p class="form-result-text"></p>
 					</div>
@@ -514,7 +510,6 @@ const backBtn = document.getElementById("mf-back");
 const nextBtn = document.getElementById("mf-next");
 const submitBtn = document.getElementById("mf-submit");
 const statusEl = form.querySelector("#form-status");
-const statusStateEl = statusEl ? statusEl.querySelector(".form-result-state") : null;
 const statusTitleEl = statusEl ? statusEl.querySelector(".form-result-title") : null;
 const statusTextEl = statusEl ? statusEl.querySelector(".form-result-text") : null;
 const formStartEl = document.getElementById("form-start");
@@ -549,7 +544,6 @@ if (statusEl) {
 	statusEl.classList.remove("is-visible", "is-success", "is-error");
 	statusEl.classList.remove("is-loading");
 	statusEl.classList.add(state);
-	if (statusStateEl) statusStateEl.textContent = state === "is-success" ? "Sent" : "Failed";
 	if (statusTitleEl) statusTitleEl.textContent = title;
 	if (statusTextEl) statusTextEl.textContent = message;
 	requestAnimationFrame(function() { statusEl.classList.add("is-visible"); });
@@ -690,7 +684,6 @@ form.classList.add("is-loading");
 statusEl.hidden = false;
 statusEl.classList.remove("is-success", "is-error");
 statusEl.classList.add("is-loading", "is-visible");
-if (statusStateEl) statusStateEl.textContent = "Sending";
 if (statusTitleEl) statusTitleEl.textContent = "Sending message";
 if (statusTextEl) statusTextEl.textContent = "Please wait while your message is submitted.";
 submitBtn.disabled = true;
