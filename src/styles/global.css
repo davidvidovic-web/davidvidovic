@@ -2173,6 +2173,13 @@ textarea.mf-input { resize: none; min-height: 104px; }
   animation-delay: 150ms;
 }
 
+.page-hero.reveal,
+.home-hero.reveal {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;

@@ -80,8 +80,6 @@ return Astro.redirect("/#contact", 301);
         } else {
           button.innerHTML = `<span class="hov">${label}</span>`;
         }
-
-        button.style.setProperty("--el-h", `${button.offsetHeight}px`);
       }
 
       function showStatus(message, type = "is-success") {

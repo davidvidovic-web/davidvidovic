@@ -220,7 +220,6 @@ const schemaBlocks = structuredData
         var text = el.textContent?.trim();
         if (!text) return;
         el.dataset.hover = text;
-        el.style.setProperty("--el-h", el.offsetHeight + "px");
         el.innerHTML = "<span class='hov'>" + el.innerHTML + "</span>";
       });
     </script>
