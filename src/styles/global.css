@@ -33,6 +33,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -136,6 +137,18 @@ img {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+a:not([class]) {
+  color: var(--brand);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+}
+
+a:not([class]):hover,
+a:not([class]):focus-visible {
+  color: var(--brand-strong);
 }
 
 main {
@@ -275,6 +288,7 @@ p {
   font-size: 0.77rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  text-decoration: none;
   transition:
     color 0.2s var(--easing),
     border-color 0.2s var(--easing),
@@ -1529,16 +1543,6 @@ details.card p {
   color: var(--ink-soft);
 }
 
-.case-link {
-  color: #8fc9ff;
-  word-break: break-all;
-}
-
-.case-link:hover,
-.case-link:focus-visible {
-  color: var(--brand);
-}
-
 .case-story {
   display: grid;
   gap: 1.04rem;
@@ -2363,6 +2367,7 @@ textarea.mf-input { resize: none; min-height: 104px; }
   font-size: 0.82rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  text-decoration: none;
   border-bottom: 1px solid rgb(41 64 112 / 48%);
   transition: color 0.18s var(--easing), background-color 0.18s var(--easing);
 }
