@@ -1,0 +1,81 @@
+---
+return Astro.redirect("/#portfolio", 301);
+---
+
+const featuredProjectSlugs = new Set([
+  "geeks-on-site",
+  "kozmeticki-salon-cats",
+  "ambientivo",
+  "desserts-with-ana",
+]);
+
+const featuredProjects = projects.filter((project) => featuredProjectSlugs.has(project.data.slug));
+---
+
+<BaseLayout
+  title="Portfolio | David Vidovic"
+  description="Selected WordPress, WooCommerce, and custom web case studies with process details and outcomes."
+  canonicalPath="/portfolio"
+>
+  <section class="page-hero reveal">
+    <span class="kicker">Portfolio</span>
+    <h1>Case Studies Built for Real Business Outcomes</h1>
+    <p>
+      A focused selection of production work across WordPress, WooCommerce, and custom frontend
+      implementation.
+    </p>
+  </section>
+
+  <section class="section surface reveal reveal-2">
+    <div class="grid grid-2">
+      {
+        featuredProjects.map((project) => (
+          <article class="card project-card">
+            <a class="project-card-media" href={`/portfolio/${project.data.slug}`}>
+              <img src={project.data.detailsImage} alt={`${project.data.title} screenshot`} loading="lazy" />
+            </a>
+            <div class="project-card-meta">
+              <h2>{project.data.title}</h2>
+              <span>{project.data.year}</span>
+            </div>
+            <p>{project.data.overview}</p>
+            <div class="card-tags">
+              {project.data.services.map((service) => <span class="tag">{service}</span>)}
+            </div>
+            <a class="btn btn-primary" href={`/portfolio/${project.data.slug}`}>
+              View case study
+            </a>
+          </article>
+        ))
+      }
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-secondary" href="/#contact">Start a similar project</a>
+      <a class="btn btn-secondary" href={SITE.siteUrl}>Visit main site URL</a>
+    </div>
+  </section>
+
+  <section class="section surface reveal reveal-3" id="awards">
+    <div class="section-head">
+      <div>
+        <h2>Other Projects</h2>
+        <p>Outbound links to additional production work and public launches.</p>
+      </div>
+    </div>
+    <div class="grid grid-2">
+      {
+        otherProjects.map((project) => (
+          <article class="card">
+            <h3>{project.title}</h3>
+            <p>{project.subtitle}</p>
+            <div class="cta-row">
+              <a class="btn btn-secondary" href={project.link} rel="noopener noreferrer" target="_blank">
+                Visit project
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

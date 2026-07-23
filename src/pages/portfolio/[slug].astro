@@ -1,0 +1,136 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE } from "../../config/site";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const featuredProjectSlugs = new Set([
+    "geeks-on-site",
+    "kozmeticki-salon-cats",
+    "ambientivo",
+    "desserts-with-ana",
+  ]);
+
+  const projects = (await getCollection("projects")).filter((project) =>
+    featuredProjectSlugs.has(project.data.slug),
+  );
+
+  return projects.map((project) => ({
+    params: { slug: project.data.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const canonicalPath = `/portfolio/${project.data.slug}`;
+const heroMetrics = project.data.counters.slice(0, 3);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: project.data.title,
+  description: project.data.overview,
+  image: new URL(project.data.detailsImage, SITE.siteUrl).toString(),
+  creator: { "@id": `${SITE.siteUrl}/#person` },
+  keywords: project.data.services.join(", "),
+  datePublished: `${project.data.year}-01-01`,
+  url: `${SITE.siteUrl}${canonicalPath}`,
+};
+---
+
+<BaseLayout
+  title={`${project.data.title} | Portfolio`}
+  description={project.data.overview}
+  canonicalPath={canonicalPath}
+  ogType="article"
+  ogImage={project.data.detailsImage}
+  structuredData={structuredData}
+>
+  <section class="page-hero case-hero reveal" style={`--case-accent:${project.data.backgroundColor};`}>
+    <div class="case-hero-grid">
+      <div class="case-hero-copy">
+        <span class="kicker">Case Study / {project.data.year}</span>
+        <h1>{project.data.title}</h1>
+        <p class="case-overview">{project.data.overview}</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href={project.data.websiteUrl} rel="noopener noreferrer" target="_blank">
+            Visit live website
+          </a>
+          <a class="btn btn-secondary" href="/#portfolio">Back to case studies</a>
+        </div>
+      </div>
+
+      <aside class="case-hero-aside">
+        <p class="case-aside-label">Scope and stack</p>
+        <div class="case-logo-wrap" style={`background-color: ${project.data.backgroundColor};`}>
+          <img class="case-logo" src={project.data.logo} alt={`${project.data.title} logo`} loading="lazy" />
+        </div>
+        <div class="case-chip-list">
+          {project.data.services.map((service) => <span class="case-chip">{service}</span>)}
+        </div>
+        {project.data.technologies.length > 0 && (
+          <>
+            <p class="case-aside-sublabel">Technologies</p>
+            <div class="case-chip-list">
+              {project.data.technologies.map((tech) => <span class="case-chip case-chip--tech">{tech}</span>)}
+            </div>
+          </>
+        )}
+      </aside>
+    </div>
+  </section>
+
+  <ul class="case-meta-bar reveal">
+    <li>
+      <span>Client</span>
+      <strong>{project.data.client}</strong>
+    </li>
+    <li>
+      <span>Role</span>
+      <strong>{project.data.role}</strong>
+    </li>
+    <li>
+      <span>Year</span>
+      <strong>{project.data.year}</strong>
+    </li>
+    <li>
+      <span>Live</span>
+      <a class="case-link" href={project.data.websiteUrl} rel="noopener noreferrer" target="_blank">
+        {project.data.websiteUrl.replace(/^https?:\/\//, "")}
+      </a>
+    </li>
+  </ul>
+
+  <section class={`section detail-wrap case-study-layout${project.data.counters.length === 0 ? " is-full" : ""}`}>
+    <article class="surface reveal reveal-2 prose case-story">
+      <Content />
+    </article>
+
+    {project.data.counters.length > 0 && (
+      <aside class="detail-side case-sidebar">
+        <div class="card reveal reveal-2">
+          <h2>Impact</h2>
+          <div class="metrics">
+            {project.data.counters.map((metric) => (
+              <div class="metric">
+                <div class="metric-value">
+                  {metric.prefix ?? ""}
+                  {metric.value}
+                  {metric.suffix ?? ""}
+                </div>
+                <div class="metric-label">{metric.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </aside>
+    )}
+  </section>
+</BaseLayout>

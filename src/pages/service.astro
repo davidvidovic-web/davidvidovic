@@ -1,0 +1,55 @@
+---
+return Astro.redirect("/", 301);
+---
+
+<BaseLayout
+  title="Service | David Vidovic"
+  description="WordPress development services including custom sites, plugin architecture, WooCommerce builds, and long-term optimization support."
+  canonicalPath="/service"
+>
+  <section class="page-hero reveal">
+    <span class="kicker">Service</span>
+    <h1>WordPress-First Delivery, Backed by Product Thinking</h1>
+    <p>
+      Services are structured for teams that need custom implementation, cleaner UX, and a faster
+      release path without unnecessary complexity.
+    </p>
+  </section>
+
+  <section class="section surface reveal reveal-2">
+    <div class="grid grid-2">
+      {
+        services.map((service) => (
+          <article class="card">
+            <h2>{service.title}</h2>
+            <p>{service.description}</p>
+            <div class="card-tags">
+              {service.categories.map((category) => <span class="tag">{category}</span>)}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section surface reveal reveal-3">
+    <div class="section-head">
+      <h2>How Projects Move</h2>
+      <p>Clear phases, transparent decisions, and small feedback loops.</p>
+    </div>
+    <div class="grid grid-2">
+      {
+        deliverySteps.map((step, index) => (
+          <article class="card">
+            <h3>{`0${index + 1}`}</h3>
+            <p>{step}</p>
+          </article>
+        ))
+      }
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/#contact">Request project estimate</a>
+      <a class="btn btn-secondary" href="/portfolio">View implementation examples</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,212 @@
+---
+import { NAV_ITEMS, SITE } from "../config/site";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  noindex?: boolean;
+  structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+  canonicalPath,
+  ogImage = SITE.defaultOgImage,
+  ogType = "website",
+  noindex = false,
+  structuredData,
+} = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath ?? Astro.url.pathname, SITE.siteUrl).toString();
+const robotsValue = noindex ? "noindex, nofollow" : "index, follow";
+const schemaBlocks = structuredData
+  ? Array.isArray(structuredData)
+    ? structuredData
+    : [structuredData]
+  : [];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="robots" content={robotsValue} />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={new URL(ogImage, SITE.siteUrl).toString()} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, SITE.siteUrl).toString()} />
+    <meta name="twitter:creator" content={SITE.twitterHandle} />
+
+    <title>{title}</title>
+
+    {
+      schemaBlocks.map((block) => (
+        <script type="application/ld+json" set:html={JSON.stringify(block)} />
+      ))
+    }
+  </head>
+  <body>
+    <div class="bg-blobs" aria-hidden="true">
+      <div class="bg-blob bg-blob-1"></div>
+      <div class="bg-blob bg-blob-2"></div>
+      <div class="bg-blob bg-blob-3"></div>
+    </div>
+    <p id="form-status" class="form-note" aria-live="polite"></p>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="/" aria-label="David Vidovic home">
+          <img class="brand-logo" src="/assets/img/logo/logo-light.webp" alt="David Vidovic logo" width="28" height="28" />
+          <span>David Vidovic</span>
+        </a>
+        <div class="header-actions">
+          <nav aria-label="Primary navigation">
+            <ul class="nav-list">
+              {
+                NAV_ITEMS.map((item) => (
+                  <li>
+                    <a href={item.href}>{item.label}</a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+          <a class="btn btn-primary btn-nav" href="/#contact">Start building</a>
+          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile drawer -->
+    <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
+    <nav class="drawer" id="nav-drawer" aria-label="Mobile navigation" aria-hidden="true">
+      <div class="drawer-head">
+        <a class="brand" href="/" aria-label="David Vidovic home">
+          <img class="brand-logo" src="/assets/img/logo/logo-light.webp" alt="David Vidovic logo" width="28" height="28" />
+          <span>David Vidovic</span>
+        </a>
+        <button class="drawer-close" id="drawer-close" aria-label="Close menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <ul class="drawer-nav">
+        {
+          NAV_ITEMS.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+        <li class="drawer-socials-item">
+          <div class="drawer-socials" aria-label="Social links">
+            <a href="https://www.linkedin.com/in/david-vidovic/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.upwork.com/freelancers/~0163d597d928e1e526" target="_blank" rel="noopener noreferrer" aria-label="Upwork" class="social-icon-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            </a>
+            <a href="https://github.com/davidvidovic-web" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </a>
+            <a href="mailto:mail@davidvidovic.com" aria-label="Email" class="social-icon-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            </a>
+          </div>
+        </li>
+      </ul>
+      <div class="drawer-footer">
+        <a class="btn btn-primary" href="/#contact" style="width:100%;justify-content:center;">Start building</a>
+      </div>
+    </nav>
+
+    <main class="page">
+      <div class="site-shell">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="site-shell">
+        <p class="footer-copy">{new Date().getFullYear()} David Vidovic. Building for clarity, speed, and measurable outcomes.</p>
+      </div>
+    </footer>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const drawer = document.getElementById("nav-drawer");
+      const backdrop = document.getElementById("drawer-backdrop");
+      const closeBtn = document.getElementById("drawer-close");
+
+      function openDrawer() {
+        drawer?.classList.add("is-open");
+        backdrop?.classList.add("is-open");
+        hamburger?.setAttribute("aria-expanded", "true");
+        drawer?.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeDrawer() {
+        drawer?.classList.remove("is-open");
+        backdrop?.classList.remove("is-open");
+        hamburger?.setAttribute("aria-expanded", "false");
+        drawer?.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      hamburger?.addEventListener("click", openDrawer);
+      closeBtn?.addEventListener("click", closeDrawer);
+      backdrop?.addEventListener("click", closeDrawer);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeDrawer();
+      });
+
+      drawer?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeDrawer);
+      });
+
+      // Hover text roll on link-buttons and nav links
+      document.querySelectorAll(".btn, .nav-list a").forEach(function(el) {
+        if (el.querySelector("svg, img")) return;
+        var text = el.textContent.trim();
+        if (!text) return;
+        el.dataset.hover = text;
+        el.style.setProperty("--el-h", el.offsetHeight + "px");
+        el.innerHTML = "<span class='hov'>" + el.innerHTML + "</span>";
+      });
+    </script>
+  </body>
+</html>

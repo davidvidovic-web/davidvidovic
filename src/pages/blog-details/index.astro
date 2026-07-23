@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Redirecting | Blog"
+  description="Legacy blog route redirect"
+  canonicalPath="/blog"
+  noindex={true}
+>
+  <meta http-equiv="refresh" content="0;url=/blog" />
+  <section class="surface">
+    <p>Redirecting to the blog archive...</p>
+    <p><a class="btn btn-primary" href="/blog">Continue</a></p>
+  </section>
+</BaseLayout>
