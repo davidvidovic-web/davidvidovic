@@ -1260,6 +1260,16 @@ p {
   vertical-align: -0.22em;
 }
 
+.quote::after {
+  content: "\201D";
+  color: var(--brand);
+  font-family: "Sora", "Space Grotesk", sans-serif;
+  font-size: 1.7rem;
+  line-height: 0;
+  margin-left: 0.22rem;
+  vertical-align: -0.22em;
+}
+
 .quote-meta {
   color: #8ea3cb;
   font-family: "JetBrains Mono", "Cascadia Mono", monospace;
