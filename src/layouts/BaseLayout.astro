@@ -191,6 +191,16 @@ const schemaBlocks = structuredData
     </footer>
 
     <script>
+      function markPageLoaded() {
+        document.body.classList.add("is-loaded");
+      }
+
+      if (document.readyState === "complete") {
+        markPageLoaded();
+      } else {
+        window.addEventListener("load", markPageLoaded, { once: true });
+      }
+
       const hamburger = document.getElementById("hamburger");
       const drawer = document.getElementById("nav-drawer");
       const backdrop = document.getElementById("drawer-backdrop");

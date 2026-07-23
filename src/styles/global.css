@@ -76,7 +76,7 @@ body {
   height: 720px;
   top: -22%;
   left: -14%;
-  background: radial-gradient(circle, rgb(80 148 255 / 32%) 0%, transparent 62%);
+  background: radial-gradient(circle, rgb(80 148 255 / 38%) 0%, transparent 62%);
   filter: blur(120px);
   animation: blob-1 34s ease-in-out infinite alternate;
 }
@@ -86,7 +86,7 @@ body {
   height: 620px;
   top: -12%;
   right: -14%;
-  background: radial-gradient(circle, rgb(46 220 172 / 22%) 0%, transparent 62%);
+  background: radial-gradient(circle, rgb(46 220 172 / 28%) 0%, transparent 62%);
   filter: blur(130px);
   animation: blob-2 42s ease-in-out infinite alternate;
 }
@@ -103,18 +103,18 @@ body {
 
 @keyframes blob-1 {
   0%   { transform: translate(0, 0) scale(1); }
-  20%  { transform: translate(180px, 100px) scale(1.08); }
-  50%  { transform: translate(80px, 240px) scale(0.93); }
-  75%  { transform: translate(260px, 140px) scale(1.12); }
-  100% { transform: translate(120px, 80px) scale(1.04); }
+  20%  { transform: translate(240px, 140px) scale(1.12); }
+  50%  { transform: translate(120px, 300px) scale(0.9); }
+  75%  { transform: translate(340px, 180px) scale(1.16); }
+  100% { transform: translate(180px, 110px) scale(1.06); }
 }
 
 @keyframes blob-2 {
   0%   { transform: translate(0, 0) scale(1); }
-  25%  { transform: translate(-160px, 110px) scale(0.91); }
-  55%  { transform: translate(-80px, 210px) scale(1.1); }
-  80%  { transform: translate(-220px, 80px) scale(0.95); }
-  100% { transform: translate(-140px, 160px) scale(1.06); }
+  25%  { transform: translate(-220px, 150px) scale(0.88); }
+  55%  { transform: translate(-110px, 280px) scale(1.14); }
+  80%  { transform: translate(-300px, 110px) scale(0.92); }
+  100% { transform: translate(-190px, 210px) scale(1.08); }
 }
 
 @keyframes blob-3 {
@@ -124,8 +124,24 @@ body {
   100% { transform: translate(70px, -190px) scale(1.08); }
 }
 
+@keyframes hero-glow-drift {
+  0% {
+    transform: rotate(12deg) translate3d(0, 0, 0) scale(1);
+    opacity: 0.74;
+  }
+  50% {
+    transform: rotate(20deg) translate3d(-86px, 30px, 0) scale(1.18);
+    opacity: 0.98;
+  }
+  100% {
+    transform: rotate(7deg) translate3d(-36px, -18px, 0) scale(1.02);
+    opacity: 0.84;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .bg-blob { animation: none; }
+  .bg-blob,
+  .home-hero::before { animation: none; }
 }
 /* ---- End background blobs ------------------------- */
 
@@ -377,11 +393,17 @@ p {
 
 .home-hero::before {
   inset: 12% -9% auto auto;
-  width: 220px;
-  height: 220px;
+  width: 280px;
+  height: 280px;
   border-radius: 0;
-  background: radial-gradient(circle, rgb(96 169 255 / 18%) 0%, transparent 66%);
-  transform: rotate(12deg);
+  background: radial-gradient(circle, rgb(96 169 255 / 24%) 0%, transparent 66%);
+  opacity: 0.8;
+  transform: rotate(12deg) translate3d(0, 0, 0) scale(1);
+  will-change: transform, opacity;
+}
+
+body.is-loaded .home-hero::before {
+  animation: hero-glow-drift 14s ease-in-out infinite alternate;
 }
 
 .home-hero::after {
@@ -399,8 +421,14 @@ p {
 }
 
 .home-hero .hero-title {
-  max-width: 17ch;
+  max-width: 26ch;
   line-height: 1.08;
+}
+
+@media (min-width: 861px) {
+  .home-hero .hero-title {
+    max-width: 31ch;
+  }
 }
 
 .case-hero {
@@ -2430,7 +2458,7 @@ textarea.mf-input { resize: none; min-height: 104px; }
   }
 
   .hero-title {
-    font-size: clamp(1.6rem, 7vw, 2.1rem);
+    font-size: 2rem;
   }
 
   .hero-stat-strip {
