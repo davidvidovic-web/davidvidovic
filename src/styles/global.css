@@ -1940,9 +1940,7 @@ textarea.mf-input { resize: none; min-height: 104px; }
   padding: clamp(1.1rem, 2.2vw, 1.6rem);
   border: 1px solid rgb(41 64 112 / 84%);
   border-radius: calc(var(--radius-lg) + 2px);
-  background:
-    radial-gradient(circle at 50% 0%, rgb(96 169 255 / 12%) 0%, transparent 42%),
-    linear-gradient(180deg, rgb(11 20 37 / 96%) 0%, rgb(9 15 28 / 98%) 100%);
+  background: linear-gradient(180deg, rgb(11 20 37 / 96%) 0%, rgb(9 15 28 / 98%) 100%);
   box-shadow: 0 26px 54px -36px rgb(0 0 0 / 92%);
   opacity: 0;
   transform: translateY(10px) scale(0.98);
