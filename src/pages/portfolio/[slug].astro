@@ -32,6 +32,37 @@ const { Content } = await render(project);
 const canonicalPath = `/portfolio/${project.data.slug}`;
 const heroMetrics = project.data.counters.slice(0, 3);
 
+const LOGO_SOURCES: Record<string, { src: string; srcSet: string; width: number; height: number }> = {
+  "/assets/img/brand/dessertswithana-logo.png": {
+    src: "/assets/img/brand/dessertswithana-logo-200w.png",
+    srcSet:
+      "/assets/img/brand/dessertswithana-logo-200w.png 200w, /assets/img/brand/dessertswithana-logo-400w.png 400w",
+    width: 200,
+    height: 200,
+  },
+  "/assets/img/brand/cats-logo.avif": {
+    src: "/assets/img/brand/cats-logo-200w.avif",
+    srcSet: "/assets/img/brand/cats-logo-200w.avif 200w, /assets/img/brand/cats-logo-400w.avif 400w",
+    width: 200,
+    height: 93,
+  },
+  "/assets/img/brand/ambientivo-logo.png": {
+    src: "/assets/img/brand/ambientivo-logo-200w.png",
+    srcSet:
+      "/assets/img/brand/ambientivo-logo-200w.png 200w, /assets/img/brand/ambientivo-logo-400w.png 400w",
+    width: 200,
+    height: 29,
+  },
+  "/assets/img/brand/gos-logo.webp": {
+    src: "/assets/img/brand/gos-logo-200w.webp",
+    srcSet: "/assets/img/brand/gos-logo-200w.webp 200w, /assets/img/brand/gos-logo-400w.webp 400w",
+    width: 200,
+    height: 82,
+  },
+};
+
+const logoSource = LOGO_SOURCES[project.data.logo] ?? null;
+
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
@@ -70,7 +101,17 @@ const structuredData = {
       <aside class="case-hero-aside">
         <p class="case-aside-label">Scope and stack</p>
         <div class="case-logo-wrap" style={`background-color: ${project.data.backgroundColor};`}>
-          <img class="case-logo" src={project.data.logo} alt={`${project.data.title} logo`} loading="lazy" />
+          <img
+            class="case-logo"
+            src={logoSource?.src ?? project.data.logo}
+            srcset={logoSource?.srcSet}
+            sizes="(max-width: 980px) 70vw, 180px"
+            width={logoSource?.width}
+            height={logoSource?.height}
+            alt={`${project.data.title} logo`}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="case-chip-list">
           {project.data.services.map((service) => <span class="case-chip">{service}</span>)}

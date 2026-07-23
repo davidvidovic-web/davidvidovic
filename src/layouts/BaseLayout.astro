@@ -1,6 +1,6 @@
 ---
 import { ANALYTICS, NAV_ITEMS, SITE } from "../config/site";
-import "../styles/global.css";
+import globalStylesheetHref from "../styles/global.css?url";
 
 interface Props {
   title?: string;
@@ -41,14 +41,56 @@ const schemaBlocks = structuredData
     <meta name="description" content={description} />
     <meta name="robots" content={robotsValue} />
 
+    <style>
+      :root{--bg:#060a13;--bg-soft:#0b1322;--ink:#e6f0ff;--brand:#38f7bf;--brand-strong:#18d6a0;--radius-lg:8px;--content-width:1180px;--easing:cubic-bezier(.2,.9,.25,1)}
+      *{box-sizing:border-box}html,body{margin:0;padding:0}
+      body{min-height:100vh;color:var(--ink);background:linear-gradient(90deg,rgb(90 122 178 / 9%) 1px,transparent 1px) 0 0/42px 42px,linear-gradient(rgb(90 122 178 / 7%) 1px,transparent 1px) 0 0/42px 42px,repeating-linear-gradient(90deg,rgb(255 255 255 / 0%) 0,rgb(255 255 255 / 0%) 119px,rgb(125 151 201 / 4%) 120px),linear-gradient(180deg,var(--bg) 0%,var(--bg-soft) 100%);font-family:"Space Grotesk","Segoe UI",sans-serif;line-height:1.68;text-rendering:optimizeLegibility}
+      a{color:inherit;text-decoration:none}img{max-width:100%;display:block}p,h1,h2,h3{margin:0}
+      h1{font-family:"Sora","Space Grotesk",sans-serif;letter-spacing:-.024em;line-height:1.08;font-size:clamp(2.2rem,4.5vw,3.7rem)}
+      .site-shell{width:min(100% - 2.4rem,var(--content-width));margin-inline:auto}
+      .site-header{position:sticky;top:0;z-index:40;border-bottom:1px solid rgb(53 79 128 / 82%);background:rgb(6 11 20 / 92%);backdrop-filter:blur(8px)}
+      .site-header-inner{width:min(100% - 2.4rem,var(--content-width));margin-inline:auto;min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+      .brand{display:inline-flex;align-items:center;gap:.7rem;font-family:"Sora","Space Grotesk",sans-serif;font-size:.98rem;font-weight:700;letter-spacing:.01em}
+      .brand-logo{width:28px;height:28px;object-fit:contain;display:block}
+      .header-actions{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:.84rem}
+      .nav-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:.45rem}
+      .drawer-backdrop{position:fixed;inset:0;z-index:49;opacity:0;pointer-events:none}
+      .drawer{position:fixed;top:0;right:0;bottom:0;z-index:50;width:min(300px,86vw);display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;pointer-events:none}
+      .drawer.is-open{transform:translateX(0);visibility:visible;pointer-events:auto}
+      .hamburger{display:none;align-items:center;justify-content:center;width:38px;height:38px}
+      .page{display:block;padding:2.4rem 0 4rem;position:relative;z-index:1}
+      .page-hero{position:relative;overflow:hidden;border:1px solid rgb(41 64 112 / 72%);border-radius:var(--radius-lg);background:radial-gradient(circle at 88% 10%,rgb(96 169 255 / 18%),transparent 36%),linear-gradient(155deg,rgb(15 25 45 / 96%) 0%,rgb(11 20 38 / 96%) 100%);padding:clamp(1.2rem,2.8vw,2.2rem)}
+      .home-hero{border:1px solid rgb(66 96 156 / 86%);border-radius:var(--radius-lg);background:radial-gradient(circle at 82% 14%,rgb(96 169 255 / 14%),transparent 34%),linear-gradient(145deg,rgb(11 19 35 / 98%) 0%,rgb(9 15 28 / 98%) 100%)}
+      .hero-main{display:grid;gap:1.1rem;max-width:62ch}.hero-title{max-width:20ch;font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.1}.hero-lead{max-width:58ch;color:#a9bbe0;font-size:clamp(.96rem,1.1vw,1.08rem);line-height:1.76}
+      .cta-row{display:flex;flex-wrap:wrap;gap:.72rem;margin-top:1.14rem}
+      .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.58rem .96rem;border:1px solid transparent;border-radius:4px;font-family:"JetBrains Mono","Cascadia Mono",monospace;font-size:.75rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:transform .2s var(--easing),background-color .2s var(--easing)}
+      .btn-primary{color:#031321;border-color:rgb(56 247 191 / 66%);background:var(--brand)}.btn-primary:hover,.btn-primary:focus-visible{background:var(--brand);border-color:rgb(56 247 191 / 66%)}
+      .btn-secondary{color:#cfe0ff;border-color:rgb(41 64 112 / 88%);background:rgb(13 23 42 / 84%)}
+      .detail-wrap{display:grid;gap:1.2rem;grid-template-columns:minmax(0,1fr)}.detail-side{display:grid;gap:.78rem}.case-sidebar{align-content:start}
+      @media (min-width:940px){.detail-wrap{grid-template-columns:1.2fr 1fr}.case-sidebar{position:sticky;top:104px}}
+      @media (max-width:860px){.site-header-inner{min-height:64px}.header-actions{gap:.6rem}.hamburger{display:flex}}
+      @media (max-width:860px){.nav-list,.btn-nav{display:none}}
+    </style>
+
+    <link rel="preload" as="style" href={globalStylesheetHref} onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href={globalStylesheetHref} /></noscript>
+
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@500;600;700&display=optional"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@500;600;700&display=optional"
+      />
+    </noscript>
 
     <meta property="og:locale" content={SITE.locale} />
     <meta property="og:type" content={ogType} />
@@ -219,10 +261,20 @@ const schemaBlocks = structuredData
       // Hover text roll on link-buttons and nav links
       document.querySelectorAll<HTMLElement>(".btn, .nav-list a").forEach(function(el) {
         if (el.querySelector("svg, img")) return;
+        var existing = el.querySelector(":scope > .hov");
+        if (existing) {
+          var existingText = existing.textContent?.trim();
+          if (existingText) el.dataset.hover = existingText;
+          return;
+        }
+
+        // Only auto-wrap plain-text buttons/links to avoid corrupting complex markup.
+        if (el.children.length > 0) return;
+
         var text = el.textContent?.trim();
         if (!text) return;
         el.dataset.hover = text;
-        el.innerHTML = "<span class='hov'>" + el.innerHTML + "</span>";
+        el.innerHTML = "<span class='hov'>" + text + "</span>";
       });
     </script>
   </body>

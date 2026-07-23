@@ -1346,6 +1346,7 @@ details.card p {
 [data-hover] {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 [data-hover]::after {
@@ -1359,14 +1360,16 @@ details.card p {
   letter-spacing: inherit;
   text-transform: inherit;
   color: inherit;
-  transform: translateY(var(--el-h, 100%));
+  white-space: nowrap;
+  backface-visibility: hidden;
+  transform: translate3d(0, 120%, 0);
   transition: transform 0.3s var(--easing);
   pointer-events: none;
 }
 
 [data-hover]:hover::after,
 [data-hover]:focus-visible::after {
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .hov {
@@ -1375,13 +1378,17 @@ details.card p {
   justify-content: center;
   align-self: stretch;
   width: 100%;
+  white-space: nowrap;
+  backface-visibility: hidden;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
   transition: transform 0.3s var(--easing);
   pointer-events: none;
 }
 
 [data-hover]:hover .hov,
 [data-hover]:focus-visible .hov {
-  transform: translateY(calc(-1 * var(--el-h, 100%)));
+  transform: translate3d(0, -120%, 0);
 }
 
 [data-hover].is-loading::after {

@@ -18,6 +18,39 @@ const featuredProjectSlugs = new Set([
 	"desserts-with-ana",
 ]);
 
+const LOGO_SOURCES: Record<string, { src: string; srcSet: string; width: number; height: number }> = {
+	"/assets/img/brand/dessertswithana-logo.png": {
+		src: "/assets/img/brand/dessertswithana-logo-200w.png",
+		srcSet:
+			"/assets/img/brand/dessertswithana-logo-200w.png 200w, /assets/img/brand/dessertswithana-logo-400w.png 400w",
+		width: 200,
+		height: 200,
+	},
+	"/assets/img/brand/cats-logo.avif": {
+		src: "/assets/img/brand/cats-logo-200w.avif",
+		srcSet: "/assets/img/brand/cats-logo-200w.avif 200w, /assets/img/brand/cats-logo-400w.avif 400w",
+		width: 200,
+		height: 93,
+	},
+	"/assets/img/brand/ambientivo-logo.png": {
+		src: "/assets/img/brand/ambientivo-logo-200w.png",
+		srcSet:
+			"/assets/img/brand/ambientivo-logo-200w.png 200w, /assets/img/brand/ambientivo-logo-400w.png 400w",
+		width: 200,
+		height: 29,
+	},
+	"/assets/img/brand/gos-logo.webp": {
+		src: "/assets/img/brand/gos-logo-200w.webp",
+		srcSet: "/assets/img/brand/gos-logo-200w.webp 200w, /assets/img/brand/gos-logo-400w.webp 400w",
+		width: 200,
+		height: 82,
+	},
+};
+
+function getLogoSource(logoPath: string) {
+	return LOGO_SOURCES[logoPath] ?? null;
+}
+
 const featuredProjects = projects.filter((project) => featuredProjectSlugs.has(project.data.slug));
 
 const structuredData = [
@@ -124,38 +157,47 @@ const structuredData = [
 		</div>
 		<div class="grid grid-2 case-study-grid">
 			{
-				featuredProjects.map((project) => (
-					<a class="case-study-card" href={`/portfolio/${project.data.slug}`}>
-						<div
-							class="case-study-visual"
-							style={`background-color: ${project.data.backgroundColor};`}
-						>
-							<img
-								src={project.data.logo}
-								alt={`${project.data.title} logo`}
-								loading="lazy"
-							/>
-						</div>
-						<div class="case-study-body">
-							<div class="case-study-meta">
-								<h4>{project.data.title}</h4>
-								<span class="case-study-year">{project.data.year}</span>
+				featuredProjects.map((project) => {
+					const logoSource = getLogoSource(project.data.logo);
+
+					return (
+						<a class="case-study-card" href={`/portfolio/${project.data.slug}`}>
+							<div
+								class="case-study-visual"
+								style={`background-color: ${project.data.backgroundColor};`}
+							>
+								<img
+									src={logoSource?.src ?? project.data.logo}
+									srcset={logoSource?.srcSet}
+									sizes="(max-width: 860px) 60vw, 200px"
+									width={logoSource?.width}
+									height={logoSource?.height}
+									alt={`${project.data.title} logo`}
+									loading="lazy"
+									decoding="async"
+								/>
 							</div>
-							<p>{project.data.overview}</p>
-							<div class="card-tags">
-								{project.data.services.slice(0, 3).map((service) => (
-									<span class="tag">{service}</span>
-								))}
+							<div class="case-study-body">
+								<div class="case-study-meta">
+									<h4>{project.data.title}</h4>
+									<span class="case-study-year">{project.data.year}</span>
+								</div>
+								<p>{project.data.overview}</p>
+								<div class="card-tags">
+									{project.data.services.slice(0, 3).map((service) => (
+										<span class="tag">{service}</span>
+									))}
+								</div>
+								<span class="case-study-cta">
+									Read case study
+									<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+										<path d="M2 11L11 2M11 2H5M11 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+									</svg>
+								</span>
 							</div>
-							<span class="case-study-cta">
-								Read case study
-								<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-									<path d="M2 11L11 2M11 2H5M11 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-							</span>
-						</div>
-					</a>
-				))
+						</a>
+					);
+				})
 			}
 		</div>
 	</section>
