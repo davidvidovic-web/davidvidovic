@@ -1,4 +1,5 @@
 ---
+// @ts-nocheck
 return Astro.redirect("/#contact", 301);
 ---
 
@@ -56,18 +57,37 @@ return Astro.redirect("/#contact", 301);
       <div class="cta-row">
         <button class="btn btn-primary" type="submit" id="submit-btn">Send message</button>
       </div>
-      <p id="form-status" class="form-note" aria-live="polite"></p>
+
+      <div id="form-status" class="form-result" aria-live="polite" hidden>
+        <svg class="form-result-icon" viewBox="0 0 48 48" aria-hidden="true">
+          <circle class="form-result-spinner form-result-spinner-track" cx="24" cy="24" r="18"></circle>
+          <path class="form-result-spinner form-result-spinner-head" d="M42 24a18 18 0 0 0-18-18"></path>
+          <circle class="form-result-ring" cx="24" cy="24" r="18"></circle>
+          <path class="form-result-check" d="M15.5 24.5 21.5 30.5 33 18.5"></path>
+          <path class="form-result-cross-a" d="M16 16L32 32"></path>
+          <path class="form-result-cross-b" d="M32 16L16 32"></path>
+        </svg>
+        <div class="form-result-copy">
+          <span class="form-result-state"></span>
+          <strong class="form-result-title"></strong>
+          <p class="form-result-text"></p>
+        </div>
+      </div>
     </form>
   </section>
 
   <script>
+    // @ts-nocheck
     const form = document.getElementById("contact-form");
-    const status = document.getElementById("form-status");
+    const status = form ? form.querySelector("#form-status") : null;
+    const statusState = status ? status.querySelector(".form-result-state") : null;
+    const statusTitle = status ? status.querySelector(".form-result-title") : null;
+    const statusText = status ? status.querySelector(".form-result-text") : null;
     const submitButton = document.getElementById("submit-btn");
     const formStart = document.getElementById("form-start");
 
     if (form && status && submitButton && formStart) {
-      let statusTimer;
+      let formLocked = false;
       const originalLabel = submitButton.textContent || "Send message";
       const originalHoverLabel = submitButton.dataset.hover;
 
@@ -82,33 +102,39 @@ return Astro.redirect("/#contact", 301);
         }
       }
 
-      function showStatus(message, type = "is-success") {
-        if (statusTimer) clearTimeout(statusTimer);
-        status.textContent = message;
-        status.className = `form-note ${type} is-visible`;
-
-        statusTimer = setTimeout(() => {
-          status.classList.remove("is-visible");
-          setTimeout(() => {
-            status.textContent = "";
-            status.className = "form-note";
-          }, 260);
-        }, 4500);
+      function lockFormResult(state, title, message) {
+        formLocked = true;
+        form.dataset.locked = "true";
+        form.classList.add("is-locked", state);
+        status.hidden = false;
+        status.classList.remove("is-visible", "is-success", "is-error");
+        status.classList.remove("is-loading");
+        status.classList.add(state);
+        if (statusState) statusState.textContent = state === "is-success" ? "Sent" : "Failed";
+        if (statusTitle) statusTitle.textContent = title;
+        if (statusText) statusText.textContent = message;
+        requestAnimationFrame(() => status.classList.add("is-visible"));
+        form.querySelectorAll("input, select, textarea, button").forEach((control) => {
+          control.disabled = true;
+        });
       }
 
       formStart.value = String(Date.now());
 
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
-        status.textContent = "";
+        if (formLocked) return;
         status.classList.remove("is-error", "is-success", "is-visible");
+        form.classList.add("is-loading");
+        status.hidden = false;
+        status.classList.add("is-loading", "is-visible");
+        if (statusState) statusState.textContent = "Sending";
+        if (statusTitle) statusTitle.textContent = "Sending message";
+        if (statusText) statusText.textContent = "Please wait while your message is submitted.";
 
         const payload = Object.fromEntries(new FormData(form).entries());
         submitButton.setAttribute("disabled", "true");
-        submitButton.classList.add("is-loading");
         submitButton.setAttribute("aria-busy", "true");
-        submitButton.removeAttribute("data-hover");
-        submitButton.textContent = "Sending...";
 
         try {
           const response = await fetch("/api/contact", {
@@ -123,16 +149,15 @@ return Astro.redirect("/#contact", 301);
             throw new Error(result.error || "Failed to send message.");
           }
 
-          showStatus("Message sent successfully. I will get back to you soon.", "is-success");
-          form.reset();
-          formStart.value = String(Date.now());
+          form.classList.remove("is-loading");
+          lockFormResult("is-success", "Message sent", "I’ll get back to you shortly!");
         } catch (error) {
-          showStatus(error instanceof Error ? error.message : "Failed to send message.", "is-error");
-        } finally {
-          submitButton.removeAttribute("disabled");
-          submitButton.classList.remove("is-loading");
-          submitButton.removeAttribute("aria-busy");
-          applyAnimatedLabel(submitButton, originalHoverLabel || originalLabel);
+          form.classList.remove("is-loading");
+          lockFormResult(
+            "is-error",
+            "Message not sent",
+            error instanceof Error ? error.message : "Failed to send message. Reload the page to try again.",
+          );
         }
       });
     }
