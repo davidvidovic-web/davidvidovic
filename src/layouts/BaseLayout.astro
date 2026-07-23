@@ -46,7 +46,7 @@ const schemaBlocks = structuredData
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@500;600;700&display=optional"
       rel="stylesheet"
     />
 
@@ -126,7 +126,7 @@ const schemaBlocks = structuredData
 
     <!-- Mobile drawer -->
     <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
-    <nav class="drawer" id="nav-drawer" aria-label="Mobile navigation" aria-hidden="true">
+    <nav class="drawer" id="nav-drawer" aria-label="Mobile navigation" aria-hidden="true" inert>
       <div class="drawer-head">
         <a class="brand" href="/" aria-label="David Vidovic home">
           <img class="brand-logo" src="/assets/img/logo/logo-light.webp" alt="David Vidovic logo" width="28" height="28" />
@@ -191,6 +191,7 @@ const schemaBlocks = structuredData
         backdrop?.classList.add("is-open");
         hamburger?.setAttribute("aria-expanded", "true");
         drawer?.setAttribute("aria-hidden", "false");
+        drawer?.removeAttribute("inert");
         document.body.style.overflow = "hidden";
       }
 
@@ -199,6 +200,7 @@ const schemaBlocks = structuredData
         backdrop?.classList.remove("is-open");
         hamburger?.setAttribute("aria-expanded", "false");
         drawer?.setAttribute("aria-hidden", "true");
+        drawer?.setAttribute("inert", "");
         document.body.style.overflow = "";
       }
 

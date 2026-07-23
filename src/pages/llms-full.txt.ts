@@ -15,28 +15,28 @@ export const GET: APIRoute = async () => {
   ]);
 
   const projectUrls = projects
-    .map((entry) => makeUrl(`/portfolio/${entry.data.slug}`))
+    .map((entry) => `[${entry.data.title}](${makeUrl(`/portfolio/${entry.data.slug}`)})`)
     .sort((a, b) => a.localeCompare(b));
 
   const blogUrls = blogPosts
-    .map((entry) => makeUrl(`/blog/${entry.data.slug}`))
+    .map((entry) => `[${entry.data.title}](${makeUrl(`/blog/${entry.data.slug}`)})`)
     .sort((a, b) => a.localeCompare(b));
 
   const body = [
     `# ${SITE.name} - Full LLM URL Index`,
     "",
-    `Canonical: ${SITE.siteUrl}`,
+    `Canonical: [${SITE.siteUrl}](${SITE.siteUrl})`,
     `Generated: ${new Date().toISOString()}`,
     "",
     "## Core",
-    makeUrl("/"),
-    makeUrl("/service"),
-    makeUrl("/portfolio"),
-    makeUrl("/blog"),
-    makeUrl("/contact"),
-    makeUrl("/sitemap.xml"),
-    makeUrl("/robots.txt"),
-    makeUrl("/llms.txt"),
+    `[Home](${makeUrl("/")})`,
+    `[Services](${makeUrl("/service")})`,
+    `[Portfolio](${makeUrl("/portfolio")})`,
+    `[Blog](${makeUrl("/blog")})`,
+    `[Contact](${makeUrl("/contact")})`,
+    `[Sitemap](${makeUrl("/sitemap.xml")})`,
+    `[Robots](${makeUrl("/robots.txt")})`,
+    `[LLMS](${makeUrl("/llms.txt")})`,
     "",
     "## Portfolio",
     ...projectUrls,
