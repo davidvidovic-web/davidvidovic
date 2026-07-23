@@ -1992,6 +1992,13 @@ textarea.mf-input { resize: none; min-height: 104px; }
     stroke-linejoin: round;
   }
 
+  .form-result-ring {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    opacity: 0.34;
+  }
+
   .form-result-check,
   .form-result-cross-a,
   .form-result-cross-b {
