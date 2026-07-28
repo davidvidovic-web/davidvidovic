@@ -6,9 +6,9 @@ const siteUrl =
 export const SITE = {
   name: "David Vidovic",
   siteUrl,
-  title: "David Vidovic | WordPress Developer and WooCommerce Specialist",
+  title: "David Vidovic | WordPress Specialist and Full-stack Developer",
   description:
-    "WordPress developer specializing in custom themes, plugins, WooCommerce and booking flows. I also build React and Next.js applications for teams that need custom web products.",
+    "WordPress developer specializing in custom themes, plugins, WooCommerce and booking flows. I also build applications for teams that need custom web products.",
   defaultOgImage: "/assets/img/og-image.jpg",
   locale: "en_US",
   twitterHandle: "@davidvidovic",
