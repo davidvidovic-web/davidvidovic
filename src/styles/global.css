@@ -406,9 +406,8 @@ body.is-loaded .home-hero::before {
 }
 
 .home-hero::after {
-  width: min(260px, 48%);
-  height: 1px;
-  background: linear-gradient(90deg, rgb(56 247 191 / 86%) 0%, rgb(96 169 255 / 84%) 100%);
+  content: none;
+  display: none;
 }
 
 .home-hero .kicker {
@@ -437,8 +436,10 @@ body.is-loaded .home-hero::before {
     linear-gradient(150deg, rgb(16 26 45 / 96%) 0%, rgb(10 18 33 / 96%) 100%);
 }
 
+.case-hero::before,
 .case-hero::after {
-  background: linear-gradient(90deg, var(--brand) 0%, var(--case-accent, var(--accent)) 100%);
+  content: none;
+  display: none;
 }
 
 .case-hero-grid {

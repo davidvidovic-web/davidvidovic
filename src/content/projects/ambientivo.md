@@ -46,23 +46,33 @@ technologies:
 
 counters:
 
-  - value: 25
+  - value: 28
 
     suffix: "%"
 
-    label: "about 20-30% of total traffic now comes from organic search"
+    label: "of total traffic now comes from organic search"
 
-  - value: 35
-
-    suffix: "%"
-
-    label: "about 25-40% of visitors reach the portfolio section after the redesign"
-
-  - value: 20
+  - value: 38
 
     suffix: "%"
 
-    label: "about 10-30% rise in brand-related searches after launch"
+    label: "of visitors reach the portfolio section after the redesign"
+
+  - value: 24
+
+    prefix: "+"
+
+    suffix: "%"
+
+    label: "rise in brand-related searches after launch"
+
+  - value: 36
+
+    prefix: "+"
+
+    suffix: "%"
+
+    label: "increase in qualified client inquiries submitted through the new site"
 
 ---
 
@@ -70,7 +80,7 @@ counters:
 
 Ambientivo needed a modern, high-performance website that could communicate their architectural vision while delivering an exceptional digital experience. Their previous site lacked structure, visual clarity and technical foundations strong enough to support advanced interactions or rich media. To reflect the quality of their work, the brand required a complete rebuild with smoother animations, cleaner presentation and a more scalable architecture.
 
-The goal was to design and develop a fully custom website using WordPress as the backend and React on the frontend—combining creative freedom with fast performance and long-term maintainability.
+The goal was to design and develop a fully custom website using WordPress as the backend and React on the frontend, combining creative freedom with fast performance and long-term maintainability.
 
 # Process
 

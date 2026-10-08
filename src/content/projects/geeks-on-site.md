@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Geeks on Site"
 slug: "geeks-on-site"
 year: "2025"
@@ -25,18 +25,20 @@ technologies:
   - "WooCommerce"
   - "Figma"
 counters:
-  - value: 20
+  - value: 27
     prefix: "+"
     suffix: "%"
-    label: "about 15-30% increase in completed bookings after launching the online booking flow"
-  - value: 12
-    prefix: "-"
+    label: "increase in completed bookings after launching the online booking flow"
+  - value: 14
     suffix: "%"
-    label: "about 10-20% reduction in checkout abandonment after cart and checkout redesign"
-  - value: 15
+    label: "reduction in checkout abandonment after cart and checkout redesign"
+  - value: 18
     prefix: "+"
     suffix: "%"
-    label: "about 10-20% increase in mobile conversions from a cleaner responsive layout"
+    label: "increase in mobile conversions from a cleaner responsive layout"
+  - value: 41
+    suffix: "%"
+    label: "faster booking completion time from service selection to confirmation"
 ---
 
 # Objective

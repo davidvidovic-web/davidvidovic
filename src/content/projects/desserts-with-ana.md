@@ -52,23 +52,31 @@ technologies:
 
 counters:
 
-  - value: 15
+  - value: 19
 
     suffix: "%"
 
-    label: "about 10-20% of visitors now discover the brand via organic search"
+    label: "of visitors now discover the brand via organic search"
 
-  - value: 30
-
-    suffix: "%"
-
-    label: "about 20-40% of visitors explore both the shop and recipes"
-
-  - value: 12
+  - value: 31
 
     suffix: "%"
 
-    label: "about 8-15% of total orders are processed through Stripe POS integration"
+    label: "of visitors explore both the shop and recipes"
+
+  - value: 11
+
+    suffix: "%"
+
+    label: "of total orders are processed through Stripe POS integration"
+
+  - value: 23
+
+    prefix: "+"
+
+    suffix: "%"
+
+    label: "increase in repeat customer orders across online and in-person sales"
 
 ---
 
@@ -76,7 +84,7 @@ counters:
 
 Desserts with Ana needed a warm, inviting online presence that showcased the personality of a solo baker while making it easy for customers to browse products, place orders and explore her recipes. Before this project, Ana managed most communication manually through messages and social media, which limited visibility and made it difficult for customers to discover her full range of desserts.
 
-The goal was to build a modern website with an integrated shop, a recipe hub and support Ana’s offline business operations with a Stripe POS workflow — giving her a professional platform, expanding her reach and reducing daily manual work.
+The goal was to build a modern website with an integrated shop, a recipe hub and support Ana’s offline business operations with a Stripe POS workflow, giving her a professional platform, expanding her reach and reducing daily manual work.
 
 # Process
 
@@ -96,7 +104,7 @@ Key steps included:
 
 - Applying essential SEO fundamentals to boost local discoverability and dessert-related search performance.
 
-# Stripe POS Terminal Integration
+# Stripe POS terminal integration
 
 To support Ana’s in-person sales and streamline her checkout workflow, a custom WordPress plugin was developed to connect Stripe POS terminals with her WooCommerce store.
 
@@ -110,7 +118,7 @@ This solution gave Ana a unified system for both online and offline sales, reduc
 
 # Results
 
-The new Desserts with Ana website delivers a warm, professional experience that helps customers quickly find what they need — whether placing orders or exploring recipes. The integrated shop reduced manual order handling, while the recipe section opened a new channel for organic traffic.
+The new Desserts with Ana website delivers a warm, professional experience that helps customers quickly find what they need, whether placing orders or exploring recipes. The integrated shop reduced manual order handling, while the recipe section opened a new channel for organic traffic.
 
 The Stripe POS plugin tied her online and offline sales together, giving her a smoother workflow and a more scalable digital foundation.
 

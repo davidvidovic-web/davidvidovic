@@ -30,7 +30,6 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 const canonicalPath = `/portfolio/${project.data.slug}`;
-const heroMetrics = project.data.counters.slice(0, 3);
 
 const LOGO_SOURCES: Record<string, { src: string; srcSet: string; width: number; height: number }> = {
   "/assets/img/brand/dessertswithana-logo.png": {

@@ -24,7 +24,7 @@ export const ANALYTICS = {
 export const NAV_ITEMS = [
   { label: "Work", href: "/#portfolio" },
   { label: "Services", href: "/#services" },
-  { label: "Other Projects", href: "/#awards" },
+  { label: "Other projects", href: "/#awards" },
   { label: "FAQ", href: "/#faq" },
   { label: "Connect", href: "/#connect" },
 ] as const;

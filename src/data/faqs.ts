@@ -27,7 +27,7 @@ export const faqs: FaqItem[] = [
   {
     question: "Will I get updates or previews during the design process?",
     answer:
-      "Yes. I share regular updates and previews as the project moves forward, so you always know what is happening and can provide feedback along the way.",
+      "I share regular updates and previews as the project moves forward, so you always know what is happening and can provide feedback along the way.",
   },
   {
     question:
@@ -38,23 +38,23 @@ export const faqs: FaqItem[] = [
   {
     question: "Do you provide ongoing maintenance and support after launch?",
     answer:
-      "Yes. I offer maintenance packages that include regular updates, security monitoring, backups and technical support. Support can be monthly or on demand.",
+      "I offer maintenance packages that include regular updates, security monitoring, backups and technical support. Support can be monthly or on demand.",
   },
   {
     question: "Will my website be mobile-friendly and responsive?",
     answer:
-      "Yes. Every website I build is responsive and optimized for phones, tablets and desktops, with cross-device testing before launch.",
+      "Every website I build is responsive and optimized for phones, tablets and desktops, with cross-device testing before launch.",
   },
   {
     question: "Do you handle hosting, speed optimization and security setup?",
     answer:
-      "Yes. I can handle reliable hosting setup, Core Web Vitals improvements, caching and CDN configuration and baseline security hardening.",
+      "I can handle reliable hosting setup, Core Web Vitals improvements, caching and CDN configuration and baseline security hardening.",
   },
   {
     question:
       "Can you integrate third-party services, APIs or custom features into my site?",
     answer:
-      "Yes. I can integrate payment systems, external APIs, booking flows, headless setups and custom functionality into your site.",
+      "I can integrate payment systems, external APIs, booking flows, headless setups and custom functionality into your site.",
   },
   {
     question:

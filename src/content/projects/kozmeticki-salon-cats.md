@@ -46,41 +46,45 @@ technologies:
 
 counters:
 
-  - value: 20
+  - value: 22
 
     prefix: "+"
 
     suffix: "%"
 
-    label: "about 15-25% increase in Instagram-driven visits after front-page restructuring"
+    label: "increase in Instagram-driven visits after front-page restructuring"
 
-  - value: 15
+  - value: 16
 
     prefix: "+"
 
     suffix: "%"
 
-    label: "about 10-20% growth in product sales after launching the online shop"
+    label: "growth in product sales after launching the online shop"
 
-  - value: 30
-
-    prefix: "-"
+  - value: 34
 
     suffix: "%"
 
-    label: "about 20-40% reduction in repetitive Instagram DMs due to clearer navigation"
+    label: "reduction in repetitive Instagram DMs due to clearer navigation"
+
+  - value: 47
+
+    suffix: "%"
+
+    label: "faster mobile page load speed after image and asset optimization"
 
 ---
 
 # Objective
 
-Kozmeticki salon Cats needed a cleaner, more modern digital presence that better reflected their brand and simplified customer access to key services. Their original website wasn’t optimized, lacked a clear structure and made it difficult for Instagram visitors—who represent a large portion of their audience—to quickly find what they needed. Additionally, the salon had no online store, which limited product sales to in-person visits or direct messages.
+Kozmeticki salon Cats needed a cleaner, more modern digital presence that better reflected their brand and simplified customer access to key services. Their original website wasn’t optimized, lacked a clear structure and made it difficult for Instagram visitors, who represent a large portion of their audience, to quickly find what they needed. Additionally, the salon had no online store, which limited product sales to in-person visits or direct messages.
 
 The goal of this redesign was to optimize the site’s performance, create a more intuitive front page suited for Instagram traffic and introduce a fully functional online shop to enable seamless product purchases.
 
 # Process
 
-The development process began by analyzing the salon’s audience behavior, identifying that most users arrived via Instagram and had difficulty navigating the previous layout. Based on this insight, a new homepage structure was created—simple, fast and link-tree-style—to give visitors immediate access to the most important actions.
+The development process began by analyzing the salon’s audience behavior, identifying that most users arrived via Instagram and had difficulty navigating the previous layout. Based on this insight, a new homepage structure was created to be simple, fast and link-tree-style, giving visitors immediate access to the most important actions.
 
 The redesign included:
 
