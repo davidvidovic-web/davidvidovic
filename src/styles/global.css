@@ -3844,3 +3844,20 @@ body.is-loaded .hero-wave {
 .faq-list {
   gap: 0.7rem;
 }
+
+/* Footer wordmark: size from the footer's own width so it never overflows */
+.footer .site-shell {
+  container-type: inline-size;
+}
+
+.footer-wordmark {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: clamp(2rem, 12.5vw, 12.2rem);
+}
+
+@supports (font-size: 1cqw) {
+  .footer-wordmark {
+    font-size: min(13cqw, 12.2rem);
+  }
+}
