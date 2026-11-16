@@ -1,37 +1,50 @@
 export interface OtherProject {
   title: string;
   subtitle: string;
+  type: string;
   link: string;
 }
 
 export const otherProjects: OtherProject[] = [
   {
+    title: "Pitaj.io",
+    type: "Product",
+    subtitle: "AI automation platform",
+    link: "https://pitaj.io",
+  },
+  {
     title: "POS Terminals for Stripe",
-    subtitle: "WordPress plugin",
+    type: "Plugin",
+    subtitle: "Published on WordPress.org: Stripe Terminal card readers for WooCommerce",
     link: "https://wordpress.org/plugins/pos-terminals-integration-for-stripe/",
   },
   {
     title: "Inn digit tool",
-    subtitle: "Digitalisation calculator",
+    type: "Web tool",
+    subtitle: "Digitalization calculator",
     link: "https://infobiz.komorars.ba/inndigit/",
   },
   {
     title: "Vagon Gallery",
+    type: "Client site",
     subtitle: "Gallery website",
     link: "https://vagon.gallery",
   },
   {
     title: "Elevate",
+    type: "Client site",
     subtitle: "Agency website",
     link: "https://elevatepreview.com",
   },
   {
     title: "TapWaterRating",
+    type: "Web app",
     subtitle: "Water rating app",
     link: "https://tapwaterrating.com",
   },
   {
     title: "mojPoslic",
+    type: "Web app",
     subtitle: "Job portal",
     link: "https://mojposlic.com",
   },

@@ -58,8 +58,8 @@ export const faqs: FaqItem[] = [
   },
   {
     question:
-      "Do you work exclusively with WordPress or do you use other frameworks as well?",
+      "What stack do you work with?",
     answer:
-      "WordPress is my main focus, but I also work with React and Next.js depending on project needs.",
+      "Mostly TypeScript, React and Next.js on the frontend, and PHP, Laravel, Python and Node.js on the backend, with PostgreSQL or MySQL underneath. When a client needs a CMS or shop their team can run, I use WordPress and WooCommerce. The stack depends on the project.",
   },
 ];

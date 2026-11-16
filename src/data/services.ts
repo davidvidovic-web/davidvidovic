@@ -12,7 +12,7 @@ export interface ServiceItem {
 export const services: ServiceItem[] = [
   {
     id: 6,
-    title: "WordPress and custom websites",
+    title: "Websites and web apps",
     description:
       "Fast, modern and fully tailored websites from design to launch. Every build is responsive, SEO-ready and aligned with your business goals.",
     image: "/assets/img/update/service/service-1.jpg",
@@ -21,16 +21,16 @@ export const services: ServiceItem[] = [
   },
   {
     id: 7,
-    title: "Theme and plugin development",
+    title: "Plugins, integrations and custom features",
     description:
       "Custom themes and plugin architecture designed for maintainability, flexibility and clean long-term growth.",
     image: "/assets/img/update/service/service-2.jpg",
     icon: "Puzzle",
-    categories: ["Custom features", "WordPress plugins", "Custom themes"],
+    categories: ["Custom features", "Plugins", "Integrations"],
   },
   {
     id: 8,
-    title: "Website optimization and fixes",
+    title: "Performance and fixes",
     description:
       "Speed improvements, Core Web Vitals upgrades, security hardening, migrations and bug fixes to keep your site stable under real traffic.",
     image: "/assets/img/update/service/service-3.jpg",

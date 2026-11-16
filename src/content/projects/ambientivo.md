@@ -12,6 +12,8 @@ role: "Web Developer"
 
 overview: "Custom WordPress and React architecture for an architectural brand with stronger SEO foundations and improved content presentation."
 
+summary: "A React frontend on a custom WordPress backend, built so an architecture studio can run an image-heavy portfolio without touching code."
+
 websiteUrl: "https://ambientivo.com"
 
 image: "/assets/img/brand/ambientivo-logo.png"
@@ -30,7 +32,7 @@ services:
 
   - "WordPress"
 
-  - "SEO Optimization"
+  - "SEO"
 
 technologies:
 
@@ -76,13 +78,13 @@ counters:
 
 ---
 
-# Objective
+## Objective
 
 Ambientivo needed a modern, high-performance website that could communicate their architectural vision while delivering an exceptional digital experience. Their previous site lacked structure, visual clarity and technical foundations strong enough to support advanced interactions or rich media. To reflect the quality of their work, the brand required a complete rebuild with smoother animations, cleaner presentation and a more scalable architecture.
 
 The goal was to design and develop a fully custom website using WordPress as the backend and React on the frontend, combining creative freedom with fast performance and long-term maintainability.
 
-# Process
+## Process
 
 The project began with a detailed analysis of Ambientivo’s identity, portfolio and user needs. From there, a new design system was created to emphasize visual hierarchy, architectural precision and an overall sense of modern simplicity.
 
@@ -100,7 +102,7 @@ Key steps included:
 
 - Applying strong SEO fundamentals and performance best practices to improve visibility and stability.
 
-# Results
+## Results
 
 The new Ambientivo.com delivers a polished, immersive experience that reflects the brand’s architectural expertise. Smooth React-based animations enhance the visual presentation, while the optimized backend ensures simple and efficient content management. The improved performance, clarity and structure helped strengthen Ambientivo’s digital presence and made the website a more trustworthy destination for potential clients and collaborators.
 

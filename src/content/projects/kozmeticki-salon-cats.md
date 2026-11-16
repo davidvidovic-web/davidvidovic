@@ -1,16 +1,18 @@
 ---
 
-title: "Kozmeticki Salon Cats"
+title: "Kozmetički Salon Cats"
 
 slug: "kozmeticki-salon-cats"
 
 year: "2025"
 
-client: "Kozmeticki Salon Cats"
+client: "Kozmetički Salon Cats"
 
 role: "Web Developer"
 
 overview: "WordPress redesign and shop launch for an Instagram-driven beauty brand, improving discoverability and product sales flow."
+
+summary: "Redesigned the site around Instagram traffic with a link-tree-style homepage, and added an online shop so products could be bought without DMs."
 
 websiteUrl: "https://kozmetickisaloncats.com"
 
@@ -30,7 +32,7 @@ services:
 
   - "WordPress"
 
-  - "SEO Optimization"
+  - "SEO"
 
   - "E-commerce"
 
@@ -76,13 +78,13 @@ counters:
 
 ---
 
-# Objective
+## Objective
 
-Kozmeticki salon Cats needed a cleaner, more modern digital presence that better reflected their brand and simplified customer access to key services. Their original website wasn’t optimized, lacked a clear structure and made it difficult for Instagram visitors, who represent a large portion of their audience, to quickly find what they needed. Additionally, the salon had no online store, which limited product sales to in-person visits or direct messages.
+Kozmetički Salon Cats needed a cleaner, more modern digital presence that better reflected their brand and simplified customer access to key services. Their original website wasn’t optimized, lacked a clear structure and made it difficult for Instagram visitors, who represent a large portion of their audience, to quickly find what they needed. Additionally, the salon had no online store, which limited product sales to in-person visits or direct messages.
 
 The goal of this redesign was to optimize the site’s performance, create a more intuitive front page suited for Instagram traffic and introduce a fully functional online shop to enable seamless product purchases.
 
-# Process
+## Process
 
 The development process began by analyzing the salon’s audience behavior, identifying that most users arrived via Instagram and had difficulty navigating the previous layout. Based on this insight, a new homepage structure was created to be simple, fast and link-tree-style, giving visitors immediate access to the most important actions.
 
@@ -98,7 +100,7 @@ The redesign included:
 
 - Streamlined navigation and clearer hierarchy to reduce friction and make the content easier to explore.
 
-# Results
+## Results
 
-The redesigned experience made it much easier for Instagram users to reach key information in seconds, significantly reducing confusion and improving engagement. The new online shop opened a completely new sales channel for Kozmeticki salon Cats, allowing customers to place orders effortlessly from their phones. Overall, the project strengthened the salon’s online presence and created a more modern, user-friendly and conversion-focused website.
+The redesigned experience made it much easier for Instagram users to reach key information in seconds, significantly reducing confusion and improving engagement. The new online shop opened a completely new sales channel for Kozmetički Salon Cats, allowing customers to place orders effortlessly from their phones. Overall, the project strengthened the salon’s online presence and created a more modern, user-friendly and conversion-focused website.
 

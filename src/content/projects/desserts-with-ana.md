@@ -12,6 +12,8 @@ role: "Web Developer"
 
 overview: "WordPress and WooCommerce implementation for a pastry business with recipe SEO content and Stripe POS workflow integration."
 
+summary: "A WooCommerce shop and recipe hub, plus a custom plugin that connects Stripe POS card readers to WooCommerce for in-person sales."
+
 websiteUrl: "https://dessertswithana.com"
 
 image: "/assets/img/brand/dessertswithana-logo.png"
@@ -34,7 +36,7 @@ services:
 
   - "UI/UX Design"
 
-  - "SEO Optimization"
+  - "SEO"
 
 technologies:
 
@@ -80,13 +82,13 @@ counters:
 
 ---
 
-# Objective
+## Objective
 
 Desserts with Ana needed a warm, inviting online presence that showcased the personality of a solo baker while making it easy for customers to browse products, place orders and explore her recipes. Before this project, Ana managed most communication manually through messages and social media, which limited visibility and made it difficult for customers to discover her full range of desserts.
 
-The goal was to build a modern website with an integrated shop, a recipe hub and support Ana’s offline business operations with a Stripe POS workflow, giving her a professional platform, expanding her reach and reducing daily manual work.
+The goal was to build a modern website with an integrated shop and a recipe hub, and to support Ana’s offline sales with a Stripe POS workflow, giving her a professional platform, expanding her reach and reducing daily manual work.
 
-# Process
+## Process
 
 The project began with a full review of Ana’s existing workflows and audience behavior. With most customers discovering her through social media, the website needed to feel simple, friendly and easy to navigate, while also offering enough structure to support long-term growth.
 
@@ -104,7 +106,7 @@ Key steps included:
 
 - Applying essential SEO fundamentals to boost local discoverability and dessert-related search performance.
 
-# Stripe POS terminal integration
+## Stripe POS terminal integration
 
 To support Ana’s in-person sales and streamline her checkout workflow, a custom WordPress plugin was developed to connect Stripe POS terminals with her WooCommerce store.
 
@@ -116,7 +118,7 @@ https://wordpress.org/plugins/pos-terminals-integration-for-stripe/
 
 This solution gave Ana a unified system for both online and offline sales, reduced manual bookkeeping and improved the accuracy and consistency of her order management.
 
-# Results
+## Results
 
 The new Desserts with Ana website delivers a warm, professional experience that helps customers quickly find what they need, whether placing orders or exploring recipes. The integrated shop reduced manual order handling, while the recipe section opened a new channel for organic traffic.
 
