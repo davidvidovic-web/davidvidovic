@@ -13,6 +13,12 @@ export const otherProjects: OtherProject[] = [
     link: "https://pitaj.io",
   },
   {
+    title: "Hackers (1995)",
+    type: "Game",
+    subtitle: "Interactive mainframe experience",
+    link: "https://hackers-1995.vercel.app/",
+  },
+  {
     title: "POS Terminals for Stripe",
     type: "Plugin",
     subtitle: "Published on WordPress.org: Stripe Terminal card readers for WooCommerce",
