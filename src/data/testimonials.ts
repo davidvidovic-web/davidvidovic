@@ -11,7 +11,7 @@ export const testimonials: TestimonialItem[] = [
     id: 1,
     avatar: "/assets/img/testimonial/avatar.jpg",
     name: "Jeff",
-    designation: "Einsteing Digital LLC",
+    designation: "Einstein Digital LLC",
     content:
       "One of the best programmers on Upwork. He did a great job and had great communication.",
   },
@@ -53,13 +53,6 @@ export const testimonials: TestimonialItem[] = [
     designation: "SDiane",
     content:
       "Easy to work with, great communicator, fair and fast. I would happily work with him again.",
-  },
-  {
-    id: 7,
-    avatar: "/assets/img/testimonial/avatar-3.jpg",
-    name: "Pavel",
-    designation: "Blanc & White Studio",
-    content: "Recommended.",
   },
   {
     id: 8,

@@ -6,12 +6,11 @@ const siteUrl =
 export const SITE = {
   name: "David Vidovic",
   siteUrl,
-  title: "David Vidovic | WordPress Specialist and Full-stack Developer",
+  title: "David Vidovic | Full-stack Web Developer",
   description:
-    "WordPress developer specializing in custom themes, plugins, WooCommerce and booking flows. I also build applications for teams that need custom web products.",
+    "I'm David Vidovic, a full-stack web developer. I build websites, web apps, online shops and the integrations behind them.",
   defaultOgImage: "/assets/img/og-image.jpg",
   locale: "en_US",
-  twitterHandle: "@davidvidovic",
 };
 
 export const ANALYTICS = {
@@ -22,9 +21,7 @@ export const ANALYTICS = {
 };
 
 export const NAV_ITEMS = [
-  { label: "Work", href: "/#portfolio" },
-  { label: "Services", href: "/#services" },
-  { label: "Other projects", href: "/#awards" },
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
   { label: "FAQ", href: "/#faq" },
-  { label: "Connect", href: "/#connect" },
 ] as const;

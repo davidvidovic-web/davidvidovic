@@ -5,6 +5,7 @@ import { SITE } from "../../config/site";
 
 interface Props {
   project: CollectionEntry<"projects">;
+  nextProject: CollectionEntry<"projects">;
 }
 
 export const prerender = true;
@@ -21,14 +22,20 @@ export async function getStaticPaths() {
     featuredProjectSlugs.has(project.data.slug),
   );
 
-  return projects.map((project) => ({
+  const ordered = projects.sort(
+    (a, b) => Number.parseInt(b.data.year, 10) - Number.parseInt(a.data.year, 10),
+  );
+
+  return ordered.map((project, index) => ({
     params: { slug: project.data.slug },
-    props: { project },
+    props: { project, nextProject: ordered[(index + 1) % ordered.length] },
   }));
 }
 
-const { project } = Astro.props;
-const { Content } = await render(project);
+const { project, nextProject } = Astro.props;
+const { Content, headings } = await render(project);
+const sections = headings.filter((heading) => heading.depth === 2);
+const liveHost = new URL(project.data.websiteUrl).hostname.replace(/^www\./, "");
 const canonicalPath = `/portfolio/${project.data.slug}`;
 
 const LOGO_SOURCES: Record<string, { src: string; srcSet: string; width: number; height: number }> = {
@@ -61,6 +68,8 @@ const LOGO_SOURCES: Record<string, { src: string; srcSet: string; width: number;
 };
 
 const logoSource = LOGO_SOURCES[project.data.logo] ?? null;
+const nextLogoSource = LOGO_SOURCES[nextProject.data.logo] ?? null;
+const hasImpact = project.data.counters.length > 0;
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -76,101 +85,144 @@ const structuredData = {
 ---
 
 <BaseLayout
-  title={`${project.data.title} | Portfolio`}
+  title={`${project.data.title} Case Study | David Vidovic`}
   description={project.data.overview}
   canonicalPath={canonicalPath}
   ogType="article"
   ogImage={project.data.detailsImage}
   structuredData={structuredData}
 >
-  <section class="page-hero case-hero reveal" style={`--case-accent:${project.data.backgroundColor};`}>
-    <div class="case-hero-grid">
-      <div class="case-hero-copy">
-        <span class="kicker">Case Study / {project.data.year}</span>
-        <h1>{project.data.title}</h1>
-        <p class="case-overview">{project.data.overview}</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href={project.data.websiteUrl} rel="noopener noreferrer" target="_blank">
-            Visit live website
-          </a>
-          <a class="btn btn-secondary" href="/#portfolio">Back to case studies</a>
+  <div class="home case">
+    <section class="case-top">
+      <a class="case-back" href="/#work">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        All work
+      </a>
+      <div class="case-top-grid">
+        <div class="case-top-copy">
+          <span class="kicker">Case study / {project.data.year}</span>
+          <h1 class="case-title">{project.data.title}</h1>
+          <p class="case-lead">{project.data.summary ?? project.data.overview}</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href={project.data.websiteUrl} rel="noopener noreferrer" target="_blank">
+              Visit live site
+            </a>
+          </div>
         </div>
-      </div>
-
-      <aside class="case-hero-aside">
-        <p class="case-aside-label">Scope and stack</p>
-        <div class="case-logo-wrap" style={`background-color: ${project.data.backgroundColor};`}>
+        <div class="case-visual" style={`background-color: ${project.data.backgroundColor};`}>
           <img
-            class="case-logo"
             src={logoSource?.src ?? project.data.logo}
             srcset={logoSource?.srcSet}
-            sizes="(max-width: 980px) 70vw, 180px"
+            sizes="(max-width: 980px) 60vw, 300px"
             width={logoSource?.width}
             height={logoSource?.height}
             alt={`${project.data.title} logo`}
-            loading="lazy"
             decoding="async"
           />
         </div>
-        <div class="case-chip-list">
-          {project.data.services.map((service) => <span class="case-chip">{service}</span>)}
+      </div>
+
+      <dl class="case-facts">
+        <div>
+          <dt>Client</dt>
+          <dd>{project.data.client}</dd>
         </div>
-        {project.data.technologies.length > 0 && (
-          <>
-            <p class="case-aside-sublabel">Technologies</p>
-            <div class="case-chip-list">
-              {project.data.technologies.map((tech) => <span class="case-chip case-chip--tech">{tech}</span>)}
-            </div>
-          </>
-        )}
-      </aside>
-    </div>
-  </section>
+        <div>
+          <dt>Role</dt>
+          <dd>{project.data.role}</dd>
+        </div>
+        <div>
+          <dt>Year</dt>
+          <dd>{project.data.year}</dd>
+        </div>
+        <div>
+          <dt>Live</dt>
+          <dd>
+            <a href={project.data.websiteUrl} rel="noopener noreferrer" target="_blank">{liveHost}</a>
+          </dd>
+        </div>
+      </dl>
+    </section>
 
-  <ul class="case-meta-bar reveal">
-    <li>
-      <span>Client</span>
-      <strong>{project.data.client}</strong>
-    </li>
-    <li>
-      <span>Role</span>
-      <strong>{project.data.role}</strong>
-    </li>
-    <li>
-      <span>Year</span>
-      <strong>{project.data.year}</strong>
-    </li>
-    <li>
-      <span>Live</span>
-      <a href={project.data.websiteUrl} rel="noopener noreferrer" target="_blank">
-        {project.data.websiteUrl}
-      </a>
-    </li>
-  </ul>
-
-  <section class={`section detail-wrap case-study-layout${project.data.counters.length === 0 ? " is-full" : ""}`}>
-    <article class="surface reveal reveal-2 prose case-story">
-      <Content />
-    </article>
-
-    {project.data.counters.length > 0 && (
-      <aside class="detail-side case-sidebar">
-        <div class="card reveal reveal-2">
+    {hasImpact && (
+      <section class="home-section reveal reveal-2">
+        <div class="home-head">
+          <span class="section-index">01</span>
           <h2>Impact</h2>
-          <div class="metrics">
+        </div>
+        <div class="home-content">
+          <div class="case-metrics">
             {project.data.counters.map((metric) => (
-              <div class="metric">
-                <div class="metric-value">
-                  {metric.prefix ?? ""}
-                  {metric.value}
-                  {metric.suffix ?? ""}
-                </div>
-                <div class="metric-label">{metric.label}</div>
+              <div class="case-metric" data-reveal>
+                <div class="case-metric-value">{`${metric.prefix ?? ""}${metric.value}${metric.suffix ?? ""}`}</div>
+                <p class="case-metric-label">{metric.label}</p>
               </div>
             ))}
           </div>
         </div>
-      </aside>
+      </section>
     )}
-  </section>
+
+    <section class="home-section reveal reveal-2">
+      <div class="home-head case-side">
+        <span class="section-index">{hasImpact ? "02" : "01"}</span>
+        <h2>The project</h2>
+        {sections.length > 0 && (
+          <nav class="case-toc" aria-label="On this page">
+            {sections.map((heading) => <a href={`#${heading.slug}`}>{heading.text}</a>)}
+          </nav>
+        )}
+        <div class="case-side-group">
+          <p class="work-type">Scope</p>
+          <div class="card-tags">
+            {project.data.services.map((service) => <span class="tag">{service}</span>)}
+          </div>
+        </div>
+        {project.data.technologies.length > 0 && (
+          <div class="case-side-group">
+            <p class="work-type">Stack</p>
+            <div class="card-tags">
+              {project.data.technologies.map((tech) => <span class="tag">{tech}</span>)}
+            </div>
+          </div>
+        )}
+      </div>
+      <article class="home-content case-prose">
+        <Content />
+      </article>
+    </section>
+
+    {nextProject.data.slug !== project.data.slug && (
+      <nav class="case-next-wrap" aria-label="Next case study" data-reveal>
+        <a class="case-study-card is-featured case-next" href={`/portfolio/${nextProject.data.slug}`} data-spot>
+          <div class="case-study-body">
+            <div class="work-card-top">
+              <span class="work-type">Next project</span>
+              <span class="case-study-year">{nextProject.data.year}</span>
+            </div>
+            <h3>{nextProject.data.title}</h3>
+            <p>{nextProject.data.summary ?? nextProject.data.overview}</p>
+            <span class="case-study-cta">
+              Read case study
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                <path d="M2 11L11 2M11 2H5M11 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+          <div class="case-study-visual" style={`background-color: ${nextProject.data.backgroundColor};`}>
+            <img
+              src={nextLogoSource?.src ?? nextProject.data.logo}
+              srcset={nextLogoSource?.srcSet}
+              sizes="(max-width: 860px) 60vw, 220px"
+              width={nextLogoSource?.width}
+              height={nextLogoSource?.height}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </a>
+      </nav>
+    )}
+  </div>
 </BaseLayout>

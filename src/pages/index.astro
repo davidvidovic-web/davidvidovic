@@ -53,6 +53,83 @@ function getLogoSource(logoPath: string) {
 
 const featuredProjects = projects.filter((project) => featuredProjectSlugs.has(project.data.slug));
 
+const experience = [
+	{
+		period: "2023 – now",
+		role: "Full-stack software engineer, freelance",
+		company: "Upwork",
+		link: "https://www.upwork.com/freelancers/~0163d597d928e1e526",
+		note: "Top Rated with a 100% Job Success Score across 22+ international clients. Full-stack web apps, custom APIs and client dashboards.",
+	},
+	{
+		period: "2024 – 2025",
+		role: "Software engineer",
+		company: "Converted UK",
+		link: "https://converted.co.uk",
+		note: "Built accessible website components in an agile team and fixed performance issues on client sites.",
+	},
+	{
+		period: "2022 – 2024",
+		role: "Backend developer",
+		company: "Effecticore DE",
+		link: "https://effecticore.com",
+		note: "Built a server-side API for automated PDF reports, rebuilt slow legacy sites as lightweight custom themes and set up deployment pipelines.",
+	},
+	{
+		period: "2020 – 2022",
+		role: "Frontend and systems developer",
+		company: "Obsidian Media DK",
+		link: "https://obsidianmedia.dk",
+		note: "Kept a network of 80+ commercial websites fast, secure and reliable, and built internal publishing tools.",
+	},
+	{
+		period: "2019",
+		role: "Junior web developer",
+		company: "Ad-kraft",
+		link: "https://ad-kraft.com",
+		note: "Built custom WordPress sites and blogs from design mockups.",
+	},
+];
+
+const featuredTestimonials = [3, 5, 1]
+	.map((id) => testimonials.find((item) => item.id === id))
+	.filter((item) => item !== undefined);
+
+const stackRows = [
+	[
+		"React",
+		"Next.js",
+		"TypeScript",
+		"JavaScript",
+		"Tailwind CSS",
+		"Astro",
+		"Vite",
+		"Three.js",
+		"GSAP",
+		"Figma",
+		"Playwright",
+		"Shopify",
+		"WordPress",
+		"WooCommerce",
+	],
+	[
+		"Node.js",
+		"PHP",
+		"Laravel",
+		"PostgreSQL",
+		"MySQL",
+		"SQLite",
+		"Supabase",
+		"Redis",
+		"Drizzle",
+		"REST API",
+		"GraphQL",
+		"Docker",
+		"Stripe",
+		"OpenAI API",
+	],
+];
+
 const structuredData = [
 	{
 		"@context": "https://schema.org",
@@ -72,7 +149,7 @@ const structuredData = [
 		name: "David Vidovic",
 		url: SITE.siteUrl,
 		image: `${SITE.siteUrl}/assets/img/logo/logo-light.webp`,
-		jobTitle: "WordPress Developer",
+		jobTitle: "Full-stack Web Developer",
 		description: SITE.description,
 		sameAs: [
 			"https://www.linkedin.com/in/david-vidovic/",
@@ -83,7 +160,7 @@ const structuredData = [
 	{
 		"@context": "https://schema.org",
 		"@type": "ProfessionalService",
-		name: "David Vidovic - WordPress Development Services",
+		name: "David Vidovic - Web Development Services",
 		url: `${SITE.siteUrl}/service`,
 		areaServed: "Worldwide",
 		provider: {
@@ -114,597 +191,382 @@ const structuredData = [
 	canonicalPath="/"
 	structuredData={structuredData}
 >
+	<div class="home">
 	<section class="page-hero home-hero">
 		<div class="hero-main">
-			<span class="kicker">End-to-end web delivery</span>
-			<h1 class="hero-title">The website your business deserves, without the guesswork.</h1>
-			<p class="hero-lead">
-				Strategy, UX and full-stack implementation handled as one workflow.
-				Clear scope, predictable delivery and results built into every project.
-			</p>
-			<div class="cta-row">
-				<a class="btn btn-primary" href="#contact">Start building</a>
-				<a class="btn btn-secondary" href="#portfolio">Case studies</a>
+			<h1 class="hero-title">
+				Hey, I’m David <span class="hero-wave" aria-hidden="true">👋</span>
+				<span class="hero-title-soft">I build websites, web apps and the tools behind them.</span>
+			</h1>
+			<div class="hero-bottom">
+				<p class="hero-lead">
+					I’m a full-stack web developer and I’ve been at it for over eight years, building
+					everything from online shops and booking systems to payment integrations and
+					standalone apps.
+				</p>
+				<div class="cta-row">
+					<a class="btn btn-primary" href="#work">See work</a>
+					<a class="text-link" href="#contact">Get in touch</a>
+				</div>
 			</div>
 		</div>
-
-		<div class="hero-stat-strip" role="list" aria-label="Key facts">
-			<div class="hero-stat" role="listitem">
-				<strong>8+ years</strong>
-				<span>of production delivery</span>
-			</div>
-			<div class="hero-stat" role="listitem">
-				<strong>40+</strong>
-				<span>Happy clients</span>
-			</div>
-			<div class="hero-stat" role="listitem">
-				<strong>2–5 weeks</strong>
-				<span>Kickoff to first release</span>
-			</div>
-			<div class="hero-stat" role="listitem">
-				<strong>7-day cycles</strong>
-				<span>Sprint cadence</span>
-			</div>
-		</div>
-	</section>
-
-	<section class="section home-band reveal reveal-2" id="portfolio">
-		<div class="section-head">
+		<dl class="case-facts hero-strip">
 			<div>
-				<h2>Featured case studies</h2>
-				<p>Production work with real constraints, real users and measurable outcomes.</p>
+				<dt>Based in</dt>
+				<dd>Austria</dd>
 			</div>
-		</div>
-		<div class="grid grid-2 case-study-grid">
-			{
-				featuredProjects.map((project) => {
-					const logoSource = getLogoSource(project.data.logo);
-
-					return (
-						<a class="case-study-card" href={`/portfolio/${project.data.slug}`}>
-							<div
-								class="case-study-visual"
-								style={`background-color: ${project.data.backgroundColor};`}
-							>
-								<img
-									src={logoSource?.src ?? project.data.logo}
-									srcset={logoSource?.srcSet}
-									sizes="(max-width: 860px) 60vw, 200px"
-									width={logoSource?.width}
-									height={logoSource?.height}
-									alt={`${project.data.title} logo`}
-									loading="lazy"
-									decoding="async"
-								/>
-							</div>
-							<div class="case-study-body">
-								<div class="case-study-meta">
-									<h4>{project.data.title}</h4>
-									<span class="case-study-year">{project.data.year}</span>
-								</div>
-								<p>{project.data.overview}</p>
-								<div class="card-tags">
-									{project.data.services.slice(0, 3).map((service) => (
-										<span class="tag">{service}</span>
-									))}
-								</div>
-								<span class="case-study-cta">
-									Read case study
-									<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-										<path d="M2 11L11 2M11 2H5M11 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									</svg>
-								</span>
-							</div>
-						</a>
-					);
-				})
-			}
-		</div>
-	</section>
-
-	<section class="section home-band is-alt reveal reveal-2" id="awards">
-		<div class="section-head">
 			<div>
-				<h2>Other projects</h2>
-				<p>Production work and tools shipped outside the featured case-study lane.</p>
+				<dt>Experience</dt>
+				<dd>8+ years</dd>
 			</div>
-		</div>
-		<div class="other-projects-list">
+			<div>
+				<dt>Stack</dt>
+				<dd>React, Next.js, TypeScript, PHP, Laravel</dd>
+			</div>
+			<div>
+				<dt>Elsewhere</dt>
+				<dd>
+					<a href="https://github.com/davidvidovic-web" target="_blank" rel="noopener noreferrer">GitHub</a>
+					<a href="https://www.linkedin.com/in/david-vidovic/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+				</dd>
+			</div>
+		</dl>
+		<div class="stack-rows" aria-label="Technologies I work with">
 			{
-				otherProjects.map((project) => (
-					<a class="other-project-row" href={project.link} rel="noopener noreferrer" target="_blank">
-						<div class="other-project-info">
-							<span class="other-project-title">{project.title}</span>
-							<span class="other-project-sub">{project.subtitle}</span>
-						</div>
-						<svg class="other-project-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-							<path d="M3.75 14.25L14.25 3.75M14.25 3.75H6.75M14.25 3.75V11.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-						</svg>
-					</a>
+				stackRows.map((row, rowIndex) => (
+					<div class:list={["stack-marquee", { "is-reverse": rowIndex % 2 === 1 }]}>
+						<ul class="stack-track">
+							{row.map((item) => <li>{item}</li>)}
+						</ul>
+						<ul class="stack-track" aria-hidden="true">
+							{row.map((item) => <li>{item}</li>)}
+						</ul>
+					</div>
 				))
 			}
 		</div>
 	</section>
 
-	<section class="section home-band is-alt reveal reveal-2" id="services">
-		<div class="section-head">
-			<div>
-				<h2>Services</h2>
-				<p>WordPress-first delivery with strong frontend, performance and long-term maintainability.</p>
-			</div>
+	<section class="home-section reveal reveal-2" id="work">
+		<div class="home-head">
+			<span class="section-index">01</span>
+			<h2>Work</h2>
+			<p>Client projects, plugins and tools I designed and built.</p>
 		</div>
-		<div class="grid grid-2">
-			{
-				[
-					{ ...services[0], contactValue: "Website and application development" },
-					{ ...services[1], contactValue: "Theme and plugin development" },
-					{ ...services[2], contactValue: "Website optimization" },
-					{ ...services[3], contactValue: "Maintenance and support" },
-				].map((service) => (
-					<button
-						class="service-select-card"
-						data-service={service.contactValue}
-						type="button"
-						aria-label={`Select ${service.title}`}
-					>
-						<div class="service-select-body">
-							<h3>{service.title}</h3>
-							<p>{service.description}</p>
-							<div class="card-tags">
-								{service.categories.map((category) => <span class="tag">{category}</span>)}
-							</div>
-						</div>
-						<span class="service-select-cta">
-							Start with this
-							<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-								<path d="M2.5 11.5L11.5 2.5M11.5 2.5H5.5M11.5 2.5V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		<div class="home-content">
+			<div class="grid case-study-grid">
+				{
+					featuredProjects.map((project, index) => {
+						const logoSource = getLogoSource(project.data.logo);
+
+						return (
+							<a class:list={["case-study-card", { "is-featured": index === 0 }]} href={`/portfolio/${project.data.slug}`} data-spot data-reveal>
+								<div
+									class="case-study-visual"
+									style={`background-color: ${project.data.backgroundColor};`}
+								>
+									<img
+										src={logoSource?.src ?? project.data.logo}
+										srcset={logoSource?.srcSet}
+										sizes="(max-width: 860px) 60vw, 220px"
+										width={logoSource?.width}
+										height={logoSource?.height}
+										alt={`${project.data.title} logo`}
+										loading="lazy"
+										decoding="async"
+									/>
+								</div>
+								<div class="case-study-body">
+									<div class="work-card-top">
+										<span class="work-type">Client site · {project.data.role}</span>
+										<span class="case-study-year">{project.data.year}</span>
+									</div>
+									<h3>{project.data.title}</h3>
+									<p>{project.data.summary ?? project.data.overview}</p>
+									<div class="card-tags">
+										{project.data.technologies.slice(0, 4).map((tech) => (
+											<span class="tag">{tech}</span>
+										))}
+									</div>
+									<span class="case-study-cta">
+										Read case study
+										<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+											<path d="M2 11L11 2M11 2H5M11 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+										</svg>
+									</span>
+								</div>
+							</a>
+						);
+					})
+				}
+			</div>
+
+			<h3 class="work-subhead">Plugins, tools and other sites</h3>
+			<div class="other-projects-list">
+				{
+					otherProjects.map((project) => (
+						<a class="other-project-row work-row" data-reveal href={project.link} rel="noopener noreferrer" target="_blank">
+							<span class="work-type">{project.type}</span>
+							<span class="work-row-text">
+								<span class="other-project-title">{project.title}</span>
+								<span class="work-row-sub">{project.subtitle}</span>
+							</span>
+							<svg class="other-project-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+								<path d="M3.75 14.25L14.25 3.75M14.25 3.75H6.75M14.25 3.75V11.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 							</svg>
-						</span>
-					</button>
-				))
-			}
+						</a>
+					))
+				}
+			</div>
 		</div>
 	</section>
 
-	<section class="section home-band process-band reveal reveal-2" aria-label="How projects move">
-		<div class="section-head">
-			<div>
-				<h2>How projects move</h2>
-				<p>Clear phases, transparent decisions and small feedback loops.</p>
-			</div>
+	<section class="home-section reveal reveal-2" id="about">
+		<div class="home-head">
+			<span class="section-index">02</span>
+			<h2>About</h2>
 		</div>
-		<div class="process-list">
-			<article class="process-item">
-				<span class="process-num">01</span>
-				<div>
-					<h3>Discovery and scope mapping</h3>
-					<p>Goals, constraints and timeline defined before a line of code.</p>
-				</div>
-			</article>
-			<article class="process-item">
-				<span class="process-num">02</span>
-				<div>
-					<h3>Design direction and information architecture</h3>
-					<p>UX hierarchy and visual direction aligned with the business intent.</p>
-				</div>
-			</article>
-			<article class="process-item">
-				<span class="process-num">03</span>
-				<div>
-					<h3>Build implementation and QA</h3>
-					<p>Feature-by-feature delivery with quality checks at each milestone.</p>
-				</div>
-			</article>
-			<article class="process-item">
-				<span class="process-num">04</span>
-				<div>
-					<h3>Launch hardening and handoff</h3>
-					<p>Performance verified, documentation provided, ownership transferred.</p>
-				</div>
-			</article>
-		</div>
-	</section>
+		<div class="home-content">
+			<p class="about-lead">
+				I’m a full-stack web developer with a B.Sc. in Computer Science and more than eight years
+				of building web apps, APIs and developer tools.
+			</p>
+			<p class="about-body">
+				I’m comfortable across the whole stack, from frontends in React and Next.js to backend
+				services in PHP, Laravel and Python. A growing part of my work is AI: retrieval pipelines,
+				vector search and LLM integrations. Whatever the project, I care about fast pages, clean
+				deployments and code the next person can maintain.
+			</p>
 
-	<section class="section home-band reveal reveal-3" id="testimonials">
-		<div class="section-head">
-			<div>
-				<h2>Client feedback</h2>
-				<p>Notes from collaborators across delivery cycles and product launches.</p>
-			</div>
-		</div>
-		<div class="grid grid-2">
-			{
-				testimonials.map((item) => (
-					<article class="card quote-card">
-						<p class="quote">{item.content}</p>
-						<p class="quote-meta">{item.name} - {item.designation}</p>
-					</article>
-				))
-			}
-		</div>
-		<div class="reviews-link-wrap">
-			<a
-				class="other-project-row reviews-link-row"
-				href="https://www.upwork.com/freelancers/~0163d597d928e1e526"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<div class="other-project-info">
-					<span class="other-project-title">Check more reviews</span>
-				</div>
-				<svg class="other-project-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-					<path d="M4 14L14 4M14 4H8M14 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-				</svg>
-			</a>
-		</div>
-	</section>
-
-	<section class="section home-band is-alt reveal reveal-3" id="faq">
-		<div class="section-head">
-			<div>
-				<h2>FAQ</h2>
-				<p>Common questions before project kickoff and planning.</p>
-			</div>
-		</div>
-		<div class="grid">
-			{
-				faqs.map((item) => (
-					<details class="card">
-						<summary>
-							<strong>{item.question}</strong>
-						</summary>
-						<p>{item.answer}</p>
-					</details>
-				))
-			}
-		</div>
-	</section>
-
-	<section class="section home-band is-alt reveal reveal-3" id="contact">
-		<div class="section-head">
-			<div>
-				<h2>Start building</h2>
-				<p>Share your project goals and constraints. I’ll follow up with a practical implementation path and effort estimate.</p>
-			</div>
-		</div>
-		<div class="surface">
-			<form id="contact-form" class="mf-form" novalidate>
-
-				<div class="mf-header">
-					<span class="mf-counter" id="mf-counter">01 / 05</span>
-					<div class="mf-track"><div class="mf-fill" id="mf-fill"></div></div>
-				</div>
-
-				<div class="mf-stage" id="mf-stage">
-
-					<div class="mf-step is-active" data-step="1">
-						<label class="mf-question" for="name">What’s your name?</label>
-						<input class="mf-input" id="name" name="name" type="text" placeholder="Jack Smith" autocomplete="given-name" />
-						<span class="mf-hint">press <kbd>↵</kbd> to continue</span>
-					</div>
-
-					<div class="mf-step" data-step="2">
-						<label class="mf-question" for="email">Your email address?</label>
-						<input class="mf-input" id="email" name="email" type="email" placeholder="jack@example.com" autocomplete="email" />
-						<span class="mf-hint">press <kbd>↵</kbd> to continue</span>
-					</div>
-
-					<div class="mf-step" data-step="3">
-						<p class="mf-question">What are you looking to build?</p>
-
-						<div class="mf-confirm" id="mf-confirm" hidden>
-							<p class="mf-confirm-text">You selected <strong id="mf-confirm-label"></strong>. Is that right?</p>
-							<div class="mf-confirm-actions">
-								<button type="button" class="btn btn-primary" id="mf-confirm-yes">Yes, continue</button>
-								<button type="button" class="mf-confirm-change" id="mf-confirm-change">Pick something else</button>
+			<h3 class="work-subhead">Experience</h3>
+			<div class="exp-list">
+				{
+					experience.map((item) => (
+						<div class="exp-row" data-reveal>
+							<span class="work-type">{item.period}</span>
+							<div class="exp-text">
+								<p class="exp-role">
+									{item.role} ·{" "}
+									<a href={item.link} target="_blank" rel="noopener noreferrer">{item.company}</a>
+								</p>
+								<p class="work-row-sub">{item.note}</p>
 							</div>
 						</div>
+					))
+				}
+			</div>
 
-						<div class="mf-options" id="mf-options-grid">
-							<button type="button" class="mf-option" data-value="Website and application development">Website or web app</button>
-							<button type="button" class="mf-option" data-value="Theme and plugin development">Theme or plugin</button>
-							<button type="button" class="mf-option" data-value="Website optimization">Speed or optimization</button>
-							<button type="button" class="mf-option" data-value="Maintenance and support">Ongoing support</button>
-						</div>
-						<input type="hidden" name="interested" />
-					</div>
-
-					<div class="mf-step" data-step="4">
-						<label class="mf-question" for="website">Do you have an existing website?</label>
-						<input class="mf-input" id="website" name="website" type="text" placeholder="mywebsite.com" autocomplete="url" />
-						<span class="mf-hint">optional: press <kbd>↵</kbd> or <button type="button" id="mf-skip-btn" class="mf-skip">skip</button></span>
-					</div>
-
-					<div class="mf-step" data-step="5">
-						<label class="mf-question" for="message">Tell me about your project.</label>
-						<p class="mf-sub">Goals, timeline, constraints</p>
-						<textarea class="mf-input" id="message" name="message" rows="4" placeholder="We need to rebuild our booking system before Q4..."></textarea>
-					</div>
-
+			<dl class="case-facts about-facts" data-reveal>
+				<div>
+					<dt>Education</dt>
+					<dd>B.Sc. Business Informatics / Computer Science, Paneuropean University Apeiron, 2026</dd>
 				</div>
-
-				<input type="hidden" name="formStart" id="form-start" />
-				<div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
-					<label for="honeypot">Leave this field empty</label>
-					<input id="honeypot" name="honeypot" type="text" tabindex="-1" autocomplete="off" />
+				<div>
+					<dt>Languages</dt>
+					<dd>English (fluent), Bosnian / Croatian / Serbian (native), German (learning)</dd>
 				</div>
-
-				<div class="mf-nav">
-					<button type="button" class="mf-back" id="mf-back">
-						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-						Back
-					</button>
-					<button type="button" class="btn btn-primary mf-next" id="mf-next">Continue</button>
-					<button type="submit" class="btn btn-primary mf-send" id="mf-submit" hidden>Send message</button>
-				</div>
-
-				<div id="form-status" class="form-result" aria-live="polite" hidden>
-					<svg class="form-result-icon" viewBox="0 0 48 48" aria-hidden="true">
-						<circle class="form-result-ring" cx="24" cy="24" r="18"></circle>
-						<path class="form-result-check" d="M15.5 24.5 21.5 30.5 33 18.5"></path>
-						<path class="form-result-cross-a" d="M16 16L32 32"></path>
-						<path class="form-result-cross-b" d="M32 16L16 32"></path>
-					</svg>
-					<div class="form-result-copy">
-						<strong class="form-result-title"></strong>
-						<p class="form-result-text"></p>
-					</div>
-				</div>
-
-			</form>
+			</dl>
 		</div>
 	</section>
 
-	<section class="section home-band reveal reveal-3" id="connect">
-		<div class="section-head">
-			<div>
-				<h2>Let’s connect</h2>
-				<p>Find me on the platforms I’m most active on.</p>
+	<section class="home-section reveal reveal-3" id="testimonials">
+		<div class="home-head">
+			<span class="section-index">03</span>
+			<h2>What clients said</h2>
+		</div>
+		<div class="home-content">
+			<div class="grid quote-grid">
+				{
+					featuredTestimonials.map((item) => (
+						<article class="card quote-card" data-reveal>
+							<p class="quote">{item.content}</p>
+							<p class="quote-meta">{item.name}, {item.designation}</p>
+						</article>
+					))
+				}
 			</div>
 		</div>
-		<div class="connect-grid">
-			<a href="https://www.linkedin.com/in/david-vidovic/" target="_blank" rel="noopener noreferrer" class="connect-card">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-				<div class="connect-card-text">
-					<span class="connect-card-name">LinkedIn</span>
-					<span class="connect-card-sub">david-vidovic</span>
-				</div>
-				<svg class="connect-card-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-			</a>
-			<a href="https://www.upwork.com/freelancers/~0163d597d928e1e526" target="_blank" rel="noopener noreferrer" class="connect-card">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-				<div class="connect-card-text">
-					<span class="connect-card-name">Upwork</span>
-					<span class="connect-card-sub">@davidvidovic</span>
-				</div>
-				<svg class="connect-card-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-			</a>
-			<a href="https://github.com/davidvidovic-web" target="_blank" rel="noopener noreferrer" class="connect-card">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-				<div class="connect-card-text">
-					<span class="connect-card-name">GitHub</span>
-					<span class="connect-card-sub">davidvidovic-web</span>
-				</div>
-				<svg class="connect-card-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-			</a>
-			<a href="mailto:mail@davidvidovic.com" class="connect-card">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-				<div class="connect-card-text">
-					<span class="connect-card-name">Email</span>
-					<span class="connect-card-sub">mail@davidvidovic.com</span>
-				</div>
-				<svg class="connect-card-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-			</a>
+	</section>
+
+	<section class="home-section reveal reveal-3" id="faq">
+		<div class="home-head">
+			<span class="section-index">04</span>
+			<h2>FAQ</h2>
+			<p>Common questions before project kickoff and planning.</p>
+		</div>
+		<div class="home-content">
+			<div class="grid faq-list">
+				{
+					faqs.map((item) => (
+						<details class="card" data-reveal>
+							<summary>
+								<strong>{item.question}</strong>
+							</summary>
+							<p>{item.answer}</p>
+						</details>
+					))
+				}
+			</div>
 		</div>
 	</section>
+
+	<section class="home-section reveal reveal-3" id="contact">
+		<div class="home-head">
+			<span class="section-index">05</span>
+			<h2>Contact</h2>
+			<p>Email is the quickest way to reach me. The form works too.</p>
+		</div>
+		<div class="home-content">
+			<div class="contact-panel" data-reveal>
+			<div class="contact-grid">
+				<div class="surface">
+					<form id="contact-form" class="mf-form contact-form" novalidate>
+						<div class="contact-fields">
+							<label class="contact-field">
+								<span>Name</span>
+								<input class="mf-input" name="name" type="text" autocomplete="name" required />
+							</label>
+							<label class="contact-field">
+								<span>Email</span>
+								<input class="mf-input" name="email" type="email" autocomplete="email" required />
+							</label>
+						</div>
+						<label class="contact-field">
+							<span>Message</span>
+							<textarea class="mf-input" name="message" rows="4" required></textarea>
+						</label>
+
+						<input type="hidden" name="interested" value="General enquiry" />
+						<input type="hidden" name="formStart" id="form-start" />
+						<div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+							<label for="honeypot">Leave this field empty</label>
+							<input id="honeypot" name="honeypot" type="text" tabindex="-1" autocomplete="off" />
+						</div>
+
+						<div>
+							<button type="submit" class="btn btn-primary" id="mf-submit">Send message</button>
+						</div>
+
+						<div id="form-status" class="form-result" aria-live="polite" hidden>
+							<svg class="form-result-icon" viewBox="0 0 48 48" aria-hidden="true">
+								<circle class="form-result-ring" cx="24" cy="24" r="18"></circle>
+								<path class="form-result-check" d="M15.5 24.5 21.5 30.5 33 18.5"></path>
+								<path class="form-result-cross-a" d="M16 16L32 32"></path>
+								<path class="form-result-cross-b" d="M32 16L16 32"></path>
+							</svg>
+							<div class="form-result-copy">
+								<strong class="form-result-title"></strong>
+								<p class="form-result-text"></p>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="connect-grid connect-grid--contact">
+					<a href="mailto:mail@davidvidovic.com" class="connect-card">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+						<div class="connect-card-text">
+							<span class="connect-card-name">Email</span>
+							<span class="connect-card-sub">mail@davidvidovic.com</span>
+						</div>
+						<svg class="connect-card-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+					</a>
+					<a href="https://github.com/davidvidovic-web" target="_blank" rel="noopener noreferrer" class="connect-card">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+						<div class="connect-card-text">
+							<span class="connect-card-name">GitHub</span>
+							<span class="connect-card-sub">davidvidovic-web</span>
+						</div>
+						<svg class="connect-card-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+					</a>
+					<a href="https://www.linkedin.com/in/david-vidovic/" target="_blank" rel="noopener noreferrer" class="connect-card">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+						<div class="connect-card-text">
+							<span class="connect-card-name">LinkedIn</span>
+							<span class="connect-card-sub">david-vidovic</span>
+						</div>
+						<svg class="connect-card-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+					</a>
+					<a href="https://www.upwork.com/freelancers/~0163d597d928e1e526" target="_blank" rel="noopener noreferrer" class="connect-card">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+						<div class="connect-card-text">
+							<span class="connect-card-name">Upwork</span>
+							<span class="connect-card-sub">Profile and client reviews</span>
+						</div>
+						<svg class="connect-card-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+					</a>
+				</div>
+			</div>
+			</div>
+		</div>
+	</section>
+	</div>
 </BaseLayout>
 
 <script>
 // @ts-nocheck
 (function () {
-const form = document.getElementById("contact-form");
-if (!form) return;
-const stage = document.getElementById("mf-stage");
-const counterEl = document.getElementById("mf-counter");
-const fillEl = document.getElementById("mf-fill");
-const backBtn = document.getElementById("mf-back");
-const nextBtn = document.getElementById("mf-next");
-const submitBtn = document.getElementById("mf-submit");
-const statusEl = form.querySelector("#form-status");
-const statusTitleEl = statusEl ? statusEl.querySelector(".form-result-title") : null;
-const statusTextEl = statusEl ? statusEl.querySelector(".form-result-text") : null;
-const formStartEl = document.getElementById("form-start");
-const skipBtn = document.getElementById("mf-skip-btn");
-const TOTAL = 5;
-let current = 1;
-let busy = false;
-let formLocked = false;
-const submitOriginalLabel = submitBtn.textContent || "Send message";
-const submitOriginalHover = submitBtn.dataset.hover;
+	const form = document.getElementById("contact-form");
+	if (!form) return;
+	const statusEl = document.getElementById("form-status");
+	const titleEl = statusEl.querySelector(".form-result-title");
+	const textEl = statusEl.querySelector(".form-result-text");
+	const submitBtn = document.getElementById("mf-submit");
+	const formStartEl = document.getElementById("form-start");
+	if (formStartEl) formStartEl.value = String(Date.now());
 
-function applyAnimatedLabel(button, label) {
-button.dataset.hover = label;
-var hoverText = button.querySelector(".hov");
+	const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-if (hoverText) {
-hoverText.textContent = label;
-} else {
-button.innerHTML = '<span class="hov">' + label + "</span>";
-}
-}
-if (formStartEl) formStartEl.value = String(Date.now());
-
-function lockFormResult(state, title, message) {
-formLocked = true;
-form.dataset.locked = "true";
-form.classList.remove("is-success", "is-error");
-form.classList.add("is-locked", state);
-
-if (statusEl) {
-	statusEl.hidden = false;
-	statusEl.classList.remove("is-visible", "is-success", "is-error");
-	statusEl.classList.remove("is-loading");
-	statusEl.classList.add(state);
-	if (statusTitleEl) statusTitleEl.textContent = title;
-	if (statusTextEl) statusTextEl.textContent = message;
-	requestAnimationFrame(function() { statusEl.classList.add("is-visible"); });
-}
-
-form.querySelectorAll("input, select, textarea, button").forEach(function(control) {
-	control.disabled = true;
-});
-}
-
-function getStep(n) { return stage.querySelector('[data-step="' + n + '"]'); }
-
-function validate(n) {
-const input = getStep(n).querySelector(".mf-input");
-if (!input) return true;
-if (n === 1 && !input.value.trim()) { input.classList.add("mf-invalid"); input.focus(); return false; }
-if (n === 2 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())) { input.classList.add("mf-invalid"); input.focus(); return false; }
-if (n === 5 && !input.value.trim()) { input.classList.add("mf-invalid"); input.focus(); return false; }
-return true;
-}
-
-function updateUI() {
-if (formLocked) return;
-fillEl.style.width = ((current / TOTAL) * 100) + "%";
-counterEl.textContent = String(current).padStart(2, "0") + " / " + String(TOTAL).padStart(2, "0");
-backBtn.hidden = current === 1;
-nextBtn.hidden = current === TOTAL || current === 3;
-submitBtn.hidden = current !== TOTAL;
-}
-
-function goTo(next, dir) {
-if (formLocked || busy || next < 1 || next > TOTAL) return;
-busy = true;
-const fromEl = getStep(current);
-const toEl = getStep(next);
-fromEl.classList.add(dir === "next" ? "mf-exit-up" : "mf-exit-down");
-setTimeout(function() {
-fromEl.classList.remove("is-active", "mf-exit-up", "mf-exit-down");
-toEl.classList.add(dir === "next" ? "mf-enter-from-below" : "mf-enter-from-above", "is-active");
-requestAnimationFrame(function() { requestAnimationFrame(function() {
-toEl.classList.remove("mf-enter-from-below", "mf-enter-from-above");
-current = next;
-updateUI();
-if (next === 3) showConfirmOrPick();
-busy = false;
-var inp = toEl.querySelector(".mf-input, .mf-option");
-if (inp) inp.focus();
-}); });
-}, 240);
-}
-
-nextBtn.addEventListener("click", function() { if (formLocked) return; if (validate(current)) goTo(current + 1, "next"); });
-backBtn.addEventListener("click", function() { if (formLocked) return; goTo(current - 1, "back"); });
-if (skipBtn) skipBtn.addEventListener("click", function() { if (formLocked) return; goTo(5, "next"); });
-
-stage.addEventListener("keydown", function(e) {
-if (formLocked) return;
-var t = e.target;
-if (e.key !== "Enter" || t.tagName === "TEXTAREA" || t.tagName === "BUTTON") return;
-if (t.tagName !== "INPUT" || t.type === "hidden") return;
-e.preventDefault();
-if (!validate(current)) return;
-if (current < TOTAL && current !== 3) goTo(current + 1, "next");
-});
-
-stage.addEventListener("input", function(e) { if (!formLocked) e.target.classList.remove("mf-invalid"); });
-
-var confirmEl = document.getElementById("mf-confirm");
-var confirmLabel = document.getElementById("mf-confirm-label");
-var confirmYes = document.getElementById("mf-confirm-yes");
-var confirmChange = document.getElementById("mf-confirm-change");
-var optionsGrid = document.getElementById("mf-options-grid");
-
-function showConfirmOrPick() {
-	var hidden = getStep(3).querySelector("input[name='interested']");
-	var value = hidden ? hidden.value : "";
-	if (value && confirmEl && optionsGrid) {
-		var match = stage.querySelector('.mf-option[data-value="' + value + '"]');
-		if (confirmLabel) confirmLabel.textContent = match ? match.textContent.trim() : value;
-		confirmEl.hidden = false;
-		optionsGrid.hidden = true;
-	} else if (confirmEl && optionsGrid) {
-		confirmEl.hidden = true;
-		optionsGrid.hidden = false;
+	function showResult(state, title, message) {
+		form.classList.remove("is-loading");
+		form.classList.add("is-locked", state);
+		statusEl.hidden = false;
+		statusEl.classList.remove("is-loading", "is-success", "is-error");
+		statusEl.classList.add(state);
+		titleEl.textContent = title;
+		textEl.textContent = message;
+		requestAnimationFrame(() => statusEl.classList.add("is-visible"));
+		form.querySelectorAll("input, textarea, button").forEach((el) => (el.disabled = true));
 	}
-}
 
-if (confirmYes) {
-	confirmYes.addEventListener("click", function() { if (formLocked) return; goTo(4, "next"); });
-}
+	form.addEventListener("input", (e) => e.target.classList.remove("mf-invalid"));
 
-if (confirmChange) {
-	confirmChange.addEventListener("click", function() {
-		if (formLocked) return;
-		var hidden = getStep(3).querySelector("input[name='interested']");
-		if (hidden) hidden.value = "";
-		stage.querySelectorAll(".mf-option").forEach(function(b) { b.classList.remove("is-selected"); });
-		if (confirmEl) confirmEl.hidden = true;
-		if (optionsGrid) optionsGrid.hidden = false;
-		optionsGrid && optionsGrid.querySelector(".mf-option").focus();
+	form.addEventListener("submit", async (e) => {
+		e.preventDefault();
+		const fields = {
+			name: form.elements.name,
+			email: form.elements.email,
+			message: form.elements.message,
+		};
+		const invalid = [
+			!fields.name.value.trim() && fields.name,
+			!EMAIL_RE.test(fields.email.value.trim()) && fields.email,
+			!fields.message.value.trim() && fields.message,
+		].filter(Boolean);
+		if (invalid.length) {
+			invalid.forEach((el) => el.classList.add("mf-invalid"));
+			invalid[0].focus();
+			return;
+		}
+
+		form.classList.add("is-loading");
+		statusEl.hidden = false;
+		statusEl.classList.add("is-loading", "is-visible");
+		titleEl.textContent = "Sending message";
+		textEl.textContent = "One moment.";
+		submitBtn.disabled = true;
+
+		try {
+			const res = await fetch("/api/contact", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
+			});
+			const result = await res.json();
+			if (!res.ok) throw new Error(result.error || "Failed to send.");
+			showResult("is-success", "Message sent", "Thanks, I’ll get back to you soon.");
+		} catch (err) {
+			showResult("is-error", "Message not sent", err instanceof Error ? err.message : "Failed to send message.");
+		}
 	});
-}
-
-stage.querySelectorAll(".mf-option").forEach(function(btn) {
-btn.addEventListener("click", function() {
-if (formLocked) return;
-var hidden = getStep(3).querySelector("input[name='interested']");
-if (hidden) hidden.value = btn.dataset.value || "";
-stage.querySelectorAll(".mf-option").forEach(function(b) { b.classList.remove("is-selected"); });
-btn.classList.add("is-selected");
-setTimeout(function() { goTo(4, "next"); }, 300);
-});
-});
-
-document.querySelectorAll(".service-select-card").forEach(function(card) {
-card.addEventListener("click", function() {
-if (formLocked) return;
-var value = card.dataset.service || "";
-var hidden = getStep(3).querySelector("input[name='interested']");
-if (hidden) hidden.value = value;
-stage.querySelectorAll(".mf-option").forEach(function(btn) {
-btn.classList.toggle("is-selected", btn.dataset.value === value);
-});
-var contactEl = document.getElementById("contact");
-if (contactEl) contactEl.scrollIntoView({ behavior: "smooth", block: "start" });
-});
-});
-
-function showToast(message, type) {
-	lockFormResult(type, type === "is-success" ? "Message sent" : "Message not sent", message);
-}
-
-form.addEventListener("submit", async function(e) {
-e.preventDefault();
-if (formLocked) return;
-if (!validate(current)) return;
-form.classList.add("is-loading");
-statusEl.hidden = false;
-statusEl.classList.remove("is-success", "is-error");
-statusEl.classList.add("is-loading", "is-visible");
-if (statusTitleEl) statusTitleEl.textContent = "Sending message";
-if (statusTextEl) statusTextEl.textContent = "Please wait while your message is submitted.";
-submitBtn.disabled = true;
-submitBtn.setAttribute("aria-busy", "true");
-try {
-var res = await fetch("/api/contact", {
-method: "POST",
-headers: { "Content-Type": "application/json" },
-body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
-});
-var result = await res.json();
-if (!res.ok) throw new Error(result.error || "Failed to send.");
-form.classList.remove("is-loading");
-lockFormResult("is-success", "Message sent", "I\u2019ll get back to you shortly!");
-} catch(err) {
-form.classList.remove("is-loading");
-lockFormResult("is-error", "Message not sent", err instanceof Error ? err.message : "Failed to send message.");
-}
-});
-
-updateUI();
 })();
 </script>
