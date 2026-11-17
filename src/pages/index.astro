@@ -3,8 +3,9 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { faqs } from "../data/faqs";
 import { otherProjects } from "../data/otherProjects";
-import { services } from "../data/services";
+import { offeredServices as services } from "../data/services";
 import { testimonials } from "../data/testimonials";
+import { about, contact, education, experience, languages, location, stackRows } from "../data/profile";
 import { NAV_ITEMS, SITE } from "../config/site";
 
 const projects = (await getCollection("projects")).sort((a, b) => {
@@ -53,82 +54,9 @@ function getLogoSource(logoPath: string) {
 
 const featuredProjects = projects.filter((project) => featuredProjectSlugs.has(project.data.slug));
 
-const experience = [
-	{
-		period: "2023 – now",
-		role: "Full-stack software engineer, freelance",
-		company: "Upwork",
-		link: "https://www.upwork.com/freelancers/~0163d597d928e1e526",
-		note: "Top Rated with a 100% Job Success Score across 22+ international clients. Full-stack web apps, custom APIs and client dashboards.",
-	},
-	{
-		period: "2024 – 2025",
-		role: "Software engineer",
-		company: "Converted UK",
-		link: "https://converted.co.uk",
-		note: "Built accessible website components in an agile team and fixed performance issues on client sites.",
-	},
-	{
-		period: "2022 – 2024",
-		role: "Backend developer",
-		company: "Effecticore DE",
-		link: "https://effecticore.com",
-		note: "Built a server-side API for automated PDF reports, rebuilt slow legacy sites as lightweight custom themes and set up deployment pipelines.",
-	},
-	{
-		period: "2020 – 2022",
-		role: "Frontend and systems developer",
-		company: "Obsidian Media DK",
-		link: "https://obsidianmedia.dk",
-		note: "Kept a network of 80+ commercial websites fast, secure and reliable, and built internal publishing tools.",
-	},
-	{
-		period: "2019",
-		role: "Junior web developer",
-		company: "Ad-kraft",
-		link: "https://ad-kraft.com",
-		note: "Built custom WordPress sites and blogs from design mockups.",
-	},
-];
-
 const featuredTestimonials = [3, 5, 1]
 	.map((id) => testimonials.find((item) => item.id === id))
 	.filter((item) => item !== undefined);
-
-const stackRows = [
-	[
-		"React",
-		"Next.js",
-		"TypeScript",
-		"JavaScript",
-		"Tailwind CSS",
-		"Astro",
-		"Vite",
-		"Three.js",
-		"GSAP",
-		"Figma",
-		"Playwright",
-		"Shopify",
-		"WordPress",
-		"WooCommerce",
-	],
-	[
-		"Node.js",
-		"PHP",
-		"Laravel",
-		"PostgreSQL",
-		"MySQL",
-		"SQLite",
-		"Supabase",
-		"Redis",
-		"Drizzle",
-		"REST API",
-		"GraphQL",
-		"Docker",
-		"Stripe",
-		"OpenAI API",
-	],
-];
 
 const structuredData = [
 	{
@@ -151,23 +79,31 @@ const structuredData = [
 		image: `${SITE.siteUrl}/assets/img/logo/logo-light.webp`,
 		jobTitle: "Full-stack Web Developer",
 		description: SITE.description,
-		sameAs: [
-			"https://www.linkedin.com/in/david-vidovic/",
-			"https://github.com/davidvidovic-web",
-			"https://www.upwork.com/freelancers/~0163d597d928e1e526",
-		],
+		email: `mailto:${contact.email}`,
+		address: { "@type": "PostalAddress", addressCountry: "AT" },
+		homeLocation: { "@type": "Country", name: location },
+		alumniOf: { "@type": "EducationalOrganization", name: education },
+		knowsLanguage: ["en", "bs", "hr", "sr", "de"],
+		knowsAbout: stackRows.flat(),
+		sameAs: [contact.linkedin, contact.github, contact.upwork],
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"@id": `${SITE.siteUrl}/#website`,
+		name: SITE.name,
+		url: SITE.siteUrl,
+		description: SITE.description,
+		inLanguage: "en",
+		publisher: { "@id": `${SITE.siteUrl}/#person` },
 	},
 	{
 		"@context": "https://schema.org",
 		"@type": "ProfessionalService",
 		name: "David Vidovic - Web Development Services",
-		url: `${SITE.siteUrl}/service`,
+		url: SITE.siteUrl,
 		areaServed: "Worldwide",
-		provider: {
-			"@type": "Person",
-			name: "David Vidovic",
-			url: SITE.siteUrl,
-		},
+		provider: { "@id": `${SITE.siteUrl}/#person` },
 		serviceType: services.map((service) => service.title),
 	},
 	{
@@ -211,7 +147,7 @@ const structuredData = [
 		<dl class="case-facts hero-strip">
 			<div>
 				<dt>Based in</dt>
-				<dd>Austria</dd>
+				<dd>{location}</dd>
 			</div>
 			<div>
 				<dt>Experience</dt>
@@ -229,20 +165,6 @@ const structuredData = [
 				</dd>
 			</div>
 		</dl>
-		<div class="stack-rows" aria-label="Technologies I work with">
-			{
-				stackRows.map((row, rowIndex) => (
-					<div class:list={["stack-marquee", { "is-reverse": rowIndex % 2 === 1 }]}>
-						<ul class="stack-track">
-							{row.map((item) => <li>{item}</li>)}
-						</ul>
-						<ul class="stack-track" aria-hidden="true">
-							{row.map((item) => <li>{item}</li>)}
-						</ul>
-					</div>
-				))
-			}
-		</div>
 	</section>
 
 	<section class="home-section reveal reveal-2" id="work">
@@ -325,16 +247,8 @@ const structuredData = [
 			<h2>About</h2>
 		</div>
 		<div class="home-content">
-			<p class="about-lead">
-				A full-stack web developer with a B.Sc. in Computer Science and more than eight years
-				of building web apps, APIs and bunch more.
-			</p>
-			<p class="about-body">
-				I’m comfortable across the whole stack frontend in React and Next.js to backend
-				services in PHP, Laravel and Python. A growing part of my work is AI: retrieval pipelines,
-				vector search and LLM integrations. Regardkess of the project, I care about fast pages, clean
-				deployments and code that can be maintained.
-			</p>
+			<p class="about-lead">{about.lead}</p>
+			<p class="about-body">{about.body}</p>
 
 			<h3 class="work-subhead">Experience</h3>
 			<div class="exp-list">
@@ -357,15 +271,30 @@ const structuredData = [
 			<dl class="case-facts about-facts" data-reveal>
 				<div>
 					<dt>Education</dt>
-					<dd>B.Sc. Business Informatics / Computer Science</dd>
+					<dd>{education}</dd>
 				</div>
 				<div>
 					<dt>Languages</dt>
-					<dd>English (fluent), Bosnian / Croatian / Serbian (native), German (learning)</dd>
+					<dd>{languages.join(", ")}</dd>
 				</div>
 			</dl>
 		</div>
 	</section>
+
+	<div class="stack-rows" aria-label="Technologies I work with">
+		{
+			stackRows.map((row, rowIndex) => (
+				<div class:list={["stack-marquee", { "is-reverse": rowIndex % 2 === 1 }]}>
+					<ul class="stack-track">
+						{row.map((item) => <li>{item}</li>)}
+					</ul>
+					<ul class="stack-track" aria-hidden="true">
+						{row.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+			))
+		}
+	</div>
 
 	<section class="home-section reveal reveal-3" id="testimonials">
 		<div class="home-head">

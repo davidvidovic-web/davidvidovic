@@ -158,3 +158,6 @@ export const services: ServiceItem[] = [
     date: "Jan 2019 - Sept 2019",
   },
 ];
+
+// The rest of this file is leftover template data; only these four are services actually offered.
+export const offeredServices = services.filter((service) => [6, 7, 8, 9].includes(service.id));

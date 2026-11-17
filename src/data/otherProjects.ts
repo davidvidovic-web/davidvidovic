@@ -40,18 +40,12 @@ export const otherProjects: OtherProject[] = [
     title: "Elevate",
     type: "Client site",
     subtitle: "Agency website",
-    link: "https://elevatepreview.com",
+    link: "https://elevate-static.cold-base-5881.workers.dev/",
   },
   {
     title: "TapWaterRating",
     type: "Web app",
     subtitle: "Water rating app",
     link: "https://tapwaterrating.com",
-  },
-  {
-    title: "mojPoslic",
-    type: "Web app",
-    subtitle: "Job portal",
-    link: "https://mojposlic.com",
   },
 ];

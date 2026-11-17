@@ -1,6 +1,8 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { SITE } from "../config/site";
+import { offeredServices as services } from "../data/services";
+import { about, contact, education, experience, languages, location, stackRows } from "../data/profile";
 
 function makeUrl(pathname: string): string {
   return new URL(pathname, SITE.siteUrl).toString();
@@ -9,34 +11,53 @@ function makeUrl(pathname: string): string {
 export const prerender = true;
 
 export const GET: APIRoute = async () => {
-  const [projects, blogPosts] = await Promise.all([getCollection("projects"), getCollection("blog")]);
+  const featuredProjectSlugs = new Set([
+    "geeks-on-site",
+    "kozmeticki-salon-cats",
+    "ambientivo",
+    "desserts-with-ana",
+  ]);
+  const projects = (await getCollection("projects")).filter((project) =>
+    featuredProjectSlugs.has(project.data.slug),
+  );
 
   const body = [
     `# ${SITE.name}`,
     "",
     `> ${SITE.description}`,
     "",
-    `Canonical: [${SITE.siteUrl}](${SITE.siteUrl})`,
+    "## About",
+    about.lead,
     "",
-    "## Primary Pages",
+    about.body,
+    "",
+    `- Based in: ${location}`,
+    `- Education: ${education}`,
+    `- Languages: ${languages.join(", ")}`,
+    `- Experience: ${experience.map((item) => `${item.role}, ${item.company} (${item.period})`).join("; ")}`,
+    "",
+    "## Services",
+    ...services.map((service) => `- ${service.title}: ${service.description}`),
+    "",
+    "## Technologies",
+    stackRows.flat().join(", "),
+    "",
+    "## Case studies",
+    ...projects.map(
+      (project) =>
+        `- [${project.data.title}](${makeUrl(`/portfolio/${project.data.slug}`)}): ${project.data.overview}`,
+    ),
+    "",
+    "## Contact",
+    `- Email: ${contact.email}`,
+    `- LinkedIn: ${contact.linkedin}`,
+    `- GitHub: ${contact.github}`,
+    `- Upwork: ${contact.upwork}`,
+    "",
+    "## Site",
     `- [Home](${makeUrl("/")})`,
-    `- [Services](${makeUrl("/service")})`,
-    `- [Portfolio Index](${makeUrl("/portfolio")})`,
-    `- [Blog Index](${makeUrl("/blog")})`,
-    `- [Contact](${makeUrl("/contact")})`,
-    "",
-    "## Dynamic Content",
-    "- Portfolio Case Studies: /portfolio/{slug}",
-    "- Blog Articles: /blog/{slug}",
-    "",
-    "## Machine-Readable Discovery",
     `- [Sitemap](${makeUrl("/sitemap.xml")})`,
-    `- [Robots](${makeUrl("/robots.txt")})`,
-    `- [Full LLM Index](${makeUrl("/llms-full.txt")})`,
-    "",
-    "## Snapshot",
-    `- Projects: ${projects.length}`,
-    `- Blog posts: ${blogPosts.length}`,
+    `- [Full content for LLMs](${makeUrl("/llms-full.txt")})`,
   ].join("\n");
 
   return new Response(body, {
