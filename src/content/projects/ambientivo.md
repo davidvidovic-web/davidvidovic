@@ -10,7 +10,7 @@ client: "Ambientivo"
 
 role: "Web Developer"
 
-overview: "Custom WordPress and React architecture for an architectural brand with stronger SEO foundations and improved content presentation."
+overview: "React frontend on a custom WordPress backend for an architecture studio, with SEO foundations and an image-heavy portfolio that needs no code to manage."
 
 summary: "A React frontend on a custom WordPress backend, built so an architecture studio can run an image-heavy portfolio without touching code."
 

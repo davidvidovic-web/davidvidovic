@@ -10,7 +10,7 @@ client: "Desserts with Ana"
 
 role: "Web Developer"
 
-overview: "WordPress and WooCommerce implementation for a pastry business with recipe SEO content and Stripe POS workflow integration."
+overview: "WooCommerce shop and recipe hub for a pastry business, with a custom plugin connecting Stripe POS card readers to WooCommerce for in-person sales."
 
 summary: "A WooCommerce shop and recipe hub, plus a custom plugin that connects Stripe POS card readers to WooCommerce for in-person sales."
 

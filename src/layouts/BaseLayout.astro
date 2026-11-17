@@ -7,6 +7,7 @@ interface Props {
   description?: string;
   canonicalPath?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: "website" | "article";
   noindex?: boolean;
   structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
@@ -17,6 +18,7 @@ const {
   description = SITE.description,
   canonicalPath,
   ogImage = SITE.defaultOgImage,
+  ogImageAlt = SITE.defaultOgImageAlt,
   ogType = "website",
   noindex = false,
   structuredData,
@@ -40,11 +42,14 @@ const schemaBlocks = structuredData
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="robots" content={robotsValue} />
+    <meta name="author" content={SITE.name} />
+    <meta name="theme-color" content="#060a13" />
 
     <link rel="stylesheet" href={globalStylesheetHref} />
 
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -69,11 +74,13 @@ const schemaBlocks = structuredData
     <meta property="og:image" content={new URL(ogImage, SITE.siteUrl).toString()} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, SITE.siteUrl).toString()} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <title>{title}</title>
 
@@ -183,10 +190,10 @@ const schemaBlocks = structuredData
     </main>
 
     <footer class="footer">
+      <p class="footer-wordmark" aria-hidden="true">David Vidovic</p>
       <div class="site-shell">
-        <p class="footer-wordmark" aria-hidden="true">David Vidovic</p>
         <div class="footer-row">
-          <p class="footer-copy">© {new Date().getFullYear()} David Vidovic</p>
+          <p class="footer-copy">© {new Date().getFullYear()}</p>
           <a class="footer-top" href="#top">Back to top ↑</a>
         </div>
       </div>
@@ -267,6 +274,50 @@ const schemaBlocks = structuredData
         );
         revealItems.forEach((el) => revealObserver.observe(el));
       }
+
+      // Revealing footer: fit the wordmark edge to edge and tilt letters in as it is uncovered
+      (function () {
+        const footer = document.querySelector<HTMLElement>(".footer");
+        const word = footer?.querySelector<HTMLElement>(".footer-wordmark");
+        if (!footer || !word) return;
+        const text = word.textContent ?? "";
+        word.textContent = "";
+        const chars = [...text].map((c) => {
+          const span = document.createElement("span");
+          span.className = "ch";
+          span.innerHTML = c === " " ? "&nbsp;" : c;
+          word.appendChild(span);
+          return span;
+        });
+        document.documentElement.classList.add("js-footer-reveal");
+
+        const fit = () => {
+          word.style.fontSize = "100px";
+          const probe = word.scrollWidth;
+          const natural = chars.reduce((w, c) => w + c.getBoundingClientRect().width, 0) || probe;
+          word.style.fontSize = `${(100 * window.innerWidth) / natural}px`;
+          document.documentElement.style.setProperty("--footer-h", `${footer.offsetHeight}px`);
+        };
+
+        const render = () => {
+          const h = footer.offsetHeight;
+          const visible = window.scrollY + window.innerHeight - (document.documentElement.scrollHeight - h);
+          const p = reducedMotion ? 1 : Math.min(1, Math.max(0, visible / h));
+          const n = chars.length;
+          chars.forEach((c, i) => {
+            const t = Math.min(1, Math.max(0, p * 1.8 - (i / n) * 0.8));
+            const e = 1 - Math.pow(1 - t, 3);
+            c.style.opacity = String(e);
+            c.style.transform = `translateY(${(1 - e) * 55}%) rotateX(${(1 - e) * -75}deg) rotateZ(${(1 - e) * (i % 2 ? 6 : -6)}deg)`;
+          });
+        };
+
+        const refresh = () => { fit(); render(); };
+        refresh();
+        document.fonts?.ready.then(refresh);
+        window.addEventListener("resize", refresh);
+        window.addEventListener("scroll", render, { passive: true });
+      })();
 
       // Hover text roll on link-buttons and nav links
       document.querySelectorAll<HTMLElement>(".btn, .nav-list a").forEach(function(el) {

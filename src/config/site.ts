@@ -6,10 +6,11 @@ const siteUrl =
 export const SITE = {
   name: "David Vidovic",
   siteUrl,
-  title: "David Vidovic | Full-stack Web Developer",
+  title: "David Vidovic | Full-stack Web Developer for Websites, Web Apps & Shops",
   description:
-    "I'm David Vidovic, a full-stack web developer. I build websites, web apps, online shops and the integrations behind them.",
+    "I'm David Vidovic, an Austria-based full-stack web developer with 8+ years of experience. I build websites, web apps, online shops and the integrations behind them.",
   defaultOgImage: "/assets/img/og-image.jpg",
+  defaultOgImageAlt: "David Vidovic, full-stack web developer",
   locale: "en_US",
 };
 

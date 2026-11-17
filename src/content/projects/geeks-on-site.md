@@ -4,7 +4,7 @@ slug: "geeks-on-site"
 year: "2025"
 client: "Geeks on Site LLC"
 role: "Full Stack Developer"
-overview: "WordPress booking system and checkout UX overhaul for Geeks on Site that improved booking completion and reduced abandonment."
+overview: "Online booking system and checkout rebuild on WordPress for Geeks on Site, replacing phone-only booking and reducing cart abandonment."
 
 summary: "Replaced phone-only booking with an online booking flow on WordPress, then rebuilt the mini-cart, cart and checkout around it."
 websiteUrl: "https://geeksonsite.com"

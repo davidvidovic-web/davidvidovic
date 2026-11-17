@@ -10,7 +10,7 @@ client: "Kozmetički Salon Cats"
 
 role: "Web Developer"
 
-overview: "WordPress redesign and shop launch for an Instagram-driven beauty brand, improving discoverability and product sales flow."
+overview: "Website redesign and online shop for an Instagram-driven beauty salon, so customers can browse and buy products without DMs."
 
 summary: "Redesigned the site around Instagram traffic with a link-tree-style homepage, and added an online shop so products could be bought without DMs."
 
