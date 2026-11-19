@@ -7,16 +7,10 @@ export interface OtherProject {
 
 export const otherProjects: OtherProject[] = [
   {
-    title: "Pitaj.io",
-    type: "Product",
-    subtitle: "AI automation platform",
-    link: "https://pitaj.io",
-  },
-  {
-    title: "Hackers (1995)",
-    type: "Game",
-    subtitle: "Interactive mainframe experience",
-    link: "https://hackers-1995.vercel.app/",
+    title: "Desserts with Ana",
+    type: "Client site",
+    subtitle: "WooCommerce shop, recipe hub and Stripe POS integration",
+    link: "/portfolio/desserts-with-ana",
   },
   {
     title: "POS Terminals for Stripe",

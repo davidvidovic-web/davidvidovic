@@ -1,22 +1,16 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { SITE } from "../config/site";
+import { caseStudySlugs } from "../data/featuredProjects";
 
 function makeUrl(pathname: string): string {
   return new URL(pathname, SITE.siteUrl).toString();
 }
 
 export const GET: APIRoute = async () => {
-  const featuredProjectSlugs = new Set([
-    "geeks-on-site",
-    "kozmeticki-salon-cats",
-    "ambientivo",
-    "desserts-with-ana",
-  ]);
-
   const projects = await getCollection("projects");
 
-  const featuredProjects = projects.filter((project) => featuredProjectSlugs.has(project.data.slug));
+  const featuredProjects = projects.filter((project) => caseStudySlugs.includes(project.data.slug));
 
   // No lastmod: we have no real modification dates, and made-up ones get ignored by crawlers.
   const urls = [

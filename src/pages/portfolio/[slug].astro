@@ -2,6 +2,7 @@
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { SITE } from "../../config/site";
+import { caseStudySlugs, orderFeaturedProjects } from "../../data/featuredProjects";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -11,24 +12,13 @@ interface Props {
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const featuredProjectSlugs = new Set([
-    "geeks-on-site",
-    "kozmeticki-salon-cats",
-    "ambientivo",
-    "desserts-with-ana",
-  ]);
+  const projects = await getCollection("projects");
+  const ordered = orderFeaturedProjects(projects);
+  const caseStudies = projects.filter((project) => caseStudySlugs.includes(project.data.slug));
 
-  const projects = (await getCollection("projects")).filter((project) =>
-    featuredProjectSlugs.has(project.data.slug),
-  );
-
-  const ordered = projects.sort(
-    (a, b) => Number.parseInt(b.data.year, 10) - Number.parseInt(a.data.year, 10),
-  );
-
-  return ordered.map((project, index) => ({
+  return caseStudies.map((project) => ({
     params: { slug: project.data.slug },
-    props: { project, nextProject: ordered[(index + 1) % ordered.length] },
+    props: { project, nextProject: ordered[(ordered.findIndex((item) => item.id === project.id) + 1) % ordered.length] },
   }));
 }
 

@@ -16,6 +16,7 @@ const projects = defineCollection({
     year: z.string(),
     client: z.string(),
     role: z.string(),
+    type: z.string().optional(),
     overview: z.string(),
     summary: z.string().optional(),
     websiteUrl: z.string().url(),

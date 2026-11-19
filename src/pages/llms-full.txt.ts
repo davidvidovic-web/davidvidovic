@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { SITE } from "../config/site";
 import { faqs } from "../data/faqs";
+import { orderFeaturedProjects } from "../data/featuredProjects";
 import { offeredServices as services } from "../data/services";
 import { about, contact, education, experience, languages, location, stackRows } from "../data/profile";
 
@@ -12,15 +13,7 @@ function makeUrl(pathname: string): string {
 export const prerender = true;
 
 export const GET: APIRoute = async () => {
-  const featuredProjectSlugs = new Set([
-    "geeks-on-site",
-    "kozmeticki-salon-cats",
-    "ambientivo",
-    "desserts-with-ana",
-  ]);
-  const projects = (await getCollection("projects"))
-    .filter((project) => featuredProjectSlugs.has(project.data.slug))
-    .sort((a, b) => Number.parseInt(b.data.year, 10) - Number.parseInt(a.data.year, 10));
+  const projects = orderFeaturedProjects(await getCollection("projects"));
 
   const body = [
     `# ${SITE.name} - Full content`,
